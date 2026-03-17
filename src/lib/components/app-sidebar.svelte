@@ -1,115 +1,47 @@
 <script lang="ts">
-	import { page } from '$app/state';
-	import * as Sidebar from '$lib/components/ui/sidebar';
-	import { onMount, type ComponentProps } from 'svelte';
-	import { SidebarData } from '$lib/data/sidebar-data';
+	import { page } from "$app/state";
+	import * as Sidebar from "$lib/components/ui/sidebar";
+	import { type ComponentProps } from "svelte";
+	import { sidebarNavItems } from "$lib/navigation.js";
 
-	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
-	type SidebarItem = {
-		title: string;
-		url?: string;
-		isActive?: boolean;
-		badge?: string;
-		icon?: any;
-		items?: SidebarItem[];
-	};
-	type SidebarSection = {
-		title: string;
-		url: string;
-		items: SidebarItem[];
-	};
-	let data = $state<{ navMain: SidebarSection[] }>({
-		navMain: [
-			...SidebarData
-		]
-	});
+	let { ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
 
-	const setActiveRecursive = (items: SidebarItem[], url: string): boolean => {
-		let anyActive = false;
-		for (const item of items) {
-			const selfActive = item.url === url;
-			const childActive = item.items ? setActiveRecursive(item.items, url) : false;
-			item.isActive = selfActive || childActive;
-			anyActive ||= item.isActive;
-		}
-		return anyActive;
-	};
-
-	let updateIsActive = (url: string) => {
-		for (const section of data.navMain) {
-			setActiveRecursive(section.items, url);
-		}
-	};
-
-	let currentPath = $state('');
-
-	onMount(() => {
-		currentPath = page.url.pathname;
-		updateIsActive(currentPath);
-	});
+	const pathname = $derived(page.url.pathname);
 </script>
 
-<Sidebar.Root class="mt-16 h-[calc(100vh-4rem)] pr-2 pl-6" {...restProps} bind:ref>
-	<Sidebar.Content class="thin-scrollbar bg-background mb-4 gap-0 pt-6">
-		{#each data.navMain as item (item.title)}
-			<Sidebar.Group class="p-0">
-				<Sidebar.GroupLabel class="text-muted-foreground text-xs">
+<Sidebar.Root
+	class="sticky top-[calc(var(--header-height)+1px)] z-30 hidden h-[calc(100svh-var(--footer-height)-4rem)] overscroll-none bg-transparent lg:flex"
+	collapsible="none"
+	{...restProps}
+>
+	<Sidebar.Content class="no-scrollbar overflow-x-hidden px-2">
+		{#each sidebarNavItems as item (item.title)}
+			<Sidebar.Group>
+				<Sidebar.GroupLabel class="text-muted-foreground font-medium">
 					{item.title}
 				</Sidebar.GroupLabel>
-				<div class="mb-2">
-					<Sidebar.GroupContent>
-						<Sidebar.Menu class="gap-0.5">
-							{#each item.items as subItem (subItem.title)}
-								<Sidebar.MenuItem>
-									{#if subItem.items?.length}
+				<Sidebar.GroupContent>
+					{#if item.items?.length}
+						<Sidebar.Menu class="gap-1">
+							{#each item.items as subItem (subItem.href)}
+								{#if !subItem.items?.length}
+									<Sidebar.MenuItem class="w-full">
 										<Sidebar.MenuButton
-											isActive={subItem.isActive}
-											class="hover:text-accent text-foreground hover:bg-transparent active:bg-transparent data-[active=true]:bg-transparent data-[active=true]:font-normal data-[active=true]:text-accent"
-										>
-											{subItem.title}
-										</Sidebar.MenuButton>
-										<Sidebar.MenuSub>
-											{#each subItem.items as subSubItem (subSubItem.title)}
-												<Sidebar.MenuSubItem>
-													<Sidebar.MenuSubButton
-														isActive={subSubItem.isActive}
-														onclick={() => {
-															if (subSubItem.url) updateIsActive(subSubItem.url);
-														}}
-													>
-														{#snippet child({ props })}
-															<a href={subSubItem.url} {...props}>
-																{subSubItem.title}
-															</a>
-														{/snippet}
-													</Sidebar.MenuSubButton>
-												</Sidebar.MenuSubItem>
-											{/each}
-										</Sidebar.MenuSub>
-									{:else}
-										<Sidebar.MenuButton
-											isActive={subItem.isActive}
-											class="hover:text-accent text-foreground active:text-accent hover:bg-transparent active:bg-transparent data-[active=true]:bg-transparent data-[active=true]:font-normal data-[active=true]:text-accent"
-											onclick={() => {
-												if (subItem.url) updateIsActive(subItem.url);
-											}}
+											isActive={subItem.href === pathname}
+											class="data-[active=true]:bg-accent data-[active=true]:border-accent 2xl:fixed:w-full 2xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md"
 										>
 											{#snippet child({ props })}
-												{@const Icon = subItem.icon}
-												<a href={subItem.url} {...props}>
-													{#if subItem.icon}
-														<Icon class="size-8" />
-													{/if}
+												<a href={subItem.href} {...props}>
 													{subItem.title}
 												</a>
 											{/snippet}
 										</Sidebar.MenuButton>
-									{/if}
-								</Sidebar.MenuItem>
+									</Sidebar.MenuItem>
+								{/if}
 							{/each}
 						</Sidebar.Menu>
-					</Sidebar.GroupContent>
-				</div>
+					{/if}
+				</Sidebar.GroupContent>
 			</Sidebar.Group>
 		{/each}
 	</Sidebar.Content>
