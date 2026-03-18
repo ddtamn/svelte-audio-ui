@@ -7,12 +7,12 @@
 	import DocsToc from "$lib/components/docs-toc.svelte";
 	import { findNeighbors } from "$lib/navigation.js";
 	import { page } from "$app/state";
-	import Cta from "$lib/components/cta.svelte";
+	// import Cta from "$lib/components/cta.svelte";
 	import ComponentCodeViewer from "$lib/components/component-code-viewer/component-code-viewer.svelte";
 	import Metadata from "$lib/components/metadata.svelte";
 	import Ethical from "$lib/components/ethical.svelte";
 	import DocsCopyPage from "$lib/components/docs-copy-page.svelte";
-	import CtaMobile from "$lib/components/cta-mobile.svelte";
+	// import CtaMobile from "$lib/components/cta-mobile.svelte";
 
 	let { data } = $props();
 
@@ -54,9 +54,9 @@ the docs container. The issue this resolves is prominent on slow connections (3G
 				<div class="h-12"></div>
 			</div>
 		{/if}
-		<div class="flex flex-1 flex-col gap-12 px-6">
+		<!-- <div class="flex flex-1 flex-col gap-12 px-6">
 			<Cta />
-		</div>
+		</div> -->
 		<div class="flex flex-col gap-12 px-6">
 			<Ethical />
 		</div>
@@ -75,7 +75,7 @@ the docs container. The issue this resolves is prominent on slow connections (3G
 							{doc.title}
 						</h1>
 						<div
-							class="docs-nav bg-background/80 border-border/50 fixed inset-x-0 bottom-0 isolate z-50 flex items-center gap-2 border-t px-6 py-4 backdrop-blur-sm sm:static sm:z-0 sm:border-t-0 sm:bg-transparent sm:px-0 sm:pt-1.5 sm:backdrop-blur-none"
+							class="docs-nav bg-sidebar/80 fixed inset-x-0 bottom-0 isolate z-50 flex items-center gap-2 px-6 py-4 backdrop-blur-sm sm:static sm:z-0 sm:bg-transparent sm:px-0 sm:pt-1.5 sm:backdrop-blur-none"
 							data-llm-ignore
 						>
 							<DocsCopyPage />
@@ -140,9 +140,9 @@ the docs container. The issue this resolves is prominent on slow connections (3G
 					</div>
 				{/if}
 			</div>
-			<div class="mt-4">
+			<!-- <div class="mt-4">
 				<CtaMobile />
-			</div>
+			</div> -->
 			<div class="w-full flex-1 *:data-[slot=alert]:first:mt-0">
 				<Markdown viewerData={data.viewerData} />
 			</div>

@@ -1,49 +1,73 @@
 ---
-title: Get Started
-description: This guide provides the essentials for adding **audio/ui** components to your React application.
+title: SvelteKit
+description: How to setup shadcn-svelte in a SvelteKit project.
 ---
 
-## Prerequisites
+<script>
+	import * as Alert from "$lib/components/ui/alert/index.js";
+	import Steps from "$lib/components/steps.svelte";
+	import PMCreate from "$lib/components/pm-create.svelte";
+	import PMExecute from "$lib/components/pm-execute.svelte";
+	import PMInstall from "$lib/components/pm-install.svelte";
+	import PMAddComp from "$lib/components/pm-add-comp.svelte";
+</script>
 
-Our components are built with [Tailwind CSS v4](https://tailwindcss.com). Before you begin, make sure you have a React project set up with Tailwind CSS.
+<Steps>
 
-## Registry Configuration
+### Create project
 
-Before adding components, you need to configure the registry in your `components.json` file.
+Use the SvelteKit CLI to create a new project with TailwindCSS
 
-If you don't have a `components.json` file yet, initialize it by running:
+<PMExecute command="sv create my-app --add tailwindcss" />
 
-```bash
-npx shadcn@latest init
+### Setup path aliases
+
+If you are not using the default alias `$lib`, you'll need to update your `svelte.config.js` file to include those aliases.
+
+```ts title="svelte.config.js" {6} showLineNumbers
+const config = {
+  // ... other config
+  kit: {
+    // ... other config
+    alias: {
+      "@/*": "./path/to/lib/*",
+    },
+  },
+};
 ```
 
-Then, add the `registries` section to your `components.json` file:
+### Run the CLI
 
-```json {18-18}  title="components.json" showLineNumbers
-{
-  "$schema": "https://ui.shadcn.com/schema.json",
-  "style": "default",
-  "rsc": true,
-  "tsx": true,
-  "tailwind": {
-    "config": "",
-    "css": "src/styles/globals.css",
-    "baseColor": "neutral",
-    "cssVariables": true
-  },
-  "aliases": {
-    "components": "@/components",
-    "utils": "@/lib/utils",
-    "ui": "@/components/ui"
-  },
-  "registries": {
-    "@audio": "https://audio-ui.xyz/r/{name}.json"
-  }
-}
+<PMExecute command="shadcn-svelte@latest init" />
+
+### Configure components.json
+
+You will be asked a few questions to configure `components.json`:
+
+```txt showLineNumbers
+Which base color would you like to use? › Slate
+Where is your global CSS file? (this file will be overwritten) › src/routes/layout.css
+Configure the import alias for lib: › $lib
+Configure the import alias for components: › $lib/components
+Configure the import alias for utils: › $lib/utils
+Configure the import alias for hooks: › $lib/hooks
+Configure the import alias for ui: › $lib/components/ui
 ```
 
-The `registries` field allows you to configure custom registries. The `{name}` placeholder will be replaced with the component name when fetching from the registry.
+### That's it
 
-## Adding Components
+You can now start adding components to your project.
 
-You can add components **automatically with the shadcn CLI** or **manually by copying the files**.
+<PMAddComp name="button" />
+
+The command above will add the `Button` component to your project. You can then import it like this:
+
+```svelte {2,5} showLineNumbers
+<script lang="ts">
+  import { Button } from "$lib/components/ui/button/index.js";
+</script>
+
+<Button>Click me</Button>
+```
+
+</Steps>

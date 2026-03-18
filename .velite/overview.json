@@ -1,23 +1,33 @@
 [
   {
-    "title": "Get Started",
-    "description": "This guide provides the essentials for adding **audio/ui** components to your React application.",
+    "title": "SvelteKit",
+    "description": "How to setup shadcn-svelte in a SvelteKit project.",
     "path": "get-started",
     "component": false,
     "toc": [
       {
-        "title": "Prerequisites",
-        "url": "#prerequisites",
+        "title": "Create project",
+        "url": "#create-project",
         "items": []
       },
       {
-        "title": "Registry Configuration",
-        "url": "#registry-configuration",
+        "title": "Setup path aliases",
+        "url": "#setup-path-aliases",
         "items": []
       },
       {
-        "title": "Adding Components",
-        "url": "#adding-components",
+        "title": "Run the CLI",
+        "url": "#run-the-cli",
+        "items": []
+      },
+      {
+        "title": "Configure components.json",
+        "url": "#configure-componentsjson",
+        "items": []
+      },
+      {
+        "title": "That's it",
+        "url": "#thats-it",
         "items": []
       }
     ],

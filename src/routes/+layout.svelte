@@ -3,7 +3,11 @@
 	import { watch } from "runed";
 	import { ModeWatcher, setTheme } from "mode-watcher";
 	import SiteHeader from "$lib/components/site-header.svelte";
+	import SiteFooter from "$lib/components/site-footer.svelte";
 	import { UserConfig, UserConfigContext } from "$lib/user-config.svelte.js";
+	import * as Tooltip from "$lib/components/ui/tooltip/index.js";
+	import { Toaster } from "$lib/components/ui/sonner/index.js";
+
 	let { children, data } = $props();
 
 	const userConfig = UserConfigContext.set(new UserConfig(data.userConfig));
@@ -30,9 +34,15 @@
 	darkClassNames={["dark", ...modeClasses]}
 	lightClassNames={["light", ...modeClasses]}
 />
+<Toaster />
 <div
 	class="before:bg-sidebar relative flex min-h-svh flex-col overflow-clip [--header-height:4rem] before:pointer-events-none before:absolute before:inset-0 before:-z-10"
 >
 	<SiteHeader />
-	{@render children()}
+	<main class="flex flex-1 flex-col">
+		<Tooltip.Provider>
+			{@render children()}
+		</Tooltip.Provider>
+	</main>
+	<SiteFooter />
 </div>
