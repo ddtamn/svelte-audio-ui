@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Get Started",
+    "description": "This guide provides the essentials for adding **audio/ui** components to your React application.",
+    "path": "get-started",
+    "component": false,
+    "toc": [
+      {
+        "title": "Prerequisites",
+        "url": "#prerequisites",
+        "items": []
+      },
+      {
+        "title": "Registry Configuration",
+        "url": "#registry-configuration",
+        "items": []
+      },
+      {
+        "title": "Adding Components",
+        "url": "#adding-components",
+        "items": []
+      }
+    ],
+    "slug": "",
+    "slugFull": "/get-started"
+  },
+  {
+    "title": "Introduction",
+    "description": "Re-usable components built with Bits UI and Tailwind CSS.",
+    "path": "index",
+    "component": false,
+    "toc": [
+      {
+        "title": "Open Code",
+        "url": "#open-code",
+        "items": []
+      },
+      {
+        "title": "Composition",
+        "url": "#composition",
+        "items": []
+      },
+      {
+        "title": "Distribution",
+        "url": "#distribution",
+        "items": []
+      },
+      {
+        "title": "Beautiful Defaults",
+        "url": "#beautiful-defaults",
+        "items": []
+      },
+      {
+        "title": "AI-Ready",
+        "url": "#ai-ready",
+        "items": []
+      }
+    ],
+    "slug": "",
+    "slugFull": "/index"
+  }
+]

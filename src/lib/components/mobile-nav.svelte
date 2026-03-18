@@ -42,7 +42,7 @@
 				{...restProps}
 				variant="ghost"
 				class={cn(
-					"extend-touch-target h-8 touch-manipulation items-center justify-start gap-2.5 !p-0 hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 active:bg-transparent dark:hover:bg-transparent",
+					"extend-touch-target h-8 touch-manipulation items-center justify-start gap-2.5 p-0! hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 active:bg-transparent dark:hover:bg-transparent",
 					className
 				)}
 			>
@@ -50,13 +50,13 @@
 					<div class="relative size-4">
 						<span
 							class={cn(
-								"bg-foreground absolute start-0 block h-0.5 w-4 transition-all duration-100",
+								"bg-foreground absolute inset-s-0 block h-0.5 w-4 transition-all duration-100",
 								open ? "top-[0.4rem] -rotate-45" : "top-1"
 							)}
 						></span>
 						<span
 							class={cn(
-								"bg-foreground absolute start-0 block h-0.5 w-4 transition-all duration-100",
+								"bg-foreground absolute inset-s-0 block h-0.5 w-4 transition-all duration-100",
 								open ? "top-[0.4rem] rotate-45" : "top-2.5"
 							)}
 						></span>
