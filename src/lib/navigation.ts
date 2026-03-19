@@ -27,23 +27,23 @@ export const sidebarNavItems: SidebarNavItem[] = [
 		items: [
 			{
 				title: "Audio Player",
-				href: "/docs/components/audio-player",
+				href: "/docs/components/player",
 			},
 			{
 				title: "Audio Provider",
-				href: "/docs/components/audio-provider",
+				href: "/docs/components/provider",
 			},
 			{
 				title: "Audio Queue",
-				href: "/docs/components/audio-queue",
+				href: "/docs/components/queue",
 			},
 			{
 				title: "Audio Track",
-				href: "/docs/components/audio-track",
+				href: "/docs/components/track",
 			},
 			{
 				title: "Audio Playback Speed",
-				href: "/docs/components/audio-playback-speed",
+				href: "/docs/components/playback-speed",
 			},
 		],
 	},

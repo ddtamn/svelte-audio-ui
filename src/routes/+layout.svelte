@@ -36,7 +36,7 @@
 />
 <Toaster />
 <div
-	class="before:bg-sidebar relative flex min-h-svh flex-col overflow-clip [--header-height:4rem] before:pointer-events-none before:absolute before:inset-0 before:-z-10"
+	class="before:bg-sidebar relative flex min-h-svh flex-col overflow-clip [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] before:pointer-events-none before:absolute before:inset-0 before:-z-10 xl:[--footer-height:calc(var(--spacing)*24)]"
 >
 	<SiteHeader />
 	<main class="flex flex-1 flex-col">

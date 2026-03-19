@@ -1,85 +1,104 @@
 ---
 title: Introduction
-description: Re-usable components built with Bits UI and Tailwind CSS.
+description: Audio UI components for Svelte 5. Copy, paste, and own your code.
 ---
 
-<script>
-  import * as Accordion from '$lib/components/ui/accordion/index.js';
-  import Callout from '$lib/components/callout.svelte';
-</script>
+**svelte-audio-ui** is a collection of audio UI components built with [Svelte](https://svelte.dev), [Tailwind CSS](https://tailwindcss.com), and on top of [shadcn-svelte](https://shadcn-svelte.com).
 
-An unofficial, community-led [Svelte](https://svelte.dev) port of [shadcn/ui](https://ui.shadcn.com). We are not affiliated with [shadcn](https://x.com/shadcn), but we did get his blessing before creating a Svelte version of his work. This project was born out of the need for a similar project for the Svelte ecosystem.
+It is inspired by [audio-ui](https://audio-ui.xyz)—an audio component system built on top of shadcn/ui for React—but rethought and rebuilt for the Svelte ecosystem.
 
-**This is not a component library. It is how you build your component library.**
+**This is not a component library. It is how you build your own audio component system.**
 
-You know how most traditional component libraries work: you install a package from NPM, import the components, and use them in your app.
+## Why
 
-This approach works well until you need to customize a component to fit your design system or require one that isn’t included in the library. **Often, you end up wrapping library components, writing workarounds to override styles, or mixing components from different libraries with incompatible APIs.**
+I’ve used a lot of UI libraries over time, and they usually work well at the beginning.
 
-This is what shadcn-svelte aims to solve. It is built around the following principles:
+But once you need deeper control—like adjusting behavior, matching a design system, or building something slightly outside the provided components—things start to break down.
 
-- **Open Code:** The top layer of your component code is open for modification.
-- **Composition:** Every component uses a common, composable interface, making them predictable.
-- **Distribution:** A flat-file schema and command-line tool make it easy to distribute components.
-- **Beautiful Defaults:** Carefully chosen default styles, so you get great design out-of-the-box.
-- **AI-Ready:** Open code for LLMs to read, understand, and improve.
+You end up:
 
-## Open Code
+- wrapping components just to change small behavior details
+- overriding styles in ways that feel fragile and hard to maintain
+- mixing multiple libraries that don’t share the same API or design language
 
-shadcn-svelte hands you the actual component code. You have full control to customize and extend the components to your needs. This means:
+That friction adds up quickly.
 
-- **Full Transparency:** You see exactly how each component is built.
-- **Easy Customization:** Modify any part of a component to fit your design and functionality requirements.
-- **AI Integration:** Access to the code makes it straightforward for LLMs to read, understand, and even improve your components.
+svelte-audio-ui is my attempt to solve that by keeping everything simple:
 
-_In a typical library, if you need to change a button’s behavior, you have to override styles or wrap the component. With shadcn-svelte, you simply edit the button code directly._
+> give you the actual code, not an abstraction layer
 
-<Accordion.Root type="single">
+## Not a Component Library
 
-<Accordion.Item value="faq-1" class="border-none">
+svelte-audio-ui follows the same philosophy as audio-ui and shadcn:
 
-<Accordion.Trigger>
-How do I pull upstream updates in an Open Code approach?
-</Accordion.Trigger>
+You don’t install it as a dependency.  
+You copy the component into your project and own it.
 
-<Accordion.Content>
+This approach gives you:
 
-shadcn-svelte follows a headless component architecture. This means the core of your app can receive fixes by updating your dependencies, for instance, bits-ui or paneforge.
+- **No Lock-in:** Your components live inside your codebase, so you are never tied to an external package or update cycle that might break your UI.
+- **Full Control Over Behavior:** You can change logic, structure, or state handling without needing to wrap or override anything.
+- **Long-Term Maintainability:** Instead of fighting abstractions, your components evolve naturally alongside your application.
 
-<p class="mt-4">
-The topmost layer, i.e., the one closest to your design system, is not
-        coupled with the implementation of the library. It stays open for
-        modification.
-</p>
-</Accordion.Content>
-</Accordion.Item>
-</Accordion.Root>
+## Built for Svelte 5
+
+This project is built specifically for modern Svelte, not adapted from another framework.
+
+It uses Svelte 5 patterns and runes to keep components:
+
+- **Explicit and Predictable:** State and reactivity are easy to follow without hidden magic or complex abstractions.
+- **Lightweight by Default:** No unnecessary layers, just straightforward component logic that feels close to plain JavaScript.
+- **Easy to Extend:** Adding new features or modifying behavior does not require learning a custom API.
+
+The goal is simple: everything should feel like native Svelte code.
+
+## Inspired by shadcn-svelte
+
+The workflow is heavily influenced by [shadcn-svelte](https://shadcn-svelte.com):
+
+- components are copied, not installed
+- everything lives in your project
+- nothing is hidden behind a package boundary
+
+svelte-audio-ui just narrows the focus into one domain:
+
+**building audio interfaces that are flexible and composable.**
 
 ## Composition
 
-Every component in shadcn-svelte shares a common, composable interface. **If a component does not exist, we bring it in, make it composable, and adjust its style to match and work with the rest of the design system.**
+Instead of shipping one large “Audio Player” component, the system is built from smaller primitives that can be combined as needed.
 
-_A shared, composable interface means it's predictable for both your team and LLMs. You are not learning different APIs for every new component. Even for third-party ones._
+Typical building blocks include:
 
-## Distribution
+- **Player Controls:** Play, pause, skip, and other interaction elements designed to be reused across different layouts.
+- **Timeline / Progress:** A flexible progress system that can be adapted into simple sliders or more advanced scrubbing interactions.
+- **Volume Controls:** Independent and composable volume handling that can be reused in different contexts.
+- **Optional Layers (Waveform, Metadata):** Additional UI layers that can be plugged in when needed without affecting the core system.
 
-shadcn-svelte is also a code distribution system. It defines a schema for components and a CLI to distribute them.
-
-- **Schema:** A flat-file structure that defines the components, their dependencies, and properties.
-- **CLI:** A command-line tool to distribute and install components across projects with cross-framework support.
-
-_You can use the schema to distribute your components to other projects or have AI generate completely new components based on existing schema._
+This makes the system flexible enough for both simple players and more complex audio interfaces.
 
 ## Beautiful Defaults
 
-shadcn-svelte comes with a large collection of components that have carefully chosen default styles. They are designed to look good on their own and to work well together as a consistent system:
+Styling is handled with [Tailwind CSS](https://tailwindcss.com), with a focus on clean and consistent defaults.
 
-- **Good Out-of-the-Box:** Your UI has a clean and minimal look without extra work.
-- **Unified Design:** Components naturally fit with one another. Each component is built to match the others, keeping your UI consistent.
-- **Easily Customizable:** If you want to change something, it's simple to override and extend the defaults.
+- **Minimal but Practical:** Components look good out of the box without trying to impose a heavy visual identity.
+- **Consistent Across Components:** Spacing, sizing, and interaction patterns are aligned so everything feels like part of the same system.
+- **Easy to Customize:** Because styles are local and not abstracted, you can adjust them directly without fighting specificity or overrides.
 
 ## AI-Ready
 
-The design of shadcn-svelte makes it easy for AI tools to work with your code. Its open code and consistent API allow AI models to read, understand, and even generate new components.
+Because everything is just code inside your project, AI tools can work with it more effectively.
 
-_An AI model can learn how your components work and suggest improvements or even create new components that integrate with your existing design._
+- **Readable Structure:** Components follow consistent patterns, making them easier for AI to understand.
+- **Extensible System:** AI can help generate new components that match your existing structure and conventions.
+- **Faster Iteration:** Instead of starting from scratch, you can evolve your system with AI assistance over time.
+
+## Particles
+
+On top of primitives, there are also [particles](/particles)—pre-built compositions of multiple components.
+
+## Open Source
+
+svelte-audio-ui is open source and built in the open.
+I’m working on this as an indie developer, so the project will continue to evolve as I use it in real projects.
+If it’s useful for you, feel free to use it, adapt it, or contribute back.

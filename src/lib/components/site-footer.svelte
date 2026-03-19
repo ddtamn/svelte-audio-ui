@@ -6,28 +6,19 @@
 			<div class="text-muted-foreground w-full text-center text-xs leading-loose sm:text-sm">
 				Built by
 				<a
-					href="https://x.com/shadcn"
+					href="https://github.com/ddtamn"
 					target="_blank"
 					rel="noreferrer"
 					class="font-medium underline underline-offset-4"
 				>
-					shadcn
-				</a>. Ported to Svelte by
+					ddtamn
+				</a>. The source code is available on
 				<a
-					href="https://x.com/huntabyte"
+					href="https://github.com/ddtamn/svelte-audio-ui"
 					target="_blank"
 					rel="noreferrer"
-					class="font-medium underline underline-offset-4">Huntabyte</a
+					class="font-medium underline underline-offset-4">Github</a
 				>
-				&
-				<a
-					href="https://github.com/adriangonz97"
-					target="_blank"
-					rel="noreferrer"
-					class="font-medium underline underline-offset-4"
-				>
-					CokaKoala
-				</a>.
 			</div>
 		</div>
 	</div>

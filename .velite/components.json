@@ -1,1 +1,338 @@
-[]
+[
+  {
+    "title": "Audio Player",
+    "description": "A composable audio player component system.",
+    "path": "components/player",
+    "component": true,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Setup",
+        "url": "#setup",
+        "items": []
+      },
+      {
+        "title": "Usage",
+        "url": "#usage",
+        "items": [
+          {
+            "title": "Stacked Layout",
+            "url": "#stacked-layout",
+            "items": []
+          },
+          {
+            "title": "Player with Queue",
+            "url": "#player-with-queue",
+            "items": []
+          }
+        ]
+      },
+      {
+        "title": "API Reference",
+        "url": "#api-reference",
+        "items": [
+          {
+            "title": "AudioPlayer.Root",
+            "url": "#audioplayerroot",
+            "items": [
+              {
+                "title": "Props",
+                "url": "#props",
+                "items": []
+              },
+              {
+                "title": "Example",
+                "url": "#example",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "AudioPlayer.ControlBar",
+            "url": "#audioplayercontrolbar",
+            "items": [
+              {
+                "title": "Props",
+                "url": "#props-1",
+                "items": []
+              },
+              {
+                "title": "Example",
+                "url": "#example-1",
+                "items": []
+              },
+              {
+                "title": "Stacked Layout",
+                "url": "#stacked-layout-1",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "AudioPlayer.ControlGroup",
+            "url": "#audioplayercontrolgroup",
+            "items": [
+              {
+                "title": "Props",
+                "url": "#props-2",
+                "items": []
+              },
+              {
+                "title": "Example",
+                "url": "#example-2",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "AudioPlayer.Play",
+            "url": "#audioplayerplay",
+            "items": [
+              {
+                "title": "Props",
+                "url": "#props-3",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "AudioPlayer.SkipBack",
+            "url": "#audioplayerskipback",
+            "items": []
+          },
+          {
+            "title": "AudioPlayer.SkipForward",
+            "url": "#audioplayerskipforward",
+            "items": []
+          },
+          {
+            "title": "AudioPlayer.Rewind",
+            "url": "#audioplayerrewind",
+            "items": []
+          },
+          {
+            "title": "AudioPlayer.FastForward",
+            "url": "#audioplayerfastforward",
+            "items": []
+          },
+          {
+            "title": "AudioPlayer.SeekBar",
+            "url": "#audioplayerseekbar",
+            "items": [
+              {
+                "title": "Props",
+                "url": "#props-4",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "AudioPlayer.TimeDisplay",
+            "url": "#audioplayertimedisplay",
+            "items": [
+              {
+                "title": "Props",
+                "url": "#props-5",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "AudioPlayer.Volume",
+            "url": "#audioplayervolume",
+            "items": [
+              {
+                "title": "Props",
+                "url": "#props-6",
+                "items": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Notes",
+        "url": "#notes",
+        "items": []
+      }
+    ],
+    "slug": "player",
+    "slugFull": "/components/player"
+  },
+  {
+    "title": "Audio Provider",
+    "description": "Svelte 5 provider component that manages audio playback lifecycle, state synchronization, and error handling.",
+    "path": "components/provider",
+    "component": true,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Usage",
+        "url": "#usage",
+        "items": []
+      },
+      {
+        "title": "API Reference",
+        "url": "#api-reference",
+        "items": [
+          {
+            "title": "Props",
+            "url": "#props",
+            "items": []
+          },
+          {
+            "title": "Track Shape",
+            "url": "#track-shape",
+            "items": []
+          }
+        ]
+      },
+      {
+        "title": "How It Works",
+        "url": "#how-it-works",
+        "items": [
+          {
+            "title": "Lifecycle",
+            "url": "#lifecycle",
+            "items": []
+          },
+          {
+            "title": "Reactive $effect Sync",
+            "url": "#reactive-effect-sync",
+            "items": []
+          },
+          {
+            "title": "Error Handling",
+            "url": "#error-handling",
+            "items": []
+          },
+          {
+            "title": "Next Track Preloading",
+            "url": "#next-track-preloading",
+            "items": []
+          },
+          {
+            "title": "State Persistence",
+            "url": "#state-persistence",
+            "items": []
+          }
+        ]
+      },
+      {
+        "title": "Notes",
+        "url": "#notes",
+        "items": []
+      }
+    ],
+    "slug": "provider",
+    "slugFull": "/components/provider"
+  },
+  {
+    "title": "Audio Queue",
+    "description": "Queue management components — browse, search, reorder, and control playback order.",
+    "path": "components/queue",
+    "component": true,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Usage",
+        "url": "#usage",
+        "items": []
+      },
+      {
+        "title": "API Reference",
+        "url": "#api-reference",
+        "items": [
+          {
+            "title": "AudioQueue",
+            "url": "#audioqueue",
+            "items": [
+              {
+                "title": "Props",
+                "url": "#props",
+                "items": []
+              },
+              {
+                "title": "Behavior",
+                "url": "#behavior",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "AudioQueueShuffle",
+            "url": "#audioqueueshuffle",
+            "items": [
+              {
+                "title": "Props",
+                "url": "#props-1",
+                "items": []
+              },
+              {
+                "title": "Behavior",
+                "url": "#behavior-1",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "AudioQueueRepeatMode",
+            "url": "#audioqueuerepeatmode",
+            "items": [
+              {
+                "title": "Props",
+                "url": "#props-2",
+                "items": []
+              },
+              {
+                "title": "Behavior",
+                "url": "#behavior-2",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "AudioQueuePreferences",
+            "url": "#audioqueuepreferences",
+            "items": [
+              {
+                "title": "Props",
+                "url": "#props-3",
+                "items": []
+              },
+              {
+                "title": "Repeat Mode options",
+                "url": "#repeat-mode-options",
+                "items": []
+              },
+              {
+                "title": "Insert Mode options",
+                "url": "#insert-mode-options",
+                "items": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Related",
+        "url": "#related",
+        "items": []
+      }
+    ],
+    "slug": "queue",
+    "slugFull": "/components/queue"
+  }
+]

@@ -1,33 +1,38 @@
 [
   {
-    "title": "SvelteKit",
-    "description": "How to setup shadcn-svelte in a SvelteKit project.",
+    "title": "Get Started",
+    "description": "Add your first audio component using the registry.",
     "path": "get-started",
     "component": false,
     "toc": [
       {
-        "title": "Create project",
-        "url": "#create-project",
+        "title": "Prerequisites",
+        "url": "#prerequisites",
         "items": []
       },
       {
-        "title": "Setup path aliases",
-        "url": "#setup-path-aliases",
+        "title": "Adding Components",
+        "url": "#adding-components",
         "items": []
       },
       {
-        "title": "Run the CLI",
-        "url": "#run-the-cli",
+        "title": "Step 3: Setup AudioProvider",
+        "url": "#step-3-setup-audioprovider",
         "items": []
       },
       {
-        "title": "Configure components.json",
-        "url": "#configure-componentsjson",
+        "title": "Step 4: Use the component",
+        "url": "#step-4-use-the-component",
         "items": []
       },
       {
-        "title": "That's it",
-        "url": "#thats-it",
+        "title": "Styling",
+        "url": "#styling",
+        "items": []
+      },
+      {
+        "title": "Working with LLMs",
+        "url": "#working-with-llms",
         "items": []
       }
     ],
@@ -36,23 +41,33 @@
   },
   {
     "title": "Introduction",
-    "description": "Re-usable components built with Bits UI and Tailwind CSS.",
+    "description": "Audio UI components for Svelte 5. Copy, paste, and own your code.",
     "path": "index",
     "component": false,
     "toc": [
       {
-        "title": "Open Code",
-        "url": "#open-code",
+        "title": "Why",
+        "url": "#why",
+        "items": []
+      },
+      {
+        "title": "Not a Component Library",
+        "url": "#not-a-component-library",
+        "items": []
+      },
+      {
+        "title": "Built for Svelte 5",
+        "url": "#built-for-svelte-5",
+        "items": []
+      },
+      {
+        "title": "Inspired by shadcn-svelte",
+        "url": "#inspired-by-shadcn-svelte",
         "items": []
       },
       {
         "title": "Composition",
         "url": "#composition",
-        "items": []
-      },
-      {
-        "title": "Distribution",
-        "url": "#distribution",
         "items": []
       },
       {
@@ -63,6 +78,16 @@
       {
         "title": "AI-Ready",
         "url": "#ai-ready",
+        "items": []
+      },
+      {
+        "title": "Particles",
+        "url": "#particles",
+        "items": []
+      },
+      {
+        "title": "Open Source",
+        "url": "#open-source",
         "items": []
       }
     ],

@@ -23,7 +23,7 @@ import { u } from "unist-builder";
 import { createHighlighterCore } from "shiki/core";
 import { createJavaScriptRegexEngine } from "shiki/engine/javascript";
 import { defineConfig } from "mdsx";
-// import { Index } from "./src/__registry__/index.js";
+import { Index } from "./src/__registry__/index.js";
 
 /** @type {import('prettier').Config} */
 const codeBlockPrettierConfig = {
