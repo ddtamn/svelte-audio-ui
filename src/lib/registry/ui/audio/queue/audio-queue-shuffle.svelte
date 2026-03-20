@@ -3,13 +3,16 @@
 	import { audioStore } from "$registry/lib/audio-store.svelte.js";
 	import { cn } from "$registry/lib/utils.js";
 	import * as Tooltip from "$lib/components/ui/tooltip";
+	import { Button } from "$lib/components/ui/button";
 
 	interface Props {
 		class?: string;
+		size?: string;
+		variant?: string;
 		[key: string]: unknown;
 	}
 
-	let { class: className = "", ...rest }: Props = $props();
+	let { class: className = "", size = "icon", variant = "outline", ...rest }: Props = $props();
 
 	function handleToggle() {
 		if (audioStore.shuffleEnabled) {
@@ -22,26 +25,18 @@
 
 <Tooltip.Root>
 	<Tooltip.Trigger>
-		<button
-			type="button"
-			role="switch"
-			aria-checked={audioStore.shuffleEnabled}
+		<Button
+			{variant}
+			{size}
 			aria-label="Shuffle"
 			data-slot="audio-queue-shuffle"
 			data-state={audioStore.shuffleEnabled ? "on" : "off"}
-			class={cn(
-				"inline-flex h-8 w-8 items-center justify-center rounded-md text-sm",
-				"border-input bg-background border transition-colors",
-				"hover:bg-accent hover:text-accent-foreground",
-				"focus-visible:ring-ring focus-visible:ring-1 focus-visible:outline-none",
-				audioStore.shuffleEnabled && "bg-accent! text-accent-foreground!",
-				className
-			)}
+			class={cn(audioStore.shuffleEnabled && "bg-accent! text-accent-foreground!", className)}
 			onclick={handleToggle}
 			{...rest}
 		>
 			<Shuffle class="size-4" />
-		</button>
+		</Button>
 	</Tooltip.Trigger>
 	<Tooltip.Content side="top" sideOffset={4}>
 		Shuffle {audioStore.shuffleEnabled ? "on" : "off"}

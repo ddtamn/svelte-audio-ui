@@ -9,7 +9,33 @@
 			id: "1",
 			title: "Beautiful Loop",
 			artist: "Flavio Concini",
+			album: "Pixabay Music",
 			url: "https://cdn.pixabay.com/audio/2024/10/21/audio_78251ef8e3.mp3",
+			genre: "Upbeat",
+		},
+		{
+			id: "2",
+			title: "Type",
+			artist: "Aliabbas Abasov",
+			album: "Pixabay Music",
+			url: "https://cdn.pixabay.com/audio/2024/02/28/audio_60f7a54400.mp3",
+			genre: "Hip Hop",
+		},
+		{
+			id: "3",
+			title: "Radio Tuxnet",
+			artist: "Tuxnet",
+			url: "https://radio.sevalla.app/live.aac?host=ice2.tuxnet.me",
+			genre: "Hip Hop",
+			artwork: "https://audio-ui.xyz/icon",
+		},
+		{
+			id: "4",
+			title: "Live Radio",
+			artist: "Audio UI",
+			url: "https://radio.sevalla.app/live.aac",
+			artwork: "https://audio-ui.xyz/icon",
+			genre: "Hip Hop",
 		},
 	];
 </script>

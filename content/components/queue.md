@@ -1,6 +1,6 @@
 ---
 title: Audio Queue
-description: Queue management components — browse, search, reorder, and control playback order.
+description: Queue management components with browse, search, reorder, and control playback order.
 component: true
 ---
 
@@ -12,13 +12,7 @@ component: true
 	let { viewerData } = $props();
 </script>
 
-A set of composable components for managing the audio queue. Includes a browseable queue dialog, shuffle, repeat mode, and an advanced preferences panel.
-
-<ComponentPreview name="player-with-queue-demo" class="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]" description="Player with queue management" align="center">
-
-<div></div>
-
-</ComponentPreview>
+<br>A set of composable components for managing the audio queue. Includes a browseable queue dialog, shuffle, repeat mode, and an advanced preferences panel.
 
 ## Installation
 
@@ -40,46 +34,55 @@ On progress
 
 ## Usage
 
-Import from the queue index:
+Import the components:
 
 ```svelte
 <script lang="ts">
-  import {
-    AudioQueue,
-    AudioQueueShuffle,
-    AudioQueueRepeatMode,
-    AudioQueuePreferences,
-  } from "$registry/ui/audio/queue/index.js";
+  import * as AudioQueue from "$lib/components/ui/audio/queue/index.js";
 </script>
-
-<AudioQueueShuffle />
-<AudioQueueRepeatMode />
-<AudioQueue />
-<AudioQueuePreferences />
 ```
 
-Typically used inside `AudioPlayer.ControlBar` alongside player controls:
+### Basic Queue
+
+The `AudioQueue` component opens a dialog showing the current queue with search functionality and track selection.
 
 ```svelte
-<AudioPlayer.ControlBar variant="stacked">
-  <AudioPlayer.ControlGroup>
-    <AudioPlayer.TimeDisplay />
-    <AudioPlayer.SeekBar />
-    <AudioPlayer.TimeDisplay remaining />
-  </AudioPlayer.ControlGroup>
-  <AudioPlayer.ControlGroup>
-    <AudioPlayer.ControlGroup>
-      <AudioPlayer.SkipBack />
-      <AudioPlayer.Play />
-      <AudioPlayer.SkipForward />
-    </AudioPlayer.ControlGroup>
-    <AudioQueueShuffle />
-    <AudioQueueRepeatMode />
-    <AudioPlayer.Volume />
+<AudioPlayer>
+  <AudioPlayerControlBar>
     <AudioQueue />
-  </AudioPlayer.ControlGroup>
-</AudioPlayer.ControlBar>
+  </AudioPlayerControlBar>
+</AudioPlayer>
 ```
+
+### Queue with Shuffle and Repeat
+
+Use this when you want quick access to shuffle and repeat controls. The toggle buttons provide fast switching between modes.
+
+<ComponentPreview name="queue-shuffle-repeat-demo" class="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]" description="Queue with Shuffle and Repeat" align="center">
+
+<div></div>
+
+</ComponentPreview>
+
+### Queue with Preferences
+
+Use this when you want a compact interface with all queue settings in a dropdown menu. Ideal for space-constrained layouts.
+
+<ComponentPreview name="queue-preferences-demo" class="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]" description="Queue with Preferences" align="center">
+
+<div></div>
+
+</ComponentPreview>
+
+### Queue with All Controls
+
+Use this when you want a compact interface with all queue settings in a dropdown menu. Ideal for space-constrained layouts.
+
+<ComponentPreview name="queue-all-controls-demo" class="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]" description="Queue with All Controls" align="center">
+
+<div></div>
+
+</ComponentPreview>
 
 ## API Reference
 
@@ -114,9 +117,11 @@ A toggle button that enables or disables shuffle mode. Highlights when active.
 
 #### Props
 
-| Prop    | Type     | Default | Description             |
-| ------- | -------- | ------- | ----------------------- |
-| `class` | `string` | -       | Additional CSS classes. |
+| Prop      | Type     | Default     | Description             |
+| --------- | -------- | ----------- | ----------------------- |
+| `class`   | `string` | -           | Additional CSS classes. |
+| `size`    | `string` | `"icon"`    | Button size variant.    |
+| `variant` | `string` | `"outline"` | Button visual variant.  |
 
 Accepts any additional HTML button attributes via `...rest`.
 
@@ -134,9 +139,11 @@ A toggle button that cycles through three repeat modes: **none → all → one**
 
 #### Props
 
-| Prop    | Type     | Default | Description             |
-| ------- | -------- | ------- | ----------------------- |
-| `class` | `string` | -       | Additional CSS classes. |
+| Prop      | Type     | Default     | Description             |
+| --------- | -------- | ----------- | ----------------------- |
+| `class`   | `string` | -           | Additional CSS classes. |
+| `size`    | `string` | `"icon"`    | Button size variant.    |
+| `variant` | `string` | `"outline"` | Button visual variant.  |
 
 Accepts any additional HTML button attributes via `...rest`.
 

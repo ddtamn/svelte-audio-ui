@@ -3,6 +3,8 @@ title: Introduction
 description: Audio UI components for Svelte 5. Copy, paste, and own your code.
 ---
 
+<br>
+
 **svelte-audio-ui** is a collection of audio UI components built with [Svelte](https://svelte.dev), [Tailwind CSS](https://tailwindcss.com), and on top of [shadcn-svelte](https://shadcn-svelte.com).
 
 It is inspired by [audio-ui](https://audio-ui.xyz)—an audio component system built on top of shadcn/ui for React—but rethought and rebuilt for the Svelte ecosystem.

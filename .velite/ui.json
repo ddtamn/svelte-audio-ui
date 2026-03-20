@@ -1,1 +1,330 @@
-[]
+[
+  {
+    "title": "Fader",
+    "description": "A slider-style fader component for audio mixing interfaces. Supports vertical and horizontal orientations, size variants, and customisable thumb marks.",
+    "path": "ui/fader",
+    "component": true,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Usage",
+        "url": "#usage",
+        "items": [
+          {
+            "title": "Horizontal Fader",
+            "url": "#horizontal-fader",
+            "items": []
+          },
+          {
+            "title": "Custom Thumb Marks",
+            "url": "#custom-thumb-marks",
+            "items": []
+          },
+          {
+            "title": "No Thumb Marks",
+            "url": "#no-thumb-marks",
+            "items": []
+          }
+        ]
+      },
+      {
+        "title": "API Reference",
+        "url": "#api-reference",
+        "items": [
+          {
+            "title": "Fader",
+            "url": "#fader",
+            "items": [
+              {
+                "title": "Props",
+                "url": "#props",
+                "items": []
+              },
+              {
+                "title": "Behavior",
+                "url": "#behavior",
+                "items": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Examples",
+        "url": "#examples",
+        "items": [
+          {
+            "title": "Volume Control",
+            "url": "#volume-control",
+            "items": []
+          },
+          {
+            "title": "Multiple Faders (Mixing Board)",
+            "url": "#multiple-faders-mixing-board",
+            "items": []
+          }
+        ]
+      },
+      {
+        "title": "Related",
+        "url": "#related",
+        "items": []
+      }
+    ],
+    "slug": "fader",
+    "slugFull": "/ui/fader"
+  },
+  {
+    "title": "Knob",
+    "description": "A circular rotary control for adjusting values. Perfect for audio parameters, filters, and effects — with arc indicator, pointer drag, and keyboard support.",
+    "path": "ui/knob",
+    "component": true,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Usage",
+        "url": "#usage",
+        "items": [
+          {
+            "title": "Size Variants",
+            "url": "#size-variants",
+            "items": []
+          }
+        ]
+      },
+      {
+        "title": "API Reference",
+        "url": "#api-reference",
+        "items": [
+          {
+            "title": "Knob",
+            "url": "#knob",
+            "items": [
+              {
+                "title": "Props",
+                "url": "#props",
+                "items": []
+              },
+              {
+                "title": "Behavior",
+                "url": "#behavior",
+                "items": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Examples",
+        "url": "#examples",
+        "items": [
+          {
+            "title": "Filter Control",
+            "url": "#filter-control",
+            "items": []
+          },
+          {
+            "title": "Multiple Knobs",
+            "url": "#multiple-knobs",
+            "items": []
+          }
+        ]
+      },
+      {
+        "title": "Related",
+        "url": "#related",
+        "items": []
+      }
+    ],
+    "slug": "knob",
+    "slugFull": "/ui/knob"
+  },
+  {
+    "title": "Slider",
+    "description": "A slider component with buffer support. Perfect for media players to show loading progress.",
+    "path": "ui/slider",
+    "component": true,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Usage",
+        "url": "#usage",
+        "items": [
+          {
+            "title": "Buffer Indicator",
+            "url": "#buffer-indicator",
+            "items": []
+          }
+        ]
+      },
+      {
+        "title": "API Reference",
+        "url": "#api-reference",
+        "items": [
+          {
+            "title": "Slider",
+            "url": "#slider",
+            "items": []
+          }
+        ]
+      },
+      {
+        "title": "Notes",
+        "url": "#notes",
+        "items": []
+      }
+    ],
+    "slug": "slider",
+    "slugFull": "/ui/slider"
+  },
+  {
+    "title": "Sortable List",
+    "description": "A sortable list component with drag-and-drop support.",
+    "path": "ui/sortable-list",
+    "component": true,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Usage",
+        "url": "#usage",
+        "items": []
+      },
+      {
+        "title": "API Reference",
+        "url": "#api-reference",
+        "items": [
+          {
+            "title": "SortableList",
+            "url": "#sortablelist",
+            "items": [
+              {
+                "title": "Props",
+                "url": "#props",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "SortableItem",
+            "url": "#sortableitem",
+            "items": [
+              {
+                "title": "Props",
+                "url": "#props-1",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "SortableDragHandle",
+            "url": "#sortabledraghandle",
+            "items": [
+              {
+                "title": "Props",
+                "url": "#props-2",
+                "items": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Notes",
+        "url": "#notes",
+        "items": []
+      }
+    ],
+    "slug": "sortable-list",
+    "slugFull": "/ui/sortable-list"
+  },
+  {
+    "title": "XY Pad",
+    "description": "An XY pad component for controlling two parameters simultaneously. Perfect for synthesizers, filters, and effects that need two-dimensional control.",
+    "path": "ui/xy-pad",
+    "component": true,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Usage",
+        "url": "#usage",
+        "items": [
+          {
+            "title": "Basic XY Pad",
+            "url": "#basic-xy-pad",
+            "items": []
+          },
+          {
+            "title": "Custom Value Display",
+            "url": "#custom-value-display",
+            "items": []
+          },
+          {
+            "title": "Hide Value Display",
+            "url": "#hide-value-display",
+            "items": []
+          }
+        ]
+      },
+      {
+        "title": "API Reference",
+        "url": "#api-reference",
+        "items": [
+          {
+            "title": "XYPad",
+            "url": "#xypad",
+            "items": [
+              {
+                "title": "Props",
+                "url": "#props",
+                "items": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Examples",
+        "url": "#examples",
+        "items": [
+          {
+            "title": "Synthesizer Control",
+            "url": "#synthesizer-control",
+            "items": []
+          },
+          {
+            "title": "Filter Control",
+            "url": "#filter-control",
+            "items": []
+          }
+        ]
+      },
+      {
+        "title": "Notes",
+        "url": "#notes",
+        "items": []
+      }
+    ],
+    "slug": "xy-pad",
+    "slugFull": "/ui/xy-pad"
+  }
+]

@@ -66,6 +66,7 @@
 									disabled
 									{size}
 									{variant}
+									{...rest}
 								>
 									{#if !isIconSize}<Gauge class="size-4" />{/if}
 									<span class="font-mono text-xs">{currentSpeed?.label}</span>

@@ -3,14 +3,16 @@
 	import { audioStore } from "$registry/lib/audio-store.svelte.js";
 	import { cn } from "$registry/lib/utils.js";
 	import * as Tooltip from "$lib/components/ui/tooltip";
+	import { Button } from "$lib/components/ui/button";
 
 	interface Props {
 		class?: string;
 		size?: string;
+		variant?: string;
 		[key: string]: unknown;
 	}
 
-	let { class: className = "", ...rest }: Props = $props();
+	let { class: className = "", size = "icon", variant = "outline", ...rest }: Props = $props();
 
 	const isPressed = $derived(audioStore.repeatMode !== "none");
 	const Icon = $derived(audioStore.repeatMode === "one" ? Repeat1 : Repeat);
@@ -23,26 +25,19 @@
 
 <Tooltip.Root>
 	<Tooltip.Trigger>
-		<button
+		<Button
 			type="button"
-			role="switch"
-			aria-checked={isPressed}
 			aria-label="Repeat mode"
-			data-slot="audio-queue-repeat-mode"
+			data-slot="audio-repeat-mode-trigger"
 			data-state={isPressed ? "on" : "off"}
-			class={cn(
-				"inline-flex h-8 w-8 items-center justify-center rounded-md text-sm",
-				"border-input bg-background border transition-colors",
-				"hover:bg-accent hover:text-accent-foreground",
-				"focus-visible:ring-ring focus-visible:ring-1 focus-visible:outline-none",
-				isPressed && "bg-accent! text-accent-foreground!",
-				className
-			)}
+			class={cn(isPressed && "bg-accent! text-accent-foreground!", className)}
 			onclick={() => audioStore.changeRepeatMode()}
+			{size}
+			{variant}
 			{...rest}
 		>
 			<Icon class="size-4" />
-		</button>
+		</Button>
 	</Tooltip.Trigger>
 	<Tooltip.Content side="top" sideOffset={4}>
 		{tooltipText()}

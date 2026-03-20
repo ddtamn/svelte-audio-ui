@@ -15,6 +15,7 @@ description: Add your first audio component using the registry.
 </script>
 
 <br>
+
 <Steps>
 
 This guide will walk you through adding **svelte-audio-ui** components using the [shadcn-svelte](https://shadcn-svelte.com) CLI and registry system.

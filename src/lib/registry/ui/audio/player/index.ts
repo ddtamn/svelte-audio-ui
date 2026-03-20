@@ -1,5 +1,4 @@
 import Root from "./audio-player.svelte";
-import PlaybackSpeed from "./audio-playback-speed.svelte";
 import ControlBar from "./audio-player-control-bar.svelte";
 import ControlGroup from "./audio-player-control-group.svelte";
 import FastForward from "./audio-player-fast-forward.svelte";
@@ -13,7 +12,6 @@ import Volume from "./audio-player-volume.svelte";
 
 export {
 	Root,
-	PlaybackSpeed,
 	ControlBar,
 	ControlGroup,
 	FastForward,

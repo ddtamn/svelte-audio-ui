@@ -4,7 +4,7 @@
 	import type { Track } from "$registry/lib/html-audio.js";
 	import { cn } from "$registry/lib/utils.js";
 	import AudioTrack from "./audio-track.svelte";
-	import SortableList from "./sortable-list.svelte";
+	import { SortableList } from "$registry/ui/audio/elements/sortable-list/index.js";
 
 	type Variant = "default" | "grid";
 
@@ -127,19 +127,20 @@
 			items={displayTracks()
 				.filter((t) => t.id !== undefined)
 				.map((t) => ({ id: String(t.id), _track: t }))}
-			onChange={handleReorder}
+			onDrop={handleReorder}
 			class={variant === "grid" ? "grid grid-cols-1 gap-2 xl:grid-cols-2" : "gap-0.5"}
 		>
-			{#snippet item(row, idx)}
+			{#snippet item(row)}
 				{@const track = row._track as Track}
+				{@const idx = displayTracks().findIndex(t => t.id === track.id)}
 				<AudioTrack
 					{track}
-					index={idx}
+					index={idx >= 0 ? idx : undefined}
 					{showCover}
 					showDragHandle={true}
 					showRemove={!!onTrackRemove}
 					onRemove={onTrackRemove}
-					onclick={() => handleTrackClick(track, idx)}
+					onclick={() => handleTrackClick(track, idx >= 0 ? idx : 0)}
 				/>
 			{/snippet}
 		</SortableList>

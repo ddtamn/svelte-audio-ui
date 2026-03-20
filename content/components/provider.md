@@ -11,7 +11,7 @@ component: true
 	import InstallTabs from "$lib/components/install-tabs.svelte";
 
 	let { viewerData } = $props();
-</script>
+</script> <br>
 
 `AudioProvider` is the engine behind every audio component. It initializes the HTML audio element, registers all event listeners, syncs playback state with the `audioStore`, handles errors and retries, preloads the next track, and persists state to `localStorage`.
 

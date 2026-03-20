@@ -1,5 +1,84 @@
 [
   {
+    "title": "Audio Playback Speed",
+    "description": "Dropdown control for adjusting playback speed. Auto-disabled on live streams with a contextual tooltip.",
+    "path": "components/playback-speed",
+    "component": true,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Usage",
+        "url": "#usage",
+        "items": [
+          {
+            "title": "Basic",
+            "url": "#basic",
+            "items": []
+          },
+          {
+            "title": "Icon-only mode",
+            "url": "#icon-only-mode",
+            "items": []
+          },
+          {
+            "title": "Custom speeds",
+            "url": "#custom-speeds",
+            "items": []
+          }
+        ]
+      },
+      {
+        "title": "API Reference",
+        "url": "#api-reference",
+        "items": [
+          {
+            "title": "AudioPlaybackSpeed",
+            "url": "#audioplaybackspeed",
+            "items": [
+              {
+                "title": "Props",
+                "url": "#props",
+                "items": []
+              },
+              {
+                "title": "Behavior",
+                "url": "#behavior",
+                "items": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Examples",
+        "url": "#examples",
+        "items": [
+          {
+            "title": "Inside a player control bar",
+            "url": "#inside-a-player-control-bar",
+            "items": []
+          },
+          {
+            "title": "Custom labels",
+            "url": "#custom-labels",
+            "items": []
+          }
+        ]
+      },
+      {
+        "title": "Related",
+        "url": "#related",
+        "items": []
+      }
+    ],
+    "slug": "playback-speed",
+    "slugFull": "/components/playback-speed"
+  },
+  {
     "title": "Audio Player",
     "description": "A composable audio player component system.",
     "path": "components/player",
@@ -237,7 +316,7 @@
   },
   {
     "title": "Audio Queue",
-    "description": "Queue management components — browse, search, reorder, and control playback order.",
+    "description": "Queue management components with browse, search, reorder, and control playback order.",
     "path": "components/queue",
     "component": true,
     "toc": [
@@ -249,7 +328,28 @@
       {
         "title": "Usage",
         "url": "#usage",
-        "items": []
+        "items": [
+          {
+            "title": "Basic Queue",
+            "url": "#basic-queue",
+            "items": []
+          },
+          {
+            "title": "Queue with Shuffle and Repeat",
+            "url": "#queue-with-shuffle-and-repeat",
+            "items": []
+          },
+          {
+            "title": "Queue with Preferences",
+            "url": "#queue-with-preferences",
+            "items": []
+          },
+          {
+            "title": "Queue with All Controls",
+            "url": "#queue-with-all-controls",
+            "items": []
+          }
+        ]
       },
       {
         "title": "API Reference",
@@ -334,5 +434,111 @@
     ],
     "slug": "queue",
     "slugFull": "/components/queue"
+  },
+  {
+    "title": "Audio Track",
+    "description": "Track components for displaying and managing audio tracks, with store and controlled modes.",
+    "path": "components/track",
+    "component": true,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": []
+      },
+      {
+        "title": "Usage",
+        "url": "#usage",
+        "items": [
+          {
+            "title": "AudioTrack",
+            "url": "#audiotrack",
+            "items": []
+          },
+          {
+            "title": "AudioTrackList",
+            "url": "#audiotracklist",
+            "items": [
+              {
+                "title": "Grid Layout",
+                "url": "#grid-layout",
+                "items": []
+              },
+              {
+                "title": "Sortable",
+                "url": "#sortable",
+                "items": []
+              },
+              {
+                "title": "Sortable Grid",
+                "url": "#sortable-grid",
+                "items": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "API Reference",
+        "url": "#api-reference",
+        "items": [
+          {
+            "title": "AudioTrack",
+            "url": "#audiotrack-1",
+            "items": [
+              {
+                "title": "Props",
+                "url": "#props",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "AudioTrackList",
+            "url": "#audiotracklist-1",
+            "items": [
+              {
+                "title": "Props",
+                "url": "#props-1",
+                "items": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Examples",
+        "url": "#examples",
+        "items": [
+          {
+            "title": "Store mode (main queue)",
+            "url": "#store-mode-main-queue",
+            "items": []
+          },
+          {
+            "title": "Controlled mode (external list)",
+            "url": "#controlled-mode-external-list",
+            "items": []
+          },
+          {
+            "title": "Filtering",
+            "url": "#filtering",
+            "items": []
+          },
+          {
+            "title": "With removal",
+            "url": "#with-removal",
+            "items": []
+          }
+        ]
+      },
+      {
+        "title": "Related",
+        "url": "#related",
+        "items": []
+      }
+    ],
+    "slug": "track",
+    "slugFull": "/components/track"
   }
 ]

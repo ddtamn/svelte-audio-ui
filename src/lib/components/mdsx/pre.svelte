@@ -11,7 +11,8 @@
 
 	onMount(() => {
 		if (preNode) {
-			code = preNode.innerText.trim().replaceAll("  ", " ");
+			// code = preNode.innerText.trim().replaceAll("  ", " ");
+			code = preNode.textContent?.trim() ?? "";
 		}
 	});
 </script>

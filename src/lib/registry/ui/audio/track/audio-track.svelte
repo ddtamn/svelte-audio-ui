@@ -3,7 +3,7 @@
 	import { audioStore } from "$registry/lib/audio-store.svelte.js";
 	import { htmlAudio, formatDuration, type Track } from "$registry/lib/html-audio.js";
 	import { cn } from "$registry/lib/utils.js";
-	import SortableDragHandle from "./sortable-drag-handle.svelte";
+	import { SortableDragHandle } from "$registry/ui/audio/elements/sortable-list/index.js";
 
 	interface Props {
 		track?: Track;
