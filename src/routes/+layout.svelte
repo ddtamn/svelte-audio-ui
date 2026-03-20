@@ -7,6 +7,10 @@
 	import { UserConfig, UserConfigContext } from "$lib/user-config.svelte.js";
 	import * as Tooltip from "$lib/components/ui/tooltip/index.js";
 	import { Toaster } from "$lib/components/ui/sonner/index.js";
+	import { dev } from "$app/environment";
+	import { injectAnalytics } from "@vercel/analytics/sveltekit";
+
+	injectAnalytics({ mode: dev ? "development" : "production" });
 
 	let { children, data } = $props();
 
