@@ -105,6 +105,6 @@ On progress
 
 ## Related
 
-- [Fader](/docs/components/fader) — linear slider-style control for mixing boards
+- [Fader](/docs/ui/fader) — linear slider-style control for mixing boards
 - [Audio Player](/docs/components/player) — player controls to pair with knobs
 - [Audio Provider](/docs/components/provider) — audio context and state management
