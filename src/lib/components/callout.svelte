@@ -15,7 +15,7 @@
 </script>
 
 <Alert.Root
-	class={cn("bg-background text-foreground  w-auto border md:-mx-1", className)}
+	class={cn("bg-accent/5 text-foreground my-4 w-auto border md:-mx-1", className)}
 	{...restProps}
 >
 	{#if Icon}

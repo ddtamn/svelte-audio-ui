@@ -1,4 +1,30 @@
 <script lang="ts">
+	import { audioStore } from "$registry/lib/audio-store.svelte";
+
+	function formatDuration(seconds: number) {
+		const mins = Math.floor(seconds / 60);
+		const secs = Math.floor(seconds % 60);
+		return `${mins}:${secs.toString().padStart(2, "0")}`;
+	}
+</script>
+
+<div class="rounded-md border p-4">
+	<p class="font-bold">Track: {audioStore.currentTrack?.title ?? "None"}</p>
+	<p class="text-sm text-gray-500">
+		Time: {formatDuration(audioStore.currentTime)} / {formatDuration(audioStore.duration)}
+	</p>
+	<p class="mb-2">Status: {audioStore.isPlaying ? "▶ Playing" : "⏸ Paused"}</p>
+
+	<div class="flex gap-2">
+		<button onclick={() => audioStore.previous()}>◀ Prev</button>
+		<button onclick={() => audioStore.togglePlay()}>
+			{audioStore.isPlaying ? "⏸" : "▶"}
+		</button>
+		<button onclick={() => audioStore.next()}>Next ▶</button>
+	</div>
+</div>
+
+<!-- <script lang="ts">
 	import SortableListDemo from "$registry/examples/sortable-list-demo.svelte";
 </script>
 
@@ -6,7 +32,7 @@
 	<div class="w-full max-w-sm">
 		<SortableListDemo></SortableListDemo>
 	</div>
-</div>
+</div> -->
 
 <!-- <script>
 	import { dragHandleZone, dragHandle } from "svelte-dnd-action"; // ← not dndzone

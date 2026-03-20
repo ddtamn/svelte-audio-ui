@@ -1,1 +1,227 @@
-[]
+[
+  {
+    "title": "Audio Store",
+    "description": "A global, reactive Svelte 5 store for managing audio playback state and queue.",
+    "path": "libs/audio-store",
+    "component": false,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": [
+          {
+            "title": "Import",
+            "url": "#import",
+            "items": []
+          }
+        ]
+      },
+      {
+        "title": "Core Concepts",
+        "url": "#core-concepts",
+        "items": [
+          {
+            "title": "The audioStore Singleton",
+            "url": "#the-audiostore-singleton",
+            "items": []
+          },
+          {
+            "title": "Architecture",
+            "url": "#architecture",
+            "items": []
+          }
+        ]
+      },
+      {
+        "title": "Store State",
+        "url": "#store-state",
+        "items": []
+      },
+      {
+        "title": "Types",
+        "url": "#types",
+        "items": []
+      },
+      {
+        "title": "Utility Functions",
+        "url": "#utility-functions",
+        "items": [
+          {
+            "title": "calculateNextIndex",
+            "url": "#calculatenextindex",
+            "items": []
+          },
+          {
+            "title": "calculatePreviousIndex",
+            "url": "#calculatepreviousindex",
+            "items": []
+          },
+          {
+            "title": "canUseDOM()",
+            "url": "#canusedom",
+            "items": []
+          }
+        ]
+      },
+      {
+        "title": "Actions",
+        "url": "#actions",
+        "items": []
+      },
+      {
+        "title": "Examples",
+        "url": "#examples",
+        "items": [
+          {
+            "title": "Basic Usage",
+            "url": "#basic-usage",
+            "items": []
+          },
+          {
+            "title": "Queue Management",
+            "url": "#queue-management",
+            "items": []
+          },
+          {
+            "title": "Outside of Components",
+            "url": "#outside-of-components",
+            "items": []
+          }
+        ]
+      },
+      {
+        "title": "Persistence",
+        "url": "#persistence",
+        "items": []
+      },
+      {
+        "title": "Related",
+        "url": "#related",
+        "items": []
+      },
+      {
+        "title": "Notes",
+        "url": "#notes",
+        "items": []
+      }
+    ],
+    "slug": "audio-store",
+    "slugFull": "/libs/audio-store"
+  },
+  {
+    "title": "HTML Audio",
+    "description": "The core HTMLAudio singleton for robust audio playback.",
+    "path": "libs/html-audio",
+    "component": false,
+    "toc": [
+      {
+        "title": "Installation",
+        "url": "#installation",
+        "items": [
+          {
+            "title": "Import",
+            "url": "#import",
+            "items": []
+          }
+        ]
+      },
+      {
+        "title": "Core API",
+        "url": "#core-api",
+        "items": [
+          {
+            "title": "The htmlAudio Singleton",
+            "url": "#the-htmlaudio-singleton",
+            "items": [
+              {
+                "title": "Lifecycle",
+                "url": "#lifecycle",
+                "items": []
+              },
+              {
+                "title": "Playback",
+                "url": "#playback",
+                "items": []
+              },
+              {
+                "title": "Volume",
+                "url": "#volume",
+                "items": []
+              },
+              {
+                "title": "State",
+                "url": "#state",
+                "items": []
+              },
+              {
+                "title": "Events",
+                "url": "#events",
+                "items": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Utilities",
+        "url": "#utilities",
+        "items": [
+          {
+            "title": "formatDuration",
+            "url": "#formatduration",
+            "items": []
+          },
+          {
+            "title": "htmlAudio.isLive",
+            "url": "#htmlaudioislive",
+            "items": []
+          }
+        ]
+      },
+      {
+        "title": "Types",
+        "url": "#types",
+        "items": [
+          {
+            "title": "Track",
+            "url": "#track",
+            "items": []
+          }
+        ]
+      },
+      {
+        "title": "Examples",
+        "url": "#examples",
+        "items": [
+          {
+            "title": "Basic Playback",
+            "url": "#basic-playback",
+            "items": []
+          },
+          {
+            "title": "Volume Fading",
+            "url": "#volume-fading",
+            "items": []
+          },
+          {
+            "title": "Listening to Progress",
+            "url": "#listening-to-progress",
+            "items": []
+          }
+        ]
+      },
+      {
+        "title": "Related",
+        "url": "#related",
+        "items": []
+      },
+      {
+        "title": "Notes",
+        "url": "#notes",
+        "items": []
+      }
+    ],
+    "slug": "html-audio",
+    "slugFull": "/libs/html-audio"
+  }
+]

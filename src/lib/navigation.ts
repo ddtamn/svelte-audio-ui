@@ -90,11 +90,11 @@ export const sidebarNavItems: SidebarNavItem[] = [
 		items: [
 			{
 				title: "llms.txt",
-				href: "/docs/resources/llms-txt",
+				href: "/llms.txt",
 			},
 			{
 				title: "llms-full.txt",
-				href: "/docs/resources/llms-full-txt",
+				href: "/llms-full.txt",
 			},
 		],
 	},
@@ -128,7 +128,7 @@ export function findNeighbors(pathName: string): {
 
 	let previous: SidebarNavItem | null = null;
 	for (let i = index - 1; i >= 0; i--) {
-		if (flat[i].href !== "/docs/resources/llms-txt") {
+		if (flat[i].href !== "/llms.txt" && flat[i].href !== "/llms-full.txt") {
 			previous = flat[i];
 			break;
 		}
@@ -136,7 +136,7 @@ export function findNeighbors(pathName: string): {
 
 	let next: SidebarNavItem | null = null;
 	for (let i = index + 1; i < flat.length; i++) {
-		if (flat[i].href !== "/docs/resources/llms-txt") {
+		if (flat[i].href !== "/llms.txt" && flat[i].href !== "/llms-full.txt") {
 			next = flat[i];
 			break;
 		}
