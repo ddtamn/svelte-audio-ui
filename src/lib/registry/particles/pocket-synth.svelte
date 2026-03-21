@@ -148,7 +148,7 @@
 	];
 </script>
 
-<div class="bg-card flex w-full min-w-0 flex-col gap-1.5 rounded-xl border p-1.5">
+<div class="bg-accent/5 flex w-full min-w-0 flex-col gap-1.5 rounded-xl border p-1.5">
 	<!-- XY Pad: X axis = frequency, Y axis = filter cutoff -->
 	<XYPad
 		value={{ x: position.x * 100, y: position.y * 100 }}
@@ -252,7 +252,6 @@
 			Volume
 		</label>
 		<Fader
-			id="pocket-volume"
 			class="mx-1.5 flex-1"
 			orientation="horizontal"
 			min={0}
