@@ -16,7 +16,7 @@
 	}
 
 	let {
-		value = 50,
+		value = $bindable(50),
 		min = 0,
 		max = 100,
 		step = 1,

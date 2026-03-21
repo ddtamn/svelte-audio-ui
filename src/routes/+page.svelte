@@ -6,6 +6,12 @@
 	import PlasmaGrid from "$lib/components/plasma-grid/plasma-grid.svelte";
 
 	import PocketSynth from "$registry/particles/pocket-synth.svelte";
+	import PlayerWidget from "$registry/particles/player-widget.svelte";
+	import TrackListGridDemo from "$registry/examples/track-list-grid-demo.svelte";
+	import PlayerDemo from "$registry/examples/player-demo.svelte";
+	import PlayerWithQueueDemo from "$registry/examples/player-with-queue-demo.svelte";
+	import TrackSortableListGridDemo from "$registry/examples/track-sortable-list-grid-demo.svelte";
+	import WaveShaper from "$registry/particles/wave-shaper.svelte";
 </script>
 
 <div class="relative flex flex-1 flex-col">
@@ -49,6 +55,14 @@
 				<div class="grid gap-3 lg:grid-cols-2">
 					<div class="space-y-3">
 						<PocketSynth />
+						<PlayerWidget />
+						<TrackListGridDemo />
+					</div>
+					<div class="space-y-3">
+						<PlayerWithQueueDemo />
+						<WaveShaper />
+						<TrackSortableListGridDemo />
+						<PlayerDemo />
 					</div>
 				</div>
 			</div>
