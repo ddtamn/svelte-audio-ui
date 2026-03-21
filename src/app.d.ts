@@ -10,6 +10,7 @@ declare global {
 		// interface Platform {}
 	}
 	var __shikiHighlighter: Awaited<ReturnType<typeof createHighlighterCore>> | undefined;
+	declare module "three";
 }
 
 export {};
