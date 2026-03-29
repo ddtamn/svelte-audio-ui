@@ -5,6 +5,7 @@
   "description": "",
   "dependencies": [],
   "registryDependencies": [
+    "provider",
     "dropdown-menu",
     "tooltip",
     "button"

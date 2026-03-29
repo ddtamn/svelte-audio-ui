@@ -5,7 +5,8 @@
   "description": "",
   "dependencies": [],
   "registryDependencies": [
-    "sortable-list"
+    "sortable-list",
+    "provider"
   ],
   "meta": {
     "author": "ddtamn",

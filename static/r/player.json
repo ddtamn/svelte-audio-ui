@@ -5,6 +5,7 @@
   "description": "",
   "dependencies": [],
   "registryDependencies": [
+    "provider",
     "tooltip",
     "button",
     "dropdown-menu",
@@ -78,7 +79,7 @@
       "target": "audio/player/audio-seek-slider.svelte"
     },
     {
-      "content": "import Root from \"./audio-player.svelte\";\nimport ControlBar from \"./audio-player-control-bar.svelte\";\nimport ControlGroup from \"./audio-player-control-group.svelte\";\nimport FastForward from \"./audio-player-fast-forward.svelte\";\nimport Play from \"./audio-player-play.svelte\";\nimport Rewind from \"./audio-player-rewind.svelte\";\nimport SeekBar from \"./audio-player-seek-bar.svelte\";\nimport SkipBack from \"./audio-player-skip-back.svelte\";\nimport SkipForward from \"./audio-player-skip-forward.svelte\";\nimport TimeDisplay from \"./audio-player-time-display.svelte\";\nimport Volume from \"./audio-player-volume.svelte\";\n\nexport {\n\tRoot,\n\tControlBar,\n\tControlGroup,\n\tFastForward,\n\tPlay,\n\tRewind,\n\tSeekBar,\n\tSkipBack,\n\tSkipForward,\n\tTimeDisplay,\n\tVolume,\n\n\t//\n\tRoot as AudioPlayer,\n\tPlaybackSpeed as AudioPlayerPlaybackSpeed,\n\tControlBar as AudioPlayerControlBar,\n\tControlGroup as AudioPlayerControlGroup,\n\tFastForward as AudioPlayerFastForward,\n\tPlay as AudioPlayerPlay,\n\tRewind as AudioPlayerRewind,\n\tSeekBar as AudioPlayerSeekBar,\n\tSkipBack as AudioPlayerSkipBack,\n\tSkipForward as AudioPlayerSkipForward,\n\tTimeDisplay as AudioPlayerTimeDisplay,\n\tVolume as AudioPlayerVolume,\n};\n",
+      "content": "import Root from \"./audio-player.svelte\";\nimport ControlBar from \"./audio-player-control-bar.svelte\";\nimport ControlGroup from \"./audio-player-control-group.svelte\";\nimport FastForward from \"./audio-player-fast-forward.svelte\";\nimport Play from \"./audio-player-play.svelte\";\nimport Rewind from \"./audio-player-rewind.svelte\";\nimport SeekBar from \"./audio-player-seek-bar.svelte\";\nimport SkipBack from \"./audio-player-skip-back.svelte\";\nimport SkipForward from \"./audio-player-skip-forward.svelte\";\nimport TimeDisplay from \"./audio-player-time-display.svelte\";\nimport Volume from \"./audio-player-volume.svelte\";\n\nexport {\n\tRoot,\n\tControlBar,\n\tControlGroup,\n\tFastForward,\n\tPlay,\n\tRewind,\n\tSeekBar,\n\tSkipBack,\n\tSkipForward,\n\tTimeDisplay,\n\tVolume,\n\n\t//\n\tRoot as AudioPlayer,\n\tControlBar as AudioPlayerControlBar,\n\tControlGroup as AudioPlayerControlGroup,\n\tFastForward as AudioPlayerFastForward,\n\tPlay as AudioPlayerPlay,\n\tRewind as AudioPlayerRewind,\n\tSeekBar as AudioPlayerSeekBar,\n\tSkipBack as AudioPlayerSkipBack,\n\tSkipForward as AudioPlayerSkipForward,\n\tTimeDisplay as AudioPlayerTimeDisplay,\n\tVolume as AudioPlayerVolume,\n};\n",
       "type": "registry:file",
       "target": "audio/player/index.ts"
     }

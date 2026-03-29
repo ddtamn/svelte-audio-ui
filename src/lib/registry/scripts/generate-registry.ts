@@ -100,6 +100,14 @@ function processComponent(name: string, dir: string, filePaths: string[], kind: 
 			// Add more rules here if necessary
 		}
 
+		// 5. Inherent Provider Dependency
+		// These standard UI components intrinsically rely on the AudioProvider wrapper
+		const requiresProvider = ["player", "queue", "track", "playback-speed"];
+		if (requiresProvider.includes(name) && kind === "ui") {
+			registryDependencies.add("provider");
+		}
+
+
 		// --- TRANSFORM IMPORTS FOR USER ENVIRONMENT ---
 		// Utils
 		content = content.replace(/\$registry\/lib\/utils(\.js)?/g, "$lib/utils.js");

@@ -7,6 +7,7 @@
       "type": "registry:ui",
       "dependencies": [],
       "registryDependencies": [
+        "provider",
         "dropdown-menu",
         "tooltip",
         "button"
@@ -27,6 +28,7 @@
       "type": "registry:ui",
       "dependencies": [],
       "registryDependencies": [
+        "provider",
         "tooltip",
         "button",
         "dropdown-menu",
@@ -111,6 +113,7 @@
         "dropdown-menu",
         "tooltip",
         "button",
+        "provider",
         "dialog"
       ],
       "files": [
@@ -141,7 +144,8 @@
       "type": "registry:ui",
       "dependencies": [],
       "registryDependencies": [
-        "sortable-list"
+        "sortable-list",
+        "provider"
       ],
       "files": [
         {

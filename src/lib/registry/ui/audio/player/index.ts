@@ -25,7 +25,6 @@ export {
 
 	//
 	Root as AudioPlayer,
-	PlaybackSpeed as AudioPlayerPlaybackSpeed,
 	ControlBar as AudioPlayerControlBar,
 	ControlGroup as AudioPlayerControlGroup,
 	FastForward as AudioPlayerFastForward,
