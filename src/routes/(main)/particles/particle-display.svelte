@@ -37,7 +37,11 @@
 			<span class="truncate">{particle.description}</span>
 		</p>
 		<div class="flex items-center gap-1.5">
-			<CopyRegistry text="test" variant="outline" size="icon-sm" />
+			<CopyRegistry
+				text="https://svelte-audio-ui.vercel.app/r/{particle.id}.json"
+				variant="outline"
+				size="icon-sm"
+			/>
 			<Sheet.Root>
 				<Sheet.Trigger
 					class={[buttonVariants({ variant: "outline", size: "sm" }), "text-xs"]}
@@ -56,7 +60,9 @@
 					<div class="flex flex-1 flex-col overflow-hidden p-6">
 						<div>
 							<h2 class="font-heading mb-4 text-xl">Installation</h2>
-							<PmAddComp name="tes" />
+							<PmAddComp
+								name="https://svelte-audio-ui.vercel.app/r/{particle.id}.json"
+							/>
 						</div>
 
 						{#if ComponentSource}

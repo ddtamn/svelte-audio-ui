@@ -13,7 +13,6 @@ type ParticleItem = {
 	id: string;
 	description: string;
 	component: Component;
-	fullWidth?: boolean;
 	category?: string[];
 };
 
