@@ -5,7 +5,9 @@
     {
       "name": "playback-speed",
       "type": "registry:ui",
-      "dependencies": [],
+      "dependencies": [
+        "lucide-svelte"
+      ],
       "registryDependencies": [
         "provider",
         "dropdown-menu",
@@ -26,7 +28,9 @@
     {
       "name": "player",
       "type": "registry:ui",
-      "dependencies": [],
+      "dependencies": [
+        "lucide-svelte"
+      ],
       "registryDependencies": [
         "provider",
         "tooltip",
@@ -102,13 +106,23 @@
         {
           "type": "registry:file",
           "target": "audio/provider/index.ts"
+        },
+        {
+          "type": "registry:lib",
+          "target": "audio-store.svelte.ts"
+        },
+        {
+          "type": "registry:lib",
+          "target": "html-audio.ts"
         }
       ]
     },
     {
       "name": "queue",
       "type": "registry:ui",
-      "dependencies": [],
+      "dependencies": [
+        "lucide-svelte"
+      ],
       "registryDependencies": [
         "dropdown-menu",
         "tooltip",
@@ -142,7 +156,9 @@
     {
       "name": "track",
       "type": "registry:ui",
-      "dependencies": [],
+      "dependencies": [
+        "lucide-svelte"
+      ],
       "registryDependencies": [
         "sortable-list",
         "provider"
@@ -213,7 +229,9 @@
     {
       "name": "sortable-list",
       "type": "registry:ui",
-      "dependencies": [],
+      "dependencies": [
+        "lucide-svelte"
+      ],
       "registryDependencies": [
         "button"
       ],

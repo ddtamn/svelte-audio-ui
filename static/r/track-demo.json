@@ -15,7 +15,7 @@
   },
   "files": [
     {
-      "content": "<script lang=\"ts\">\n\timport * as AudioTrack from \"$lib/components/ui/audio/track/index.js\";\n\timport { audioStore } from \"$registry/lib/audio-store.svelte.js\";\n</script>\n\n{#if audioStore.queue[0]}\n\t<AudioTrack.Root trackId={audioStore.queue[0].id} />\n{:else}\n\t<p class=\"text-muted-foreground text-sm\">No tracks in queue.</p>\n{/if}\n",
+      "content": "<script lang=\"ts\">\n\timport * as AudioTrack from \"$lib/components/ui/audio/track/index.js\";\n\timport { audioStore } from \"$lib/audio-store.svelte.js\";\n</script>\n\n{#if audioStore.queue[0]}\n\t<AudioTrack.Root trackId={audioStore.queue[0].id} />\n{:else}\n\t<p class=\"text-muted-foreground text-sm\">No tracks in queue.</p>\n{/if}\n",
       "type": "registry:file",
       "target": "audio/track-demo.svelte"
     }
