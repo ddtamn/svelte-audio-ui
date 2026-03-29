@@ -76,10 +76,11 @@
 
 <Dialog.Root open={dialogOpen} onOpenChange={handleOpenChange}>
 	<!-- Trigger button ────────────────────────────────────────────────────────── -->
-	<Dialog.Trigger>
-		<Tooltip.Root>
-			<Tooltip.Trigger>
+	<Tooltip.Root>
+		<Tooltip.Trigger onclick={() => (dialogOpen = true)}>
+			{#snippet child({ props })}
 				<Button
+					{...props}
 					size="icon"
 					variant="outline"
 					aria-label="Open queue"
@@ -88,10 +89,10 @@
 				>
 					<ListMusic class="size-4" />
 				</Button>
-			</Tooltip.Trigger>
-			<Tooltip.Content sideOffset={4}>Queue</Tooltip.Content>
-		</Tooltip.Root>
-	</Dialog.Trigger>
+			{/snippet}
+		</Tooltip.Trigger>
+		<Tooltip.Content sideOffset={4}>Queue</Tooltip.Content>
+	</Tooltip.Root>
 
 	<!-- Dialog ────────────────────────────────────────────────────────────────── -->
 	<Dialog.Content

@@ -7,6 +7,7 @@
 	import MobileNav from "./mobile-nav.svelte";
 	import GithubLink from "./github-link.svelte";
 	import CommandMenu from "./command-menu/command-menu.svelte";
+	import Logo from "./logo.svelte";
 	import { mainNavItems } from "$lib/navigation.js";
 
 	let mobileNavRef: { closeMenu: () => void } | undefined;
@@ -25,40 +26,9 @@
 		>
 			<MobileNav bind:this={mobileNavRef} class="flex lg:hidden" />
 
-			<Button class="hidden md:flex" size="sm" variant="ghost">
-				<a href="/" class="flex items-center sm:pl-1" aria-label="Home">
-					<div
-						aria-hidden="true"
-						class="text-muted-foreground flex shrink-0 items-center justify-center gap-1 select-none"
-					>
-						<div class="text-foreground pointer-events-none size-4 sm:size-5">
-							<svg
-								fill="none"
-								height="24"
-								stroke="currentColor"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth="2"
-								viewBox="0 0 24 24"
-								width="24"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<title>Svelte Audio UI</title>
-								<path d="M2 10v3" />
-								<path d="M6 6v11" />
-								<path d="M10 3v18" />
-								<path d="M14 8v7" />
-								<path d="M18 5v13" />
-								<path d="M22 10v3" />
-							</svg>
-						</div>
-						<p
-							class="-mt-[2.3px] font-serif text-xl leading-snug font-medium text-balance sm:-mt-[3px] sm:text-2xl"
-						>
-							audio/ui
-						</p>
-					</div>
-				</a>
+			<Button href="/" variant="ghost" size="icon" class="hidden size-8 lg:flex">
+				<Logo class="size-5" />
+				<span class="sr-only">Svelte Audio UI</span>
 			</Button>
 
 			<MainNav items={mainNavItems} class="hidden lg:flex" />

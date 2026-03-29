@@ -40,7 +40,7 @@ You can add components **svelte-audio-ui** using **shadcn-svelte** CLI or **manu
 
 {#snippet cli()}
 
-<PMAddComp name="https://svelte-audio-ui/r/player.json" />
+<PMAddComp name="https://svelte-audio-ui.vercel.app/r/player.json" />
 
 This command will:
 
@@ -91,7 +91,7 @@ This ensures all audio components share a single, consistent playback state.
 
 ```svelte
 <script lang="ts">
-  import * as AudioPlayer from "$registry/ui/audio/player/index.js";
+  import * as AudioPlayer from "$lib/components/ui/audio/player/index.js";
 
   let { children } = $props();
 </script>

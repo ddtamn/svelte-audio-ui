@@ -23,7 +23,7 @@ component: true
 
 {#snippet cli()}
 
-<PMAddComp name="https://svelte-audio-ui/r/sortable-list.json" />
+<PMAddComp name="https://svelte-audio-ui.vercel.app/r/sortable-list.json" />
 
 {/snippet}
 

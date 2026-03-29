@@ -4,6 +4,8 @@
 	import { particles } from "$registry/particles";
 	import { page } from "$app/state";
 	import { goto } from "$app/navigation";
+	import { track } from "@vercel/analytics";
+	import { MetaTags } from "svelte-meta-tags";
 
 	const categories = ["All", "Grid", "Player", "Queue", "Sortable", "Synth", "Track"];
 
@@ -32,6 +34,8 @@
 			: particles.filter((p) => p.category?.includes(activeCategory.toLowerCase()))
 	);
 </script>
+
+<MetaTags title="Particles - Svelte Audio UI" />
 
 <div class="container w-full">
 	<div class="border-grid">
@@ -63,7 +67,10 @@
 								size="sm"
 								variant={activeCategory === category ? "default" : "outline"}
 								class="transition-colors duration-200"
-								onclick={() => setCategory(category)}
+								onclick={() => {
+									track(category);
+									setCategory(category);
+								}}
 							>
 								{category}
 							</Button>

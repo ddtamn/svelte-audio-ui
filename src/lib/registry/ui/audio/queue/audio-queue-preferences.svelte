@@ -12,16 +12,16 @@
 
 	interface Props {
 		class?: string;
-		size?: string;
-		variant?: string;
+		size?: "icon" | "default" | "sm" | "lg" | "icon-sm" | "icon-lg";
+		variant?: "outline" | "default" | "destructive" | "secondary" | "ghost" | "link";
 		tooltipLabel?: string;
 		[key: string]: unknown;
 	}
 
 	let {
 		class: className = "",
-		size = "icon",
-		variant = "outline",
+		size = "icon" as Props["size"],
+		variant = "outline" as Props["variant"],
 		tooltipLabel = "Queue preferences",
 		...rest
 	}: Props = $props();
@@ -29,20 +29,26 @@
 
 <DropdownMenu.Root>
 	<DropdownMenu.Trigger>
-		<Tooltip.Root>
-			<Tooltip.Trigger>
-				<Button
-					class={cn(className)}
-					data-slot="audio-queue-preferences-trigger"
-					{size}
-					{variant}
-					{...rest}
-				>
-					<SlidersHorizontal class="size-4" />
-				</Button>
-			</Tooltip.Trigger>
-			<Tooltip.Content sideOffset={4}>{tooltipLabel}</Tooltip.Content>
-		</Tooltip.Root>
+		{#snippet child({ props: dropdownProps })}
+			<Tooltip.Root>
+				<Tooltip.Trigger>
+					{#snippet child({ props: tooltipProps })}
+						<Button
+							{...dropdownProps}
+							{...tooltipProps}
+							class={cn(className)}
+							data-slot="audio-queue-preferences-trigger"
+							{size}
+							{variant}
+							{...rest}
+						>
+							<SlidersHorizontal class="size-4" />
+						</Button>
+					{/snippet}
+				</Tooltip.Trigger>
+				<Tooltip.Content sideOffset={4}>{tooltipLabel}</Tooltip.Content>
+			</Tooltip.Root>
+		{/snippet}
 	</DropdownMenu.Trigger>
 
 	<DropdownMenu.Content

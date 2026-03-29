@@ -20,7 +20,7 @@ component: true
 
 {#snippet cli()}
 
-<PMAddComp name="https://svelte-audio-ui/r/queue.json" />
+<PMAddComp name="https://svelte-audio-ui.vercel.app/r/queue.json" />
 
 {/snippet}
 

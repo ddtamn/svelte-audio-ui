@@ -30,7 +30,7 @@ component: true
 
 {#snippet cli()}
 
-<PMAddComp name="https://svelte-audio-ui/r/player.json" />
+<PMAddComp name="https://svelte-audio-ui.vercel.app/r/player.json" />
 
 {/snippet}
 
@@ -50,7 +50,7 @@ First, wrap your app with `AudioProvider` at the root level:
 
 ```svelte
 <script lang="ts">
-  import { AudioProvider } from "$registry/ui/audio/provider/index.js";
+  import { AudioProvider } from "$lib/components/ui/audio/provider/index.js";
 
   let { children } = $props();
 </script>
@@ -64,7 +64,7 @@ Use the component you need :
 
 ```svelte
 <script lang="ts">
-  import * as AudioPlayer from "$registry/ui/audio/player/index.js";
+  import * as AudioPlayer from "$lib/components/ui/audio/player/index.js";
 </script>
 
 <AudioPlayer.Root>
