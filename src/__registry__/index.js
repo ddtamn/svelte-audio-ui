@@ -52,6 +52,9 @@ export const Index = {
 	"queue-shuffle-repeat-demo": {
 		files: ["../lib/registry/examples/queue-shuffle-repeat-demo.svelte"],
 	},
+	"queue-simple-demo": {
+		files: ["../lib/registry/examples/queue-simple-demo.svelte"],
+	},
 	"slider-demo": {
 		files: ["../lib/registry/examples/slider-demo.svelte"],
 	},

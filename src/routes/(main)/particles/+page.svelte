@@ -1,91 +1,42 @@
 <script lang="ts">
-	import { audioStore } from "$registry/lib/audio-store.svelte";
-
-	function formatDuration(seconds: number) {
-		const mins = Math.floor(seconds / 60);
-		const secs = Math.floor(seconds % 60);
-		return `${mins}:${secs.toString().padStart(2, "0")}`;
-	}
+	import { Button } from "$lib/components/ui/button/index.js";
+	import ParticleDisplay from "./particle-display.svelte";
+	import { particles } from "$registry/particles";
+	const categories = ["All", "Grid", "Player", "Queue", "Sortable", "Synth", "Track"];
 </script>
 
-<div class="rounded-md border p-4">
-	<p class="font-bold">Track: {audioStore.currentTrack?.title ?? "None"}</p>
-	<p class="text-sm text-gray-500">
-		Time: {formatDuration(audioStore.currentTime)} / {formatDuration(audioStore.duration)}
-	</p>
-	<p class="mb-2">Status: {audioStore.isPlaying ? "▶ Playing" : "⏸ Paused"}</p>
+<div class="container w-full">
+	<div class="border-grid">
+		<div class="container-wrapper">
+			<div
+				class="container flex flex-col items-center gap-2 py-8 text-center md:py-16 lg:py-20 xl:gap-4"
+			>
+				<h1
+					class="text-primary leading-tighter max-w-4xl text-4xl font-semibold tracking-tight text-balance lg:leading-[1.1] lg:font-semibold xl:text-5xl xl:tracking-tighter"
+				>
+					Particles
+				</h1>
+				<p class="text-foreground max-w-3xl text-base text-balance sm:text-lg">
+					Particles are more than just components. They are the building blocks of your
+					design system. Click on a category or browse them all.
+				</p>
 
-	<div class="flex gap-2">
-		<button onclick={() => audioStore.previous()}>◀ Prev</button>
-		<button onclick={() => audioStore.togglePlay()}>
-			{audioStore.isPlaying ? "⏸" : "▶"}
-		</button>
-		<button onclick={() => audioStore.next()}>Next ▶</button>
+				<div class="mx-auto mt-4 w-full max-w-4xl">
+					<div class="flex flex-wrap justify-center gap-2">
+						{#each categories as category (category)}
+							<Button size="sm" variant="outline">{category}</Button>
+						{/each}
+					</div>
+				</div>
+			</div>
+			<div class="grid flex-1 items-stretch gap-3 pb-12 lg:grid-cols-2">
+				{#each particles as particle (particle.id)}
+					{@const Component = particle.component}
+					<ParticleDisplay {particle}>
+						<Component />
+					</ParticleDisplay>
+				{/each}
+			</div>
+		</div>
 	</div>
 </div>
-
-<!-- <script lang="ts">
-	import SortableListDemo from "$registry/examples/sortable-list-demo.svelte";
-</script>
-
-<div class="flex min-h-[80vh] items-center justify-center p-4">
-	<div class="w-full max-w-sm">
-		<SortableListDemo></SortableListDemo>
-	</div>
-</div> -->
-
-<!-- <script>
-	import { dragHandleZone, dragHandle } from "svelte-dnd-action"; // ← not dndzone
-	import { flip } from "svelte/animate";
-
-	let items = $state([
-		{ id: 1, text: "Item 1" },
-		{ id: 2, text: "Item 2" },
-		{ id: 3, text: "Item 3" },
-		{ id: 4, text: "Item 4" },
-		{ id: 5, text: "Item 5" },
-		{ id: 6, text: "Item 6" },
-	]);
-
-	const flipDurationMs = 200;
-
-	const handleConsider = (evt) => {
-		items = evt.detail.items;
-	};
-	const handleFinalize = (evt) => {
-		items = evt.detail.items;
-	};
-</script>
-
-<section
-	use:dragHandleZone={{ items, flipDurationMs, dropTargetStyle: {} }}
-	onconsider={handleConsider}
-	onfinalize={handleFinalize}
->
-	{#each items as item (item.id)}
-		<div class="item" animate:flip={{ duration: flipDurationMs }}>
-			<div use:dragHandle class="handle" aria-label="drag handle for {item.text}"></div>
-			<span>{item.text}</span>
-		</div>
-	{/each}
-</section>
-
-<style>
-	.item {
-		position: relative;
-		height: 1.5em;
-		width: 10em;
-		text-align: center;
-		border: 1px solid black;
-		margin: 0.2em;
-		padding: 0.3em;
-	}
-	.handle {
-		cursor: grab;
-		position: absolute;
-		right: 0;
-		width: 1em;
-		height: 0.5em;
-		background-color: grey;
-	}
-</style> -->

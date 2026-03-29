@@ -3,8 +3,9 @@
 	import * as Tooltip from "$lib/components/ui/tooltip/index.js";
 	import { UseClipboard } from "$lib/hooks/use-clipboard.svelte.js";
 	import { cn } from "$lib/utils.js";
-	import CopyIcon from "@tabler/icons-svelte/icons/copy";
 	import CheckIcon from "@lucide/svelte/icons/check";
+	import McpIcon from "./icons/mcp.svelte";
+	import * as Kbd from "$lib/components/ui/kbd/index.js";
 	import type { ComponentProps } from "svelte";
 
 	let {
@@ -22,27 +23,32 @@
 </script>
 
 <Tooltip.Root disableCloseOnTriggerClick>
-	<!-- eslint-disable-next-line @typescript-eslint/no-explicit-any -->
 	<Tooltip.Trigger
 		{...rp}
-		class={cn(
-			"bg-code absolute inset-e-2 top-3 z-10 size-7 hover:opacity-100 focus-visible:opacity-100",
-			className
-		)}
+		class={cn("hover:opacity-100 focus-visible:opacity-100", className)}
 		onclick={() => clipboard.copy(text)}
 	>
 		{#snippet child({ props })}
-			<Button {...props} data-slot="copy-button" size="icon" {variant}>
+			<Button {...props} data-slot="copy-button" {variant}>
 				<span class="sr-only" data-llm-ignore>Copy</span>
 				{#if clipboard.copied}
-					<CheckIcon />
+					<CheckIcon class="size-3.5" />
 				{:else}
-					<CopyIcon />
+					<McpIcon class="size-3.5" />
 				{/if}
 			</Button>
 		{/snippet}
 	</Tooltip.Trigger>
 	<Tooltip.Content>
-		{clipboard.copied ? "Copied" : "Copy to Clipboard"}
+		{#if clipboard.copied}
+			Copied
+		{:else}
+			<Kbd.Group class="flex items-center gap-2.5 ">
+				Copy Registry URL
+				<Kbd.Root class="">
+					<McpIcon class="fill-background" />
+				</Kbd.Root>
+			</Kbd.Group>
+		{/if}
 	</Tooltip.Content>
 </Tooltip.Root>
