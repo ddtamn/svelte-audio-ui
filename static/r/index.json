@@ -6,7 +6,7 @@
       "name": "playback-speed",
       "type": "registry:ui",
       "dependencies": [
-        "lucide-svelte"
+        "@lucide/svelte"
       ],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/provider.json",
@@ -29,7 +29,7 @@
       "name": "player",
       "type": "registry:ui",
       "dependencies": [
-        "lucide-svelte"
+        "@lucide/svelte"
       ],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/provider.json",
@@ -121,7 +121,7 @@
       "name": "queue",
       "type": "registry:ui",
       "dependencies": [
-        "lucide-svelte"
+        "@lucide/svelte"
       ],
       "registryDependencies": [
         "dropdown-menu",
@@ -157,7 +157,7 @@
       "name": "track",
       "type": "registry:ui",
       "dependencies": [
-        "lucide-svelte"
+        "@lucide/svelte"
       ],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/sortable-list.json",
@@ -213,7 +213,9 @@
     {
       "name": "slider",
       "type": "registry:ui",
-      "dependencies": [],
+      "dependencies": [
+        "bits-ui"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -230,7 +232,8 @@
       "name": "sortable-list",
       "type": "registry:ui",
       "dependencies": [
-        "lucide-svelte"
+        "@lucide/svelte",
+        "svelte-dnd-action"
       ],
       "registryDependencies": [
         "button"
@@ -257,7 +260,9 @@
     {
       "name": "xypad",
       "type": "registry:ui",
-      "dependencies": [],
+      "dependencies": [
+        "cva"
+      ],
       "registryDependencies": [],
       "files": [
         {

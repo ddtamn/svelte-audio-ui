@@ -91,13 +91,17 @@ function processComponent(name: string, dir: string, filePaths: string[], kind: 
 		const npmDepsRegex = /from\s+['"]([^$][^'"\.]+)['"]/g;
 		while ((match = npmDepsRegex.exec(content)) !== null) {
 			const depName = match[1];
-			if (depName.startsWith("svelte")) continue; // Built-in
-			// Add common third party dependencies
-			if (depName.startsWith("@lucide/svelte") || depName.startsWith("lucide-svelte")) dependencies.add("lucide-svelte");
-			if (depName.startsWith("svelte-dnd-action")) dependencies.add("svelte-dnd-action");
-			if (depName.startsWith("tailwind-merge")) dependencies.add("tailwind-merge");
-			if (depName.startsWith("clsx")) dependencies.add("clsx");
-			// Add more rules here if necessary
+			// Skip Svelte built-ins but keep ecosystem packages like svelte-dnd-action
+			if (depName === "svelte" || depName.startsWith("svelte/")) continue;
+			
+			// Regular package extraction
+			if (depName.startsWith("@")) {
+				const parts = depName.split("/");
+				if (parts.length >= 2) dependencies.add(`${parts[0]}/${parts[1]}`);
+			} else {
+				const packageName = depName.split("/")[0];
+				if (packageName) dependencies.add(packageName);
+			}
 		}
 
 		// 5. Inherent Provider Dependency

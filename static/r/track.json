@@ -4,7 +4,7 @@
   "author": "ddtamn",
   "description": "",
   "dependencies": [
-    "lucide-svelte"
+    "@lucide/svelte"
   ],
   "registryDependencies": [
     "https://svelte-audio-ui.vercel.app/r/sortable-list.json",
