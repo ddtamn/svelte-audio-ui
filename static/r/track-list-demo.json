@@ -1,0 +1,23 @@
+{
+  "name": "track-list-demo",
+  "type": "registry:example",
+  "author": "ddtamn",
+  "description": "",
+  "dependencies": [],
+  "registryDependencies": [
+    "track"
+  ],
+  "meta": {
+    "author": "ddtamn",
+    "version": "1.0.0",
+    "documentation": "https://svelte-audio-ui.vercel.app/docs/components/track-list-demo",
+    "repository": "https://github.com/ddtamn/svelte-audio-ui"
+  },
+  "files": [
+    {
+      "content": "<script lang=\"ts\">\n\timport * as AudioTrack from \"$lib/components/ui/audio/track/index.js\";\n</script>\n\n<AudioTrack.List onTrackSelect={(index) => console.log(\"selected queue index\", index)} />\n",
+      "type": "registry:file",
+      "target": "audio/track-list-demo.svelte"
+    }
+  ]
+}

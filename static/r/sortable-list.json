@@ -1,0 +1,38 @@
+{
+  "name": "sortable-list",
+  "type": "registry:ui",
+  "author": "ddtamn",
+  "description": "",
+  "dependencies": [],
+  "registryDependencies": [
+    "button"
+  ],
+  "meta": {
+    "author": "ddtamn",
+    "version": "1.0.0",
+    "documentation": "https://svelte-audio-ui.vercel.app/docs/components/sortable-list",
+    "repository": "https://github.com/ddtamn/svelte-audio-ui"
+  },
+  "files": [
+    {
+      "content": "import Root from \"./sortable-list.svelte\";\nimport Item from \"./sortable-item.svelte\";\nimport DragHandle from \"./sortable-drag-handle.svelte\";\n\nexport {\n\tRoot,\n\tItem,\n\tDragHandle,\n\t//\n\tRoot as SortableList,\n\tItem as SortableItem,\n\tDragHandle as SortableDragHandle,\n};\n",
+      "type": "registry:file",
+      "target": "audio/sortable-list/index.ts"
+    },
+    {
+      "content": "<script lang=\"ts\">\n\timport { GripVertical } from \"@lucide/svelte\";\n\timport { cn } from \"$lib/utils.js\";\n\timport { buttonVariants } from \"$lib/components/ui/button\";\n\timport { dragHandle } from \"svelte-dnd-action\";\n\n\ttype ButtonSize = \"default\" | \"sm\" | \"lg\" | \"icon\" | \"icon-sm\" | \"icon-lg\" | undefined;\n\ttype ButtonVariant =\n\t\t| \"default\"\n\t\t| \"destructive\"\n\t\t| \"outline\"\n\t\t| \"secondary\"\n\t\t| \"ghost\"\n\t\t| \"link\"\n\t\t| undefined;\n\n\tinterface Props {\n\t\tclass?: string;\n\t\tsize?: ButtonSize;\n\t\tvariant?: ButtonVariant;\n\t\t[key: string]: unknown;\n\t}\n\n\tlet {\n\t\tclass: className = \"\",\n\t\tsize = \"icon-sm\" as ButtonSize,\n\t\tvariant = \"ghost\" as ButtonVariant,\n\t\t...rest\n\t}: Props = $props();\n</script>\n\n<div\n\tuse:dragHandle\n\tclass={cn(\n\t\tbuttonVariants({ size, variant }),\n\t\t\"cursor-grab touch-none active:cursor-grabbing\",\n\t\tclassName\n\t)}\n\taria-label=\"Drag to reorder\"\n\tdata-slot=\"sortable-drag-handle\"\n\trole=\"button\"\n\ttabindex=\"0\"\n\t{...rest}\n>\n\t<GripVertical class=\"size-4\" />\n</div>\n",
+      "type": "registry:file",
+      "target": "audio/sortable-list/sortable-drag-handle.svelte"
+    },
+    {
+      "content": "<script lang=\"ts\">\n\timport { cn } from \"$lib/utils.js\";\n\timport type { Snippet } from \"svelte\";\n\n\tinterface Props {\n\t\tclass?: string;\n\t\tchildren?: Snippet;\n\t}\n\n\tlet { class: className = \"\", children }: Props = $props();\n</script>\n\n<div class={cn(\"flex items-center gap-2\", className)}>\n\t{@render children?.()}\n</div>\n",
+      "type": "registry:file",
+      "target": "audio/sortable-list/sortable-item.svelte"
+    },
+    {
+      "content": "<script lang=\"ts\" generics=\"Item extends { id: string | number }\">\n\timport { flip } from \"svelte/animate\";\n\timport { cn } from \"$lib/utils.js\";\n\timport type { Snippet } from \"svelte\";\n\timport { dragHandleZone } from \"svelte-dnd-action\";\n\n\tinterface Props {\n\t\tclass?: string;\n\t\titems: Item[];\n\t\titem: Snippet<[Item]>;\n\t\tonDrop?: (items: Item[]) => void;\n\t}\n\n\tlet { class: className, items = $bindable(), onDrop, item }: Props = $props();\n\tconst flipDurationMs = 150;\n\n\tfunction handleConsider(e: CustomEvent<{ items: Item[] }>) {\n\t\titems = e.detail.items;\n\t}\n\n\tfunction handleFinalize(e: CustomEvent<{ items: Item[] }>) {\n\t\titems = e.detail.items;\n\t\tonDrop?.(items);\n\t}\n</script>\n\n<div\n\tuse:dragHandleZone={{ items, flipDurationMs, dropTargetStyle: {} }}\n\tonconsider={handleConsider}\n\tonfinalize={handleFinalize}\n\tclass={cn(\"flex flex-col gap-1\", className)}\n>\n\t<!-- todo: adding shadow placeholder element using SHADOW_ITEM_MARKER_PROPERTY_NAME -->\n\t{#each items as entry (entry.id)}\n\t\t<div animate:flip={{ duration: flipDurationMs }}>\n\t\t\t{@render item(entry)}\n\t\t</div>\n\t{/each}\n</div>\n",
+      "type": "registry:file",
+      "target": "audio/sortable-list/sortable-list.svelte"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "track-demo",
+  "type": "registry:example",
+  "author": "ddtamn",
+  "description": "",
+  "dependencies": [],
+  "registryDependencies": [
+    "track"
+  ],
+  "meta": {
+    "author": "ddtamn",
+    "version": "1.0.0",
+    "documentation": "https://svelte-audio-ui.vercel.app/docs/components/track-demo",
+    "repository": "https://github.com/ddtamn/svelte-audio-ui"
+  },
+  "files": [
+    {
+      "content": "<script lang=\"ts\">\n\timport * as AudioTrack from \"$lib/components/ui/audio/track/index.js\";\n\timport { audioStore } from \"$registry/lib/audio-store.svelte.js\";\n</script>\n\n{#if audioStore.queue[0]}\n\t<AudioTrack.Root trackId={audioStore.queue[0].id} />\n{:else}\n\t<p class=\"text-muted-foreground text-sm\">No tracks in queue.</p>\n{/if}\n",
+      "type": "registry:file",
+      "target": "audio/track-demo.svelte"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "playback-speed-demo",
+  "type": "registry:example",
+  "author": "ddtamn",
+  "description": "",
+  "dependencies": [],
+  "registryDependencies": [
+    "player",
+    "playback-speed"
+  ],
+  "meta": {
+    "author": "ddtamn",
+    "version": "1.0.0",
+    "documentation": "https://svelte-audio-ui.vercel.app/docs/components/playback-speed-demo",
+    "repository": "https://github.com/ddtamn/svelte-audio-ui"
+  },
+  "files": [
+    {
+      "content": "<script lang=\"ts\">\n\timport * as AudioPlayer from \"$lib/components/ui/audio/player/index.js\";\n\timport { AudioPlaybackSpeed } from \"$lib/components/ui/audio/playback-speed/index.js\";\n</script>\n\n<AudioPlayer.Root class=\"w-max\">\n\t<AudioPlayer.ControlBar>\n\t\t<AudioPlayer.ControlGroup>\n\t\t\t<AudioPlayer.SkipBack />\n\t\t\t<AudioPlayer.Play />\n\t\t\t<AudioPlayer.SkipForward />\n\t\t</AudioPlayer.ControlGroup>\n\t\t<AudioPlayer.ControlGroup>\n\t\t\t<AudioPlayer.TimeDisplay />\n\t\t\t<AudioPlayer.SeekBar />\n\t\t\t<AudioPlayer.TimeDisplay remaining />\n\t\t</AudioPlayer.ControlGroup>\n\t\t<AudioPlayer.ControlGroup>\n\t\t\t<AudioPlaybackSpeed />\n\t\t\t<AudioPlayer.Volume />\n\t\t</AudioPlayer.ControlGroup>\n\t</AudioPlayer.ControlBar>\n</AudioPlayer.Root>\n",
+      "type": "registry:file",
+      "target": "audio/playback-speed-demo.svelte"
+    }
+  ]
+}

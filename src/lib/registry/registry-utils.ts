@@ -1,5 +1,3 @@
-// import type { RegistryItemFile } from "@shadcn-svelte/registry";
-
 export type FileTree = {
 	name: string;
 	path?: string;

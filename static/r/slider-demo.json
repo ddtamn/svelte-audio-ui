@@ -1,0 +1,23 @@
+{
+  "name": "slider-demo",
+  "type": "registry:example",
+  "author": "ddtamn",
+  "description": "",
+  "dependencies": [],
+  "registryDependencies": [
+    "slider"
+  ],
+  "meta": {
+    "author": "ddtamn",
+    "version": "1.0.0",
+    "documentation": "https://svelte-audio-ui.vercel.app/docs/components/slider-demo",
+    "repository": "https://github.com/ddtamn/svelte-audio-ui"
+  },
+  "files": [
+    {
+      "content": "<script lang=\"ts\">\n\timport { Slider } from \"$lib/components/ui/audio/slider/index.js\";\n\n\tlet value = $state([25]);\n</script>\n\n<div class=\"w-full max-w-sm\">\n\t<Slider {value} onValueChange={(v) => (value = v)} max={100} step={1} bufferValue={55} />\n</div>\n",
+      "type": "registry:file",
+      "target": "audio/slider-demo.svelte"
+    }
+  ]
+}
