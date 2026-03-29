@@ -95,13 +95,20 @@ function processComponent(name: string, dir: string, filePaths: string[], kind: 
 			if (depName === "svelte" || depName.startsWith("svelte/")) continue;
 			
 			// Regular package extraction
+			let finalDep = "";
 			if (depName.startsWith("@")) {
 				const parts = depName.split("/");
-				if (parts.length >= 2) dependencies.add(`${parts[0]}/${parts[1]}`);
+				if (parts.length >= 2) finalDep = (`${parts[0]}/${parts[1]}`);
 			} else {
-				const packageName = depName.split("/")[0];
-				if (packageName) dependencies.add(packageName);
+				finalDep = depName.split("/")[0] || "";
 			}
+
+			// Map cva to its npm alias
+			if (finalDep === "cva") {
+				finalDep = "cva@npm:class-variance-authority";
+			}
+
+			if (finalDep) dependencies.add(finalDep);
 		}
 
 		// 5. Inherent Provider Dependency

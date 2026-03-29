@@ -4,7 +4,7 @@
   "author": "ddtamn",
   "description": "",
   "dependencies": [
-    "cva"
+    "cva@npm:class-variance-authority"
   ],
   "registryDependencies": [],
   "meta": {

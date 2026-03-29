@@ -261,7 +261,7 @@
       "name": "xypad",
       "type": "registry:ui",
       "dependencies": [
-        "cva"
+        "cva@npm:class-variance-authority"
       ],
       "registryDependencies": [],
       "files": [
