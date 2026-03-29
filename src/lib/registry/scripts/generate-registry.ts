@@ -163,7 +163,7 @@ function processComponent(name: string, dir: string, filePaths: string[], kind: 
 
 	return {
 		name,
-		type: kind === "example" ? "registry:example" : kind === "particle" ? "registry:block" : "registry:ui",
+		type: kind === "example" || kind === "particle" ? "registry:block" : "registry:ui",
 		author: "ddtamn",
 		description: "",
 		dependencies: Array.from(dependencies),

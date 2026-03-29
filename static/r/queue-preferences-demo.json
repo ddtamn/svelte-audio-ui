@@ -1,6 +1,6 @@
 {
   "name": "queue-preferences-demo",
-  "type": "registry:example",
+  "type": "registry:block",
   "author": "ddtamn",
   "description": "",
   "dependencies": [],
