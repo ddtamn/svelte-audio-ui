@@ -4,7 +4,7 @@
   "author": "ddtamn",
   "description": "",
   "dependencies": [
-    "lucide-svelte"
+    "@lucide/svelte"
   ],
   "registryDependencies": [
     "dropdown-menu",

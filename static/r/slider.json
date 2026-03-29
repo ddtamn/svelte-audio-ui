@@ -3,7 +3,9 @@
   "type": "registry:ui",
   "author": "ddtamn",
   "description": "",
-  "dependencies": [],
+  "dependencies": [
+    "bits-ui"
+  ],
   "registryDependencies": [],
   "meta": {
     "author": "ddtamn",

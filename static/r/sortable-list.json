@@ -4,7 +4,8 @@
   "author": "ddtamn",
   "description": "",
   "dependencies": [
-    "lucide-svelte"
+    "@lucide/svelte",
+    "svelte-dnd-action"
   ],
   "registryDependencies": [
     "button"

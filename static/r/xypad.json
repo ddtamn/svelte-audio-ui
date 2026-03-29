@@ -3,7 +3,9 @@
   "type": "registry:ui",
   "author": "ddtamn",
   "description": "",
-  "dependencies": [],
+  "dependencies": [
+    "cva"
+  ],
   "registryDependencies": [],
   "meta": {
     "author": "ddtamn",
