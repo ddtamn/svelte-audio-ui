@@ -4,9 +4,7 @@
 </script>
 
 {#if audioStore.queue[0]}
-	<div class="w-full max-w-sm">
-		<AudioTrack.Root trackId={audioStore.queue[0].id} />
-	</div>
+	<AudioTrack.Root trackId={audioStore.queue[0].id} />
 {:else}
 	<p class="text-muted-foreground text-sm">No tracks in queue.</p>
 {/if}

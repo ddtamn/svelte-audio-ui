@@ -12,7 +12,7 @@
 </script>
 
 <div
-	class={cn("bg-accent/5 w-full rounded-lg border p-1.5", className)}
+	class={cn("bg-card w-full rounded-lg border p-1.5", className)}
 	data-slot="audio-player"
 	role="presentation"
 	{...rest}
