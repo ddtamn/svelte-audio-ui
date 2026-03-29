@@ -30,7 +30,7 @@
 			alt={name}
 			width={1440}
 			height={900}
-			class="bg-background absolute start-0 top-0 z-20 w-[970px] max-w-none sm:w-7xl md:hidden dark:hidden md:dark:hidden"
+			class="bg-background absolute inset-s-0 top-0 z-20 w-[970px] max-w-none sm:w-7xl md:hidden dark:hidden md:dark:hidden"
 		/>
 		<img
 			src="/img/registry/{name}-dark.png"

@@ -4,7 +4,6 @@ export const siteConfig = {
 	url: "https://svelte-audio-ui.vercel.app",
 	description:
 		"A set of accessible and composable Audio UI components. Built on top of shadcn-svelte, inspired by audio-ui, it's designed for you to copy, paste, and own.",
-	version: "1.0.0",
 	ogImage: {
 		url: `https://www.svelte-audio-ui.vercel.app/assets/OriHeroImage_dark.png`,
 		height: 630,
