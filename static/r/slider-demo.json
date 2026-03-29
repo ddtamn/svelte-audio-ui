@@ -5,7 +5,7 @@
   "description": "",
   "dependencies": [],
   "registryDependencies": [
-    "slider"
+    "https://svelte-audio-ui.vercel.app/r/slider.json"
   ],
   "meta": {
     "author": "ddtamn",

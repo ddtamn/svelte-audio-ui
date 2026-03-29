@@ -5,7 +5,7 @@
   "description": "",
   "dependencies": [],
   "registryDependencies": [
-    "fader"
+    "https://svelte-audio-ui.vercel.app/r/fader.json"
   ],
   "meta": {
     "author": "ddtamn",

@@ -7,7 +7,7 @@
     "lucide-svelte"
   ],
   "registryDependencies": [
-    "provider",
+    "https://svelte-audio-ui.vercel.app/r/provider.json",
     "dropdown-menu",
     "tooltip",
     "button"

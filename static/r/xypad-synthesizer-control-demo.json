@@ -5,7 +5,7 @@
   "description": "",
   "dependencies": [],
   "registryDependencies": [
-    "xypad"
+    "https://svelte-audio-ui.vercel.app/r/xypad.json"
   ],
   "meta": {
     "author": "ddtamn",

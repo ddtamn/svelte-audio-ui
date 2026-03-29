@@ -5,7 +5,7 @@
   "description": "",
   "dependencies": [],
   "registryDependencies": [
-    "knob"
+    "https://svelte-audio-ui.vercel.app/r/knob.json"
   ],
   "meta": {
     "author": "ddtamn",

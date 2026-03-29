@@ -5,7 +5,7 @@
   "description": "",
   "dependencies": [],
   "registryDependencies": [
-    "sortable-list"
+    "https://svelte-audio-ui.vercel.app/r/sortable-list.json"
   ],
   "meta": {
     "author": "ddtamn",
