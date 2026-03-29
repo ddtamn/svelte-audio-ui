@@ -26,7 +26,7 @@ component: true
 
 {#snippet cli()}
 
-<PMAddComp name="https://svelte-audio-ui/r/knob.json" />
+<PMAddComp name="https://svelte-audio-ui.vercel.app/r/knob.json" />
 
 {/snippet}
 

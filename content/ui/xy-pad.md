@@ -24,7 +24,7 @@ component: true
 
 {#snippet cli()}
 
-<PMAddComp name="https://svelte-audio-ui/r/xypad.json" />
+<PMAddComp name="https://svelte-audio-ui.vercel.app/r/xypad.json" />
 
 {/snippet}
 

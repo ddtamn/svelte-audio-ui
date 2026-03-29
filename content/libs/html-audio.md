@@ -20,7 +20,7 @@ The `htmlAudio` singleton manages playback of HTML5 audio with automatic retry l
 
 {#snippet cli()}
 
-<PMAddComp name="https://svelte-audio-ui/r/html-audio.json" />
+<PMAddComp name="https://svelte-audio-ui.vercel.app/r/provider.json" />
 
 {/snippet}
 
@@ -42,7 +42,7 @@ Import the singleton and helpers from the audio library:
     htmlAudio,
     formatDuration,
     type Track,
-  } from "$registry/lib/html-audio";
+  } from "$lib/html-audio";
 </script>
 ```
 
@@ -53,7 +53,7 @@ Import the singleton and helpers from the audio library:
 Manages the underlying `HTMLAudioElement`, playback state, retries, and custom events. Initialize on client start — the instance is built to be server-safe.
 
 ```typescript
-import { htmlAudio } from "$registry/lib/html-audio";
+import { htmlAudio } from "$lib/html-audio";
 
 // Initialize on the client
 htmlAudio.init();
@@ -151,7 +151,7 @@ htmlAudio.addEventListener("bufferUpdate", (e) => {
 Format seconds into an `MM:SS` string. Extremely handy for UI constraints. Handles invalid input gracefully.
 
 ```typescript
-import { formatDuration } from "$registry/lib/html-audio";
+import { formatDuration } from "$lib/html-audio";
 
 console.log(formatDuration(125)); // "2:05"
 console.log(formatDuration(3661)); // "61:01"
@@ -162,7 +162,7 @@ console.log(formatDuration(3661)); // "61:01"
 Check if a duration value indicates a live stream.
 
 ```typescript
-import { htmlAudio } from "$registry/lib/html-audio";
+import { htmlAudio } from "$lib/html-audio";
 
 const duration = htmlAudio.getDuration();
 
@@ -206,7 +206,7 @@ Just wire it up on mount.
 
 ```svelte
 <script lang="ts">
-  import { htmlAudio } from "$registry/lib/html-audio";
+  import { htmlAudio } from "$lib/html-audio";
   import { onMount } from "svelte";
 
   onMount(() => {
@@ -231,7 +231,7 @@ Just wire it up on mount.
 Awesome polish feature: you can smoothly fade the volume instead of jarring the user.
 
 ```typescript
-import { htmlAudio } from "$registry/lib/html-audio";
+import { htmlAudio } from "$lib/html-audio";
 
 // Immediate jump
 htmlAudio.setVolume({ volume: 0.5 });
@@ -248,7 +248,7 @@ htmlAudio.setMuted(false);
 
 ```svelte
 <script lang="ts">
-  import { htmlAudio, formatDuration } from "$registry/lib/html-audio";
+  import { htmlAudio, formatDuration } from "$lib/html-audio";
   import { onMount, onDestroy } from "svelte";
 
   let time = $state(0);

@@ -7,12 +7,17 @@
 
 	interface Props {
 		class?: string;
-		size?: string;
-		variant?: string;
+		size?: "icon" | "default" | "sm" | "lg" | "icon-sm" | "icon-lg";
+		variant?: "outline" | "default" | "destructive" | "secondary" | "ghost" | "link";
 		[key: string]: unknown;
 	}
 
-	let { class: className = "", size = "icon", variant = "outline", ...rest }: Props = $props();
+	let {
+		class: className = "",
+		size = "icon" as Props["size"],
+		variant = "outline" as Props["variant"],
+		...rest
+	}: Props = $props();
 
 	function handleToggle() {
 		if (audioStore.shuffleEnabled) {
@@ -25,18 +30,21 @@
 
 <Tooltip.Root>
 	<Tooltip.Trigger>
-		<Button
-			{variant}
-			{size}
-			aria-label="Shuffle"
-			data-slot="audio-queue-shuffle"
-			data-state={audioStore.shuffleEnabled ? "on" : "off"}
-			class={cn(audioStore.shuffleEnabled && "bg-accent! text-accent-foreground!", className)}
-			onclick={handleToggle}
-			{...rest}
-		>
-			<Shuffle class="size-4" />
-		</Button>
+		{#snippet child({ props })}
+			<Button
+				{...props}
+				{variant}
+				{size}
+				aria-label="Shuffle"
+				data-slot="audio-queue-shuffle"
+				data-state={audioStore.shuffleEnabled ? "on" : "off"}
+				class={cn(audioStore.shuffleEnabled && "bg-accent! text-accent-foreground!", className)}
+				onclick={handleToggle}
+				{...rest}
+			>
+				<Shuffle class="size-4" />
+			</Button>
+		{/snippet}
 	</Tooltip.Trigger>
 	<Tooltip.Content side="top" sideOffset={4}>
 		Shuffle {audioStore.shuffleEnabled ? "on" : "off"}

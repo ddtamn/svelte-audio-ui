@@ -23,7 +23,7 @@ component: true
 
 {#snippet cli()}
 
-<PMAddComp name="https://svelte-audio-ui/r/track.json" />
+<PMAddComp name="https://svelte-audio-ui.vercel.app/r/track.json" />
 
 {/snippet}
 

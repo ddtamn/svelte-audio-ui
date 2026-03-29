@@ -18,7 +18,7 @@ component: false
 
 {#snippet cli()}
 
-<PMAddComp name="https://svelte-audio-ui/r/audio-store.json" />
+<PMAddComp name="https://svelte-audio-ui.vercel.app/r/provider.json" />
 
 {/snippet}
 
@@ -43,7 +43,7 @@ Import the global store and helper types directly into your Svelte components:
     canUseDOM,
     type RepeatMode,
     type InsertMode,
-  } from "$registry/lib/audio-store.svelte";
+  } from "$lib/audio-store.svelte";
 </script>
 ```
 
@@ -59,7 +59,7 @@ We leverage Svelte 5's powerful `$state` runes to create a highly reactive, clas
 
 ```svelte
 <script lang="ts">
-  import { audioStore } from "$registry/lib/audio-store.svelte";
+  import { audioStore } from "$lib/audio-store.svelte";
 </script>
 
 <p>
@@ -182,7 +182,7 @@ Building a custom minimal player is insanely easy. Just wire up the store.
 
 ```svelte
 <script lang="ts">
-  import { audioStore } from "$registry/lib/audio-store.svelte";
+  import { audioStore } from "$lib/audio-store.svelte";
 
   function formatDuration(seconds: number) {
     const mins = Math.floor(seconds / 60);
@@ -216,7 +216,7 @@ Easily manipulate the queue with just a few method calls.
 
 ```svelte
 <script lang="ts">
-  import { audioStore } from "$registry/lib/audio-store.svelte";
+  import { audioStore } from "$lib/audio-store.svelte";
 
   const newTrack = { id: "123", title: "Indie Banger", src: "/music.mp3" };
 </script>
@@ -246,7 +246,7 @@ Easily manipulate the queue with just a few method calls.
 Need to kick off music from a vanilla `.ts` file or a SvelteKit load function? Since `audioStore` is a class singleton, it works anywhere.
 
 ```typescript
-import { audioStore } from "$registry/lib/audio-store.svelte";
+import { audioStore } from "$lib/audio-store.svelte";
 
 // Read state
 console.log(audioStore.isPlaying);

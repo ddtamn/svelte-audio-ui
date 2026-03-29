@@ -4,6 +4,7 @@
 	import { particles } from "$registry/particles";
 	import { page } from "$app/state";
 	import { goto } from "$app/navigation";
+	import { track } from "@vercel/analytics";
 
 	const categories = ["All", "Grid", "Player", "Queue", "Sortable", "Synth", "Track"];
 
@@ -63,7 +64,10 @@
 								size="sm"
 								variant={activeCategory === category ? "default" : "outline"}
 								class="transition-colors duration-200"
-								onclick={() => setCategory(category)}
+								onclick={() => {
+									track(category);
+									setCategory(category);
+								}}
 							>
 								{category}
 							</Button>
