@@ -1,4 +1,4 @@
-import { htmlAudio, type Track } from "$registry/lib/html-audio";
+import { htmlAudio, type Track } from "./html-audio.js";
 
 export type RepeatMode = "none" | "one" | "all";
 export type InsertMode = "first" | "last" | "after";

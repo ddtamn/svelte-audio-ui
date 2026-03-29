@@ -93,17 +93,29 @@ function processComponent(name: string, dir: string, filePaths: string[], kind: 
 			const depName = match[1];
 			if (depName.startsWith("svelte")) continue; // Built-in
 			// Add common third party dependencies
-			if (depName.startsWith("lucide-svelte")) dependencies.add("lucide-svelte");
+			if (depName.startsWith("@lucide/svelte") || depName.startsWith("lucide-svelte")) dependencies.add("lucide-svelte");
 			if (depName.startsWith("svelte-dnd-action")) dependencies.add("svelte-dnd-action");
 			if (depName.startsWith("tailwind-merge")) dependencies.add("tailwind-merge");
 			if (depName.startsWith("clsx")) dependencies.add("clsx");
 			// Add more rules here if necessary
 		}
 
+		// 5. Inherent Provider Dependency
+		// These standard UI components intrinsically rely on the AudioProvider wrapper
+		const requiresProvider = ["player", "queue", "track", "playback-speed"];
+		if (requiresProvider.includes(name) && kind === "ui") {
+			registryDependencies.add("provider");
+		}
+
+
 		// --- TRANSFORM IMPORTS FOR USER ENVIRONMENT ---
 		// Utils
 		content = content.replace(/\$registry\/lib\/utils(\.js)?/g, "$lib/utils.js");
 		content = content.replace(/\$registry\/registry-utils(\.js)?/g, "$lib/utils.js"); // fallback
+
+		// Libs
+		content = content.replace(/\$registry\/lib\/audio-store\.svelte(\.js)?/g, "$lib/audio-store.svelte.js");
+		content = content.replace(/\$registry\/lib\/html-audio(\.js)?/g, "$lib/html-audio.js");
 		
 		// Remove `elements/` from path because we flatten into `audio/`
 		content = content.replace(/\$registry\/ui\/audio\/elements\/([^\/]+)/g, "$lib/components/ui/audio/$1");
@@ -130,6 +142,24 @@ function processComponent(name: string, dir: string, filePaths: string[], kind: 
 			target: targetPath,
 		};
 	});
+
+	if (name === "provider" && kind === "ui") {
+		const libDir = path.join(REGISTRY_BASE, "lib");
+		if (fs.existsSync(path.join(libDir, "audio-store.svelte.ts"))) {
+			processedFiles.push({
+				content: fs.readFileSync(path.join(libDir, "audio-store.svelte.ts"), "utf8"),
+				type: "registry:lib",
+				target: "audio-store.svelte.ts",
+			});
+		}
+		if (fs.existsSync(path.join(libDir, "html-audio.ts"))) {
+			processedFiles.push({
+				content: fs.readFileSync(path.join(libDir, "html-audio.ts"), "utf8"),
+				type: "registry:lib",
+				target: "html-audio.ts",
+			});
+		}
+	}
 
 	return {
 		name,

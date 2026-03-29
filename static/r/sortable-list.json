@@ -3,7 +3,9 @@
   "type": "registry:ui",
   "author": "ddtamn",
   "description": "",
-  "dependencies": [],
+  "dependencies": [
+    "lucide-svelte"
+  ],
   "registryDependencies": [
     "button"
   ],

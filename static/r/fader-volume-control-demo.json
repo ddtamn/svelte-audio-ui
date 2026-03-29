@@ -15,7 +15,7 @@
   },
   "files": [
     {
-      "content": "<script lang=\"ts\">\n\timport { Fader } from \"$lib/components/ui/audio/fader/index.js\";\n\timport { audioStore } from \"$registry/lib/audio-store.svelte.js\";\n\n\tfunction handleVolumeChange(value: number) {\n\t\taudioStore.setVolume({ volume: value / 100 });\n\t}\n</script>\n\n<div class=\"flex h-48 items-center justify-center gap-4\">\n\t<Fader label=\"Vol\" value={audioStore.volume * 100} onValueChange={handleVolumeChange} />\n</div>\n",
+      "content": "<script lang=\"ts\">\n\timport { Fader } from \"$lib/components/ui/audio/fader/index.js\";\n\timport { audioStore } from \"$lib/audio-store.svelte.js\";\n\n\tfunction handleVolumeChange(value: number) {\n\t\taudioStore.setVolume({ volume: value / 100 });\n\t}\n</script>\n\n<div class=\"flex h-48 items-center justify-center gap-4\">\n\t<Fader label=\"Vol\" value={audioStore.volume * 100} onValueChange={handleVolumeChange} />\n</div>\n",
       "type": "registry:file",
       "target": "audio/fader-volume-control-demo.svelte"
     }
