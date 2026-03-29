@@ -8,24 +8,28 @@
 
 	let { children, particle } = $props();
 
-	// Load all particle sources as raw strings
-	const rawSources = import.meta.glob("/src/lib/registry/particles/*.svelte", {
-		query: "?raw",
-		import: "default",
-		eager: true,
-	}) as Record<string, string>;
+	// Load all particle and example sources as raw strings
+	const rawSources = import.meta.glob(
+		["/src/lib/registry/particles/*.svelte", "/src/lib/registry/examples/*.svelte"],
+		{
+			query: "?raw",
+			import: "default",
+			eager: true,
+		}
+	) as Record<string, string>;
 
-	let ComponentSource = $derived(
-		rawSources[`/src/lib/registry/particles/${particle.id.replace("particle-", "")}.svelte`] ||
-			""
-	);
+	let ComponentSource = $derived.by(() => {
+		const cleanId = particle.id.replace("particle-", "");
+		const key = Object.keys(rawSources).find((k) => k.endsWith(`/${cleanId}.svelte`));
+		return key ? rawSources[key] : "";
+	});
 </script>
 
 <div class="bg-muted/50 relative flex min-w-0 flex-col rounded-xl border">
 	<div
 		class="bg-background -m-px flex min-w-0 flex-1 flex-col flex-wrap items-center justify-center overflow-x-auto rounded-xl border p-5"
 	>
-		<div class="w-full">{@render children()}</div>
+		<div class="flex w-full items-center justify-center">{@render children()}</div>
 	</div>
 	<div class="flex items-center gap-3 rounded-b-xl p-2">
 		<p class="text-muted-foreground flex flex-1 gap-1 truncate text-xs">

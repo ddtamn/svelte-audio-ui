@@ -1,0 +1,23 @@
+{
+  "name": "player-demo",
+  "type": "registry:example",
+  "author": "ddtamn",
+  "description": "",
+  "dependencies": [],
+  "registryDependencies": [
+    "player"
+  ],
+  "meta": {
+    "author": "ddtamn",
+    "version": "1.0.0",
+    "documentation": "https://svelte-audio-ui.vercel.app/docs/components/player-demo",
+    "repository": "https://github.com/ddtamn/svelte-audio-ui"
+  },
+  "files": [
+    {
+      "content": "<script lang=\"ts\">\n\timport * as AudioPlayer from \"$lib/components/ui/audio/player/index.js\";\n</script>\n\n<AudioPlayer.Root>\n\t<AudioPlayer.ControlBar>\n\t\t<AudioPlayer.Play />\n\t\t<AudioPlayer.SeekBar />\n\t\t<AudioPlayer.TimeDisplay />\n\t\t<AudioPlayer.Volume />\n\t</AudioPlayer.ControlBar>\n</AudioPlayer.Root>\n",
+      "type": "registry:file",
+      "target": "audio/player-demo.svelte"
+    }
+  ]
+}

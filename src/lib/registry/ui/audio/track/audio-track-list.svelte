@@ -122,7 +122,7 @@
 	</div>
 {:else if sortable && !isFiltered}
 	<!-- Sortable list ─────────────────────────────────────────────────────────── -->
-	<div class={cn("w-full overflow-y-auto", className)}>
+	<div class={cn("no-scrollbar w-full overflow-y-auto", className)}>
 		<SortableList
 			items={displayTracks()
 				.filter((t) => t.id !== undefined)
@@ -132,7 +132,7 @@
 		>
 			{#snippet item(row)}
 				{@const track = row._track as Track}
-				{@const idx = displayTracks().findIndex(t => t.id === track.id)}
+				{@const idx = displayTracks().findIndex((t) => t.id === track.id)}
 				<AudioTrack
 					{track}
 					index={idx >= 0 ? idx : undefined}
@@ -147,7 +147,7 @@
 	</div>
 {:else}
 	<!-- Plain list ────────────────────────────────────────────────────────────── -->
-	<div class={cn("w-full overflow-y-auto", className)}>
+	<div class={cn("no-scrollbar w-full overflow-y-auto", className)}>
 		<div class={cn("w-full", listClass)}>
 			{#each displayTracks() as track, idx (track.id)}
 				<AudioTrack

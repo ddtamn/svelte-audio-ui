@@ -1,8 +1,100 @@
 <script lang="ts">
-
 	import CopyButton from "$lib/components/copy-button.svelte";
 	import { cn } from "$lib/utils.js";
+	import { SvelteMap } from "svelte/reactivity";
+	import type { Highlighter } from "shiki";
 
+	// Highlighter is expensive to instantiate – create it once and share it.
+	let highlighterPromise: Promise<Highlighter> | null = null;
+
+	function getHighlighter(): Promise<Highlighter> {
+		if (!highlighterPromise) {
+			highlighterPromise = (async () => {
+				const { createHighlighterCore } = await import("shiki/core");
+				const { createJavaScriptRegexEngine } = await import("shiki/engine/javascript");
+				return createHighlighterCore({
+					themes: [
+						import("@shikijs/themes/github-dark"),
+						import("@shikijs/themes/github-light-default"),
+					],
+					langs: [
+						import("@shikijs/langs/svelte"),
+						import("@shikijs/langs/typescript"),
+						import("@shikijs/langs/css"),
+						import("@shikijs/langs/bash"),
+						import("@shikijs/langs/json"),
+					],
+					engine: createJavaScriptRegexEngine(),
+				});
+			})();
+		}
+		return highlighterPromise;
+	}
+
+	// Prettier result cache keyed by "lang:rawCode"
+	const prettierCache = new SvelteMap<string, string>();
+
+	type FormattableLanguage = "svelte" | "typescript" | "css";
+	const FORMATTABLE = new Set<FormattableLanguage>(["svelte", "typescript", "css"]);
+
+	async function formatCode(raw: string, lang: string): Promise<string> {
+		if (!FORMATTABLE.has(lang as FormattableLanguage)) return raw;
+
+		const cacheKey = `${lang}:${raw}`;
+		const cached = prettierCache.get(cacheKey);
+		if (cached !== undefined) return cached;
+
+		try {
+			const prettier = await import("prettier/standalone");
+			const plugins: unknown[] = [];
+
+			if (lang === "svelte") {
+				plugins.push(
+					await import("prettier-plugin-svelte/browser"),
+					await import("prettier/plugins/estree"),
+					await import("prettier/plugins/typescript"),
+					await import("prettier/plugins/babel"),
+					await import("prettier/plugins/postcss"),
+					await import("prettier/plugins/html")
+				);
+			} else if (lang === "typescript") {
+				plugins.push(
+					await import("prettier/plugins/typescript"),
+					await import("prettier/plugins/estree")
+				);
+			} else {
+				plugins.push(await import("prettier/plugins/postcss"));
+			}
+
+			const parser =
+				lang === "svelte" ? "svelte" : lang === "typescript" ? "typescript" : "css";
+
+			const formatted = await prettier.format(raw, {
+				parser,
+				plugins: plugins.map((p) => (p as { default?: unknown }).default ?? p),
+				useTabs: false,
+				tabWidth: 2,
+				singleQuote: false,
+				trailingComma: "none",
+				printWidth: 80,
+				endOfLine: "lf",
+				bracketSameLine: false,
+			});
+
+			const clean = formatted
+				.replaceAll("<!-- prettier-ignore -->\n", "")
+				.replaceAll("// prettier-ignore\n", "")
+				.trim();
+
+			prettierCache.set(cacheKey, clean);
+			return clean;
+		} catch (e) {
+			console.error("Prettier formatting failed:", e);
+			return raw;
+		}
+	}
+
+	// ─── Props ────────────────────────────────────────────────────────────────────
 	let {
 		component = "",
 		lang = "svelte",
@@ -15,89 +107,38 @@
 		showLineNumbers?: boolean;
 	} = $props();
 
+	// ─── Async pipeline state ─────────────────────────────────────────────────────
+	// $derived cannot be async in Svelte 5, so $effect + $state is the correct
+	// pattern for an async highlight pipeline.
 	let highlightedHtml = $state("");
 	let plainText = $state("");
 
 	$effect(() => {
 		const rawInput = String(component || "").trim();
+		const currentLang = lang;
+
 		if (!rawInput) {
 			plainText = "";
 			highlightedHtml = "";
 			return;
 		}
 
-		let isActive = true;
+		let cancelled = false;
 
-		async function processCode() {
-			let codeToHighlight = rawInput;
-			try {
-				if (lang === "svelte" || lang === "typescript" || lang === "css") {
-					const prettier = await import("prettier/standalone");
-					const plugins = [];
-					if (lang === "svelte") {
-						plugins.push(await import("prettier-plugin-svelte/browser"));
-						plugins.push(await import("prettier/plugins/estree"));
-						plugins.push(await import("prettier/plugins/typescript"));
-						plugins.push(await import("prettier/plugins/babel"));
-						plugins.push(await import("prettier/plugins/postcss"));
-						plugins.push(await import("prettier/plugins/html"));
-					} else if (lang === "typescript") {
-						plugins.push(await import("prettier/plugins/typescript"));
-						plugins.push(await import("prettier/plugins/estree"));
-					} else if (lang === "css") {
-						plugins.push(await import("prettier/plugins/postcss"));
-					}
+		(async () => {
+			// 1. Format (module-level cache avoids redundant Prettier runs)
+			const formatted = await formatCode(rawInput, currentLang);
+			if (cancelled) return;
+			plainText = formatted;
 
-					codeToHighlight = await prettier.format(codeToHighlight, {
-						parser: lang === "svelte" ? "svelte" : lang === "typescript" ? "typescript" : "css",
-						plugins: plugins.map((p) => p.default || p),
-						useTabs: false,
-						tabWidth: 2,
-						singleQuote: false,
-						trailingComma: "none",
-						printWidth: 80,
-						endOfLine: "lf",
-						bracketSameLine: false,
-					});
+			// 2. Highlight (singleton — only instantiated on the very first call)
+			const highlighter = await getHighlighter();
+			if (cancelled) return;
 
-					codeToHighlight = codeToHighlight
-						.replaceAll("<!-- prettier-ignore -->\n", "")
-						.replaceAll("// prettier-ignore\n", "")
-						.trim();
-				}
-			} catch (e) {
-				console.error("Prettier formatting failed:", e);
-			}
-
-			if (!isActive) return;
-			plainText = codeToHighlight;
-
-			const { createHighlighterCore } = await import("shiki/core");
-			const { createJavaScriptRegexEngine } = await import("shiki/engine/javascript");
-
-			const highlighter = await createHighlighterCore({
-				themes: [
-					import("@shikijs/themes/github-dark"),
-					import("@shikijs/themes/github-light-default"),
-				],
-				langs: [
-					import("@shikijs/langs/svelte"),
-					import("@shikijs/langs/typescript"),
-					import("@shikijs/langs/css"),
-					import("@shikijs/langs/bash"),
-					import("@shikijs/langs/json"),
-				],
-				engine: createJavaScriptRegexEngine(),
-			});
-
-			const html = highlighter.codeToHtml(codeToHighlight, {
-				lang,
-				themes: {
-					dark: "github-dark",
-					light: "github-light-default",
-				},
+			const html = highlighter.codeToHtml(formatted, {
+				lang: currentLang,
+				themes: { dark: "github-dark", light: "github-light-default" },
 				defaultColor: false,
-				// Make sure CSS variables match the site's utility rules
 				transformers: [
 					{
 						line(node) {
@@ -107,31 +148,27 @@
 				],
 			});
 
-			const parser = new DOMParser();
-			const doc = parser.parseFromString(html, "text/html");
+			const domParser = new DOMParser();
+			const doc = domParser.parseFromString(html, "text/html");
 			const preNode = doc.querySelector("pre");
 
 			if (preNode && showLineNumbers) {
-				const codeNode = preNode.querySelector("code");
-				if (codeNode) {
-					codeNode.setAttribute("data-line-numbers", "");
-				}
+				preNode.querySelector("code")?.setAttribute("data-line-numbers", "");
 			}
 
-			if (!isActive) return;
+			if (cancelled) return;
 			highlightedHtml = preNode?.innerHTML ?? "";
-		}
-
-		processCode();
+		})();
 
 		return () => {
-			isActive = false;
+			cancelled = true;
 		};
 	});
 </script>
 
 <figure data-rehype-pretty-code-figure class={cn("relative mt-6", className)}>
 	{#if highlightedHtml}
+		<!-- Shiki output is trusted HTML; the XSS risk here is acceptable -->
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		<pre
 			class={cn(

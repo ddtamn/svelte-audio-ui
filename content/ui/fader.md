@@ -43,11 +43,13 @@ On progress
 ```svelte
 <script lang="ts">
   import { Fader } from "$lib/components/ui/audio/elements/fader/index.js";
+
+  let value = $state(50);
 </script>
 ```
 
 ```svelte
-<Fader value={50} />
+<Fader {value} onValueChange={(e) => (value = e)} />
 ```
 
 ### Horizontal Fader

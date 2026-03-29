@@ -1,0 +1,24 @@
+{
+  "name": "queue-shuffle-repeat-demo",
+  "type": "registry:example",
+  "author": "ddtamn",
+  "description": "",
+  "dependencies": [],
+  "registryDependencies": [
+    "player",
+    "queue"
+  ],
+  "meta": {
+    "author": "ddtamn",
+    "version": "1.0.0",
+    "documentation": "https://svelte-audio-ui.vercel.app/docs/components/queue-shuffle-repeat-demo",
+    "repository": "https://github.com/ddtamn/svelte-audio-ui"
+  },
+  "files": [
+    {
+      "content": "<script lang=\"ts\">\r\n\timport * as AudioPlayer from \"$lib/components/ui/audio/player/index.js\";\r\n\timport * as AudioQueue from \"$lib/components/ui/audio/queue/index.js\";\r\n</script>\r\n\r\n<AudioPlayer.Root class=\"w-max\">\r\n\t<AudioPlayer.ControlBar>\r\n\t\t<AudioQueue.Shuffle />\r\n\t\t<AudioQueue.RepeatMode />\r\n\t\t<AudioQueue.Root />\r\n\t</AudioPlayer.ControlBar>\r\n</AudioPlayer.Root>\r\n",
+      "type": "registry:file",
+      "target": "audio/queue-shuffle-repeat-demo.svelte"
+    }
+  ]
+}

@@ -1,0 +1,742 @@
+{
+  "name": "svelte-audio-ui",
+  "homepage": "https://svelte-audio-ui.vercel.app",
+  "items": [
+    {
+      "name": "playback-speed",
+      "type": "registry:ui",
+      "dependencies": [],
+      "registryDependencies": [
+        "dropdown-menu",
+        "tooltip",
+        "button"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/playback-speed/index.ts"
+        },
+        {
+          "type": "registry:file",
+          "target": "audio/playback-speed/playback-speed.svelte"
+        }
+      ]
+    },
+    {
+      "name": "player",
+      "type": "registry:ui",
+      "dependencies": [],
+      "registryDependencies": [
+        "tooltip",
+        "button",
+        "dropdown-menu",
+        "slider"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/player/audio-player-control-bar.svelte"
+        },
+        {
+          "type": "registry:file",
+          "target": "audio/player/audio-player-control-group.svelte"
+        },
+        {
+          "type": "registry:file",
+          "target": "audio/player/audio-player-fast-forward.svelte"
+        },
+        {
+          "type": "registry:file",
+          "target": "audio/player/audio-player-play.svelte"
+        },
+        {
+          "type": "registry:file",
+          "target": "audio/player/audio-player-rewind.svelte"
+        },
+        {
+          "type": "registry:file",
+          "target": "audio/player/audio-player-seek-bar.svelte"
+        },
+        {
+          "type": "registry:file",
+          "target": "audio/player/audio-player-skip-back.svelte"
+        },
+        {
+          "type": "registry:file",
+          "target": "audio/player/audio-player-skip-forward.svelte"
+        },
+        {
+          "type": "registry:file",
+          "target": "audio/player/audio-player-time-display.svelte"
+        },
+        {
+          "type": "registry:file",
+          "target": "audio/player/audio-player-volume.svelte"
+        },
+        {
+          "type": "registry:file",
+          "target": "audio/player/audio-player.svelte"
+        },
+        {
+          "type": "registry:file",
+          "target": "audio/player/audio-seek-slider.svelte"
+        },
+        {
+          "type": "registry:file",
+          "target": "audio/player/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "provider",
+      "type": "registry:ui",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/provider/audio-provider.svelte"
+        },
+        {
+          "type": "registry:file",
+          "target": "audio/provider/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "queue",
+      "type": "registry:ui",
+      "dependencies": [],
+      "registryDependencies": [
+        "dropdown-menu",
+        "tooltip",
+        "button",
+        "dialog"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/queue/audio-queue-preferences.svelte"
+        },
+        {
+          "type": "registry:file",
+          "target": "audio/queue/audio-queue-repeat-mode.svelte"
+        },
+        {
+          "type": "registry:file",
+          "target": "audio/queue/audio-queue-shuffle.svelte"
+        },
+        {
+          "type": "registry:file",
+          "target": "audio/queue/audio-queue.svelte"
+        },
+        {
+          "type": "registry:file",
+          "target": "audio/queue/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "track",
+      "type": "registry:ui",
+      "dependencies": [],
+      "registryDependencies": [
+        "sortable-list"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/track/audio-track-list.svelte"
+        },
+        {
+          "type": "registry:file",
+          "target": "audio/track/audio-track.svelte"
+        },
+        {
+          "type": "registry:file",
+          "target": "audio/track/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "fader",
+      "type": "registry:ui",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/fader/fader.svelte"
+        },
+        {
+          "type": "registry:file",
+          "target": "audio/fader/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "knob",
+      "type": "registry:ui",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/knob/index.ts"
+        },
+        {
+          "type": "registry:file",
+          "target": "audio/knob/knob.svelte"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/slider/index.ts"
+        },
+        {
+          "type": "registry:file",
+          "target": "audio/slider/slider.svelte"
+        }
+      ]
+    },
+    {
+      "name": "sortable-list",
+      "type": "registry:ui",
+      "dependencies": [],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/sortable-list/index.ts"
+        },
+        {
+          "type": "registry:file",
+          "target": "audio/sortable-list/sortable-drag-handle.svelte"
+        },
+        {
+          "type": "registry:file",
+          "target": "audio/sortable-list/sortable-item.svelte"
+        },
+        {
+          "type": "registry:file",
+          "target": "audio/sortable-list/sortable-list.svelte"
+        }
+      ]
+    },
+    {
+      "name": "xypad",
+      "type": "registry:ui",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/xypad/index.ts"
+        },
+        {
+          "type": "registry:file",
+          "target": "audio/xypad/xypad.svelte"
+        }
+      ]
+    },
+    {
+      "name": "particle-player-widget",
+      "type": "registry:block",
+      "dependencies": [],
+      "registryDependencies": [
+        "player",
+        "track",
+        "queue"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/particle-player-widget.svelte"
+        }
+      ]
+    },
+    {
+      "name": "particle-player",
+      "type": "registry:block",
+      "dependencies": [],
+      "registryDependencies": [
+        "player",
+        "queue"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/particle-player.svelte"
+        }
+      ]
+    },
+    {
+      "name": "particle-pocket-synth",
+      "type": "registry:block",
+      "dependencies": [],
+      "registryDependencies": [
+        "xypad",
+        "fader",
+        "toggle-group"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/particle-pocket-synth.svelte"
+        }
+      ]
+    },
+    {
+      "name": "particle-wave-shaper",
+      "type": "registry:block",
+      "dependencies": [],
+      "registryDependencies": [
+        "xypad",
+        "fader",
+        "knob",
+        "toggle-group"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/particle-wave-shaper.svelte"
+        }
+      ]
+    },
+    {
+      "name": "fader-custom-thumb-marks-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "fader"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/fader-custom-thumb-marks-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "fader-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "fader"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/fader-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "fader-horizontal-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "fader"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/fader-horizontal-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "fader-multiple-control-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "fader"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/fader-multiple-control-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "fader-no-thumb-marks-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "fader"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/fader-no-thumb-marks-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "fader-volume-control-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "fader"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/fader-volume-control-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "knob-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "knob"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/knob-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "knob-filter-control-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "knob"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/knob-filter-control-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "knob-multiple-control-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "knob"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/knob-multiple-control-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "knob-size-variants-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "knob"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/knob-size-variants-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "playback-speed-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "player",
+        "playback-speed"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/playback-speed-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "player-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "player"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/player-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "player-stacked-layout-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "player"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/player-stacked-layout-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "player-with-queue-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "player",
+        "queue"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/player-with-queue-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "queue-all-controls-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "player",
+        "queue"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/queue-all-controls-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "queue-preferences-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "player",
+        "queue"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/queue-preferences-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "queue-shuffle-repeat-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "player",
+        "queue"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/queue-shuffle-repeat-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "queue-simple-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "player",
+        "queue"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/queue-simple-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "slider-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "slider"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/slider-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "sortable-list-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "sortable-list"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/sortable-list-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "track-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "track"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/track-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "track-list-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "track"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/track-list-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "track-list-grid-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "track"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/track-list-grid-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "track-sortable-list-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "track"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/track-sortable-list-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "track-sortable-list-grid-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "track"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/track-sortable-list-grid-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "xypad-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "xypad"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/xypad-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "xypad-filter-control-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "xypad"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/xypad-filter-control-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "xypad-format-value-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "xypad"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/xypad-format-value-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "xypad-hide-value-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "xypad"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/xypad-hide-value-demo.svelte"
+        }
+      ]
+    },
+    {
+      "name": "xypad-synthesizer-control-demo",
+      "type": "registry:example",
+      "dependencies": [],
+      "registryDependencies": [
+        "xypad"
+      ],
+      "files": [
+        {
+          "type": "registry:file",
+          "target": "audio/xypad-synthesizer-control-demo.svelte"
+        }
+      ]
+    }
+  ]
+}

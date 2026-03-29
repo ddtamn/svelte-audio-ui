@@ -1,0 +1,23 @@
+{
+  "name": "xypad-demo",
+  "type": "registry:example",
+  "author": "ddtamn",
+  "description": "",
+  "dependencies": [],
+  "registryDependencies": [
+    "xypad"
+  ],
+  "meta": {
+    "author": "ddtamn",
+    "version": "1.0.0",
+    "documentation": "https://svelte-audio-ui.vercel.app/docs/components/xypad-demo",
+    "repository": "https://github.com/ddtamn/svelte-audio-ui"
+  },
+  "files": [
+    {
+      "content": "<script lang=\"ts\">\n\timport { XYPad } from \"$lib/components/ui/audio/xypad/index.js\";\n</script>\n\n<XYPad defaultValue={{ x: 50, y: 50 }} class=\"aspect-square\" />\n",
+      "type": "registry:file",
+      "target": "audio/xypad-demo.svelte"
+    }
+  ]
+}
