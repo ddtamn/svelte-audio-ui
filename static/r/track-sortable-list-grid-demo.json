@@ -1,6 +1,6 @@
 {
   "name": "track-sortable-list-grid-demo",
-  "type": "registry:example",
+  "type": "registry:block",
   "author": "ddtamn",
   "description": "",
   "dependencies": [],

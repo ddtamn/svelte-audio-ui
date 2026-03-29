@@ -336,7 +336,7 @@
     },
     {
       "name": "fader-custom-thumb-marks-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/fader.json"
@@ -350,7 +350,7 @@
     },
     {
       "name": "fader-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/fader.json"
@@ -364,7 +364,7 @@
     },
     {
       "name": "fader-horizontal-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/fader.json"
@@ -378,7 +378,7 @@
     },
     {
       "name": "fader-multiple-control-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/fader.json"
@@ -392,7 +392,7 @@
     },
     {
       "name": "fader-no-thumb-marks-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/fader.json"
@@ -406,7 +406,7 @@
     },
     {
       "name": "fader-volume-control-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/fader.json"
@@ -420,7 +420,7 @@
     },
     {
       "name": "knob-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/knob.json"
@@ -434,7 +434,7 @@
     },
     {
       "name": "knob-filter-control-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/knob.json"
@@ -448,7 +448,7 @@
     },
     {
       "name": "knob-multiple-control-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/knob.json"
@@ -462,7 +462,7 @@
     },
     {
       "name": "knob-size-variants-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/knob.json"
@@ -476,7 +476,7 @@
     },
     {
       "name": "playback-speed-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/player.json",
@@ -491,7 +491,7 @@
     },
     {
       "name": "player-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/player.json"
@@ -505,7 +505,7 @@
     },
     {
       "name": "player-stacked-layout-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/player.json"
@@ -519,7 +519,7 @@
     },
     {
       "name": "player-with-queue-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/player.json",
@@ -534,7 +534,7 @@
     },
     {
       "name": "queue-all-controls-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/player.json",
@@ -549,7 +549,7 @@
     },
     {
       "name": "queue-preferences-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/player.json",
@@ -564,7 +564,7 @@
     },
     {
       "name": "queue-shuffle-repeat-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/player.json",
@@ -579,7 +579,7 @@
     },
     {
       "name": "queue-simple-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/player.json",
@@ -594,7 +594,7 @@
     },
     {
       "name": "slider-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/slider.json"
@@ -608,7 +608,7 @@
     },
     {
       "name": "sortable-list-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/sortable-list.json"
@@ -622,7 +622,7 @@
     },
     {
       "name": "track-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/track.json"
@@ -636,7 +636,7 @@
     },
     {
       "name": "track-list-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/track.json"
@@ -650,7 +650,7 @@
     },
     {
       "name": "track-list-grid-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/track.json"
@@ -664,7 +664,7 @@
     },
     {
       "name": "track-sortable-list-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/track.json"
@@ -678,7 +678,7 @@
     },
     {
       "name": "track-sortable-list-grid-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/track.json"
@@ -692,7 +692,7 @@
     },
     {
       "name": "xypad-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/xypad.json"
@@ -706,7 +706,7 @@
     },
     {
       "name": "xypad-filter-control-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/xypad.json"
@@ -720,7 +720,7 @@
     },
     {
       "name": "xypad-format-value-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/xypad.json"
@@ -734,7 +734,7 @@
     },
     {
       "name": "xypad-hide-value-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/xypad.json"
@@ -748,7 +748,7 @@
     },
     {
       "name": "xypad-synthesizer-control-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/xypad.json"
