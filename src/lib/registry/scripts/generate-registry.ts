@@ -64,7 +64,7 @@ function processComponent(name: string, dir: string, filePaths: string[], kind: 
 		while ((match = regDepsRegex.exec(content)) !== null) {
 			const depName = match[2];
 			if (depName !== name) {
-				registryDependencies.add(depName);
+				registryDependencies.add(`https://svelte-audio-ui.vercel.app/r/${depName}.json`);
 			}
 		}
 
@@ -74,7 +74,7 @@ function processComponent(name: string, dir: string, filePaths: string[], kind: 
 			const depName = match[1];
 			// Particles are prefixed with 'particle-' in registry
 			if (`particle-${depName}` !== name) {
-				registryDependencies.add(`particle-${depName}`);
+				registryDependencies.add(`https://svelte-audio-ui.vercel.app/r/particle-${depName}.json`);
 			}
 		}
 
@@ -104,7 +104,7 @@ function processComponent(name: string, dir: string, filePaths: string[], kind: 
 		// These standard UI components intrinsically rely on the AudioProvider wrapper
 		const requiresProvider = ["player", "queue", "track", "playback-speed"];
 		if (requiresProvider.includes(name) && kind === "ui") {
-			registryDependencies.add("provider");
+			registryDependencies.add("https://svelte-audio-ui.vercel.app/r/provider.json");
 		}
 
 

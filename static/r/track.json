@@ -7,8 +7,8 @@
     "lucide-svelte"
   ],
   "registryDependencies": [
-    "sortable-list",
-    "provider"
+    "https://svelte-audio-ui.vercel.app/r/sortable-list.json",
+    "https://svelte-audio-ui.vercel.app/r/provider.json"
   ],
   "meta": {
     "author": "ddtamn",

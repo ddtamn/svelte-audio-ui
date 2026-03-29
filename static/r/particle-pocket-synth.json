@@ -5,8 +5,8 @@
   "description": "",
   "dependencies": [],
   "registryDependencies": [
-    "xypad",
-    "fader",
+    "https://svelte-audio-ui.vercel.app/r/xypad.json",
+    "https://svelte-audio-ui.vercel.app/r/fader.json",
     "toggle-group"
   ],
   "meta": {

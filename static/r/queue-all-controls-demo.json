@@ -5,8 +5,8 @@
   "description": "",
   "dependencies": [],
   "registryDependencies": [
-    "player",
-    "queue"
+    "https://svelte-audio-ui.vercel.app/r/player.json",
+    "https://svelte-audio-ui.vercel.app/r/queue.json"
   ],
   "meta": {
     "author": "ddtamn",
