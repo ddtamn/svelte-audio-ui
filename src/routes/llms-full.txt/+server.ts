@@ -29,7 +29,7 @@ export async function GET() {
 			let previousRaw: string;
 			do {
 				previousRaw = cleanRaw;
-				cleanRaw = cleanRaw.replace(/<script[\s\S]*?<\/script>/g, "");
+				cleanRaw = cleanRaw.replace(/<script\b[^>]*>[\s\S]*?<\/script\b[^>]*>/gi, "");
 			} while (cleanRaw !== previousRaw);
 
 			// Simple strip of frontmatter
