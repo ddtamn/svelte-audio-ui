@@ -298,7 +298,7 @@ function rehypeHandleMetadata() {
 }
 
 function getComponentSourceFileContent(src = "") {
-	const newSrc = src.replace("../", "./");
+	const newSrc = src.replace(/\.\.\//g, "./");
 	if (!newSrc) return null;
 
 	// Read the source file.

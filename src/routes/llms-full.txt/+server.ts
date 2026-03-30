@@ -31,6 +31,11 @@ export async function GET() {
 				previousRaw = cleanRaw;
 				cleanRaw = cleanRaw.replace(/<script\b[^>]*>[\s\S]*?<\/script\b[^>]*>/gi, "");
 			} while (cleanRaw !== previousRaw);
+			let previous: string;
+			do {
+				previous = cleanRaw;
+				cleanRaw = cleanRaw.replace(/<script\b[\s\S]*?<\/script[^>]*>/gi, "");
+			} while (cleanRaw !== previous);
 
 			// Simple strip of frontmatter
 			cleanRaw = cleanRaw.replace(/^---\n[\s\S]*?\n---\n/, "");
