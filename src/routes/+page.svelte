@@ -40,24 +40,17 @@
 />
 
 <div class="relative flex flex-1 flex-col">
-	<PlasmaGrid
-		color={mode.current == "dark" ? "#121212" : "#fff"}
-		highlightColor={mode.current == "dark" ? "#373636" : "#D6D7D7"}
-		class="absolute inset-0 h-[400px]"
-	/>
-	<!-- <PlasmaGrid color="#121212" highlightColor="#373636" class="absolute inset-0 h-[400px]" /> -->
-	<div
-		class="pointer-events-none absolute inset-x-0 top-0 z-10 h-32"
-		style="background: linear-gradient(to bottom, {mode.current == 'dark'
-			? '#121212'
-			: '#fff'}, transparent);"
-	></div>
-	<div
-		class="pointer-events-none absolute inset-x-0 top-[calc(400px-8rem)] z-10 h-32"
-		style="background: linear-gradient(to top, {mode.current == 'dark'
-			? '#121212'
-			: '#fff'}, transparent);"
-	></div>
+	{#if mode.current === "dark"}
+		<PlasmaGrid color="#121212" highlightColor="#373636" class="absolute inset-0 h-[550px]" />
+		<div
+			class="pointer-events-none absolute inset-x-0 top-0 z-10 h-32"
+			style="background: linear-gradient(to bottom, #121212, transparent);"
+		></div>
+		<div
+			class="pointer-events-none absolute inset-x-0 top-[calc(550px-8rem)] z-10 h-32"
+			style="background: linear-gradient(to top, #121212, transparent);"
+		></div>
+	{/if}
 	<div class="relative z-20 flex flex-1 flex-col">
 		<section class="border-grid">
 			<div class="container-wrapper">

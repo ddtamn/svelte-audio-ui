@@ -1,42 +1,48 @@
 <script lang="ts">
 	import { siteConfig } from "$lib/config.js";
 	import Button from "$lib/components/ui/button/button.svelte";
-	import * as ButtonGroup from "$lib/components/ui/button-group/index.js";
 	import GithubIcon from "./github.svelte";
 	import { onMount } from "svelte";
 
-	const FALLBACK_STAR_COUNT = 9600;
+	let stars = $state(0);
+	const CACHE_KEY = "SVELTE-AUDIO-UI-GITHUB-STARS";
+	const CACHE_DURATION = 1000 * 60 * 60; // 1 hour
 
 	async function getGithubStarCount() {
 		try {
-			const res = await fetch("https://ungh.cc/repos/ddtamn/svelte-audio-ui");
+			const res = await fetch("https://api.github.com/repos/ddtamn/svelte-audio-ui");
 			const data = await res.json();
-			return data.repo?.stars ?? FALLBACK_STAR_COUNT;
+			localStorage.setItem(
+				CACHE_KEY,
+				JSON.stringify({ stars: data.stargazers_count, timestamp: Date.now() })
+			);
+			return data.stargazers_count ?? 0;
 		} catch (error) {
 			console.error(error);
-			return FALLBACK_STAR_COUNT;
+			return 0;
 		}
 	}
 
-	let stars = $state(FALLBACK_STAR_COUNT);
-
 	onMount(async () => {
-		stars = await getGithubStarCount();
+		const cached = JSON.parse(localStorage.getItem(CACHE_KEY) || "null");
+		if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
+			stars = cached.stars;
+		} else {
+			stars = await getGithubStarCount();
+		}
 	});
 </script>
 
-<ButtonGroup.Root>
-	<Button size="icon-sm" variant="outline">
-		<a
-			aria-label="GitHub"
-			href={siteConfig.links.github}
-			rel="noopener noreferrer"
-			target="_blank"
-		>
-			<GithubIcon />
-		</a></Button
-	>
-	<Button size="sm" variant="outline"
-		>{stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : stars.toLocaleString()}</Button
-	>
-</ButtonGroup.Root>
+<Button
+	href={siteConfig.links.github}
+	target="_blank"
+	rel="noreferrer"
+	size="sm"
+	variant="ghost"
+	class="h-8 shadow-none"
+>
+	<GithubIcon />
+	<span class="text-muted-foreground text-xs tabular-nums">
+		{stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : stars.toLocaleString()}
+	</span>
+</Button>
