@@ -25,7 +25,7 @@ export async function GET() {
 			const raw = await match();
 
 			// Simple strip of svelte <script> tags
-			let cleanRaw = (raw as string).replace(/<script[\s\S]*?<\/script>/g, "");
+			let cleanRaw = (raw as string).replace(/<script\b[\s\S]*?<\/script[^>]*>/gi, "");
 
 			// Simple strip of frontmatter
 			cleanRaw = cleanRaw.replace(/^---\n[\s\S]*?\n---\n/, "");
