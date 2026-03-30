@@ -6,7 +6,7 @@ export type FileTree = {
 
 // todo
 export function createFileTreeForRegistryItemFiles(
-	files: Array<{ target: string; type: [] }> | undefined
+	files: Array<{ target: string; type: string }> | undefined
 ): FileTree[] {
 	if (!files || !Array.isArray(files)) {
 		return [];

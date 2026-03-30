@@ -84,6 +84,7 @@
 	);
 
 	// ── Controlled / uncontrolled state ─────────────────────────────────────────
+	// svelte-ignore state_referenced_locally
 	let internalValue: Point = $state({ ...computedDefault });
 
 	const liveValue = $derived<Point>(controlledValue ?? internalValue);

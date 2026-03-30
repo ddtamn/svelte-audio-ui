@@ -22,6 +22,7 @@
 
 	let { children, data } = $props();
 
+	// svelte-ignore state_referenced_locally
 	const userConfig = UserConfigContext.set(new UserConfig(data.userConfig));
 
 	const themeColors = { light: "#ffffff", dark: "#09090b" };

@@ -55,8 +55,8 @@
 	<meta property="og:url" content={siteConfig.url + page.url.pathname} />
 	<meta property="og:image" content={ogUrl} />
 	<meta property="og:image:alt" content={title} />
-	<meta property="og:image:width" content={ogWidth} />
-	<meta property="og:image:height" content={ogHeight} />
+	<meta property="og:image:width" content={String(ogWidth)} />
+	<meta property="og:image:height" content={String(ogHeight)} />
 	<meta property="og:description" content={description} />
 	<meta property="og:site_name" content={siteConfig.name} />
 	<meta property="og:locale" content="EN_US" />

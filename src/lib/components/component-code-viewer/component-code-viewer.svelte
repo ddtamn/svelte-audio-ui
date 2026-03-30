@@ -8,7 +8,10 @@
 	import * as Dialog from "$lib/components/ui/dialog/index.js";
 	import { MediaQuery } from "svelte/reactivity";
 	import { badgeVariants } from "$lib/components/ui/badge/badge.svelte";
-	import type { HighlightedBlock } from "../../../routes/api/block/[block]/+server.js";
+	import type { HighlightedBlock } from "$lib/components/component-source.svelte";
+	import type { FileTree } from "$lib/registry/registry-utils.js";
+
+	type RegistryItemFile = HighlightedBlock["files"][number];
 
 	export function createFileTreeForRegistryItemFiles(
 		files: Array<{ target: string; type: RegistryItemFile["type"] }> | undefined

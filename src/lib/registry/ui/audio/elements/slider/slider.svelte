@@ -44,6 +44,7 @@
 
 	// ── Resolve initial values (mirrors React useMemo logic) ────────────────────
 	// Always work with number[] internally; bits-ui receives it as type="multiple"
+	// svelte-ignore state_referenced_locally
 	let internalValue: number[] = $state(
 		Array.isArray(value) ? [...value] : Array.isArray(defaultValue) ? [...defaultValue] : [min]
 	);

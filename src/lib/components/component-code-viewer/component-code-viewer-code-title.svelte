@@ -5,7 +5,7 @@
 	import ComponentCodeViewerCopyCodeButton from "./component-code-viewer-copy-code-button.svelte";
 
 	const ctx = ComponentCodeViewerContext.get();
-	const file = $derived(ctx.highlightedFiles?.find((f) => f.target === ctx.activeFile));
+	const file = $derived(ctx.highlightedFiles?.find((f: (typeof ctx.highlightedFiles)[number]) => f.target === ctx.activeFile));
 	const language = $derived(file?.target?.split(".").pop() ?? "svelte");
 	const Icon = $derived(getIconForLanguageExtension(language));
 	const showFileTree = $derived(ctx.allowSidebar !== false);

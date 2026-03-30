@@ -1,9 +1,11 @@
 <script lang="ts">
+	import type { PageData } from "./$types.js";
 	import { Badge } from "$lib/components/ui/badge/index.js";
 	import { Button } from "$lib/components/ui/button/index.js";
 	import ArrowUpRight from "@lucide/svelte/icons/arrow-up-right";
 	import ArrowLeftIcon from "@lucide/svelte/icons/arrow-left";
 	import ArrowRightIcon from "@lucide/svelte/icons/arrow-right";
+	import type { HighlightedBlock } from "$lib/components/component-source.svelte";
 	import DocsToc from "$lib/components/docs-toc.svelte";
 	import { findNeighbors } from "$lib/navigation.js";
 	import { page } from "$app/state";
@@ -14,13 +16,13 @@
 	import DocsCopyPage from "$lib/components/docs-copy-page.svelte";
 	// import CtaMobile from "$lib/components/cta-mobile.svelte";
 
-	let { data } = $props();
+	let { data }: { data: PageData & { viewerData?: unknown } } = $props();
 
 	const Markdown = $derived(data.component);
 	const doc = $derived(data.metadata);
 	const apiLink = $derived(doc.links?.api);
 	const docLink = $derived(doc.links?.doc);
-	const source = $derived(data.viewerData);
+	const source = $derived(data.viewerData as HighlightedBlock | undefined);
 
 	const neighbors = $derived(findNeighbors(page.url.pathname));
 </script>
@@ -143,7 +145,7 @@ the docs container. The issue this resolves is prominent on slow connections (3G
 				<CtaMobile />
 			</div> -->
 			<div class="w-full flex-1 *:data-[slot=alert]:first:mt-0">
-				<Markdown viewerData={data.viewerData} />
+				<Markdown viewerData={source} />
 			</div>
 		</div>
 		<div

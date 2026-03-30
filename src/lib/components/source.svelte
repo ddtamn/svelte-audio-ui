@@ -2,12 +2,12 @@
 	import CopyButton from "$lib/components/copy-button.svelte";
 	import { cn } from "$lib/utils.js";
 	import { SvelteMap } from "svelte/reactivity";
-	import type { Highlighter } from "shiki";
+	import type { Plugin } from "prettier";
 
 	// Highlighter is expensive to instantiate – create it once and share it.
-	let highlighterPromise: Promise<Highlighter> | null = null;
+	let highlighterPromise: Promise<any> | null = null;
 
-	function getHighlighter(): Promise<Highlighter> {
+	function getHighlighter(): Promise<any> {
 		if (!highlighterPromise) {
 			highlighterPromise = (async () => {
 				const { createHighlighterCore } = await import("shiki/core");
@@ -68,10 +68,11 @@
 
 			const parser =
 				lang === "svelte" ? "svelte" : lang === "typescript" ? "typescript" : "css";
+			const resolvedPlugins = plugins.map((p) => (p as { default?: unknown }).default ?? p) as Plugin<any>[];
 
 			const formatted = await prettier.format(raw, {
 				parser,
-				plugins: plugins.map((p) => (p as { default?: unknown }).default ?? p),
+				plugins: resolvedPlugins,
 				useTabs: false,
 				tabWidth: 2,
 				singleQuote: false,
@@ -141,7 +142,7 @@
 				defaultColor: false,
 				transformers: [
 					{
-						line(node) {
+						line(node: { properties: Record<string, string> }) {
 							node.properties["data-line"] = "";
 						},
 					},
