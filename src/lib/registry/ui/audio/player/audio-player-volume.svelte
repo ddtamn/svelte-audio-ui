@@ -4,13 +4,13 @@
 	import { cn } from "$registry/lib/utils.js";
 	import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
 	import * as Tooltip from "$lib/components/ui/tooltip";
-	import { Button } from "$lib/components/ui/button";
+	import { Button, type ButtonSize, type ButtonVariant } from "$lib/components/ui/button";
 	import { Slider } from "$lib/components/ui/slider";
 
 	interface Props {
 		class?: string;
-		size?: string;
-		variant?: string;
+		size?: ButtonSize;
+		variant?: ButtonVariant;
 	}
 
 	let { class: className = "", size = "icon", variant = "outline" }: Props = $props();
