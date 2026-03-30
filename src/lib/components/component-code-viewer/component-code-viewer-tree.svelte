@@ -14,7 +14,11 @@
 		item: {
 			name: string;
 			path?: string;
-			children?: { name: string; path?: string; children?: unknown[] }[];
+			children?: Array<{
+				name: string;
+				path?: string;
+				children?: any[];
+			}>;
 		};
 		index: number;
 	} = $props();
