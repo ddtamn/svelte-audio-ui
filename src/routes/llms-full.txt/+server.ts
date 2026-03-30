@@ -26,6 +26,11 @@ export async function GET() {
 
 			// Simple strip of svelte <script> tags
 			let cleanRaw = raw as string;
+			let previousRaw: string;
+			do {
+				previousRaw = cleanRaw;
+				cleanRaw = cleanRaw.replace(/<script\b[^>]*>[\s\S]*?<\/script\b[^>]*>/gi, "");
+			} while (cleanRaw !== previousRaw);
 			let previous: string;
 			do {
 				previous = cleanRaw;
