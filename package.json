@@ -5,6 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"build:registry": "node ./scripts/build-registry.ts",
+		"generate:registry": "bun run ./scripts/generate-registry.ts",
 		"dev": "npm run build:registry && vite dev",
 		"dev:content": "velite dev --watch",
 		"dev:svelte": "vite dev",
@@ -76,6 +77,7 @@
 		"posthog-js": "^1.364.1",
 		"svelte-dnd-action": "^0.9.69",
 		"three": "^0.183.2",
+		"wavesurfer.js": "^7.12.5",
 		"zod": "^4.3.6"
 	}
 }

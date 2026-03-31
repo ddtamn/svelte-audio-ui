@@ -191,12 +191,12 @@ A button that toggles play/pause state. Shows a loading spinner when buffering o
 
 #### Props
 
-| Prop      | Type                              | Default   | Description                   |
-| --------- | --------------------------------- | --------- | ----------------------------- |
-| `class`   | `string`                          | -         | Additional CSS classes.       |
-| `size`    | `string`                          | `"icon"`  | Button size variant.          |
-| `variant` | `string`                          | `"ghost"` | Button visual variant.        |
-| `onclick` | `(e: MouseEvent) => void`         | -         | Additional click handler.     |
+| Prop      | Type                      | Default   | Description               |
+| --------- | ------------------------- | --------- | ------------------------- |
+| `class`   | `string`                  | -         | Additional CSS classes.   |
+| `size`    | `string`                  | `"icon"`  | Button size variant.      |
+| `variant` | `string`                  | `"ghost"` | Button visual variant.    |
+| `onclick` | `(e: MouseEvent) => void` | -         | Additional click handler. |
 
 > **Keyboard Shortcuts**: Automatically handles the Space bar to toggle play/pause when focus is on `document.body`.
 
@@ -240,10 +240,10 @@ Displays the current playback time or remaining time.
 
 #### Props
 
-| Prop        | Type      | Default | Description                                          |
-| ----------- | --------- | ------- | ---------------------------------------------------- |
-| `remaining` | `boolean` | `false` | Display remaining time instead of elapsed time.      |
-| `class`     | `string`  | -       | Additional CSS classes.                              |
+| Prop        | Type      | Default | Description                                     |
+| ----------- | --------- | ------- | ----------------------------------------------- |
+| `remaining` | `boolean` | `false` | Display remaining time instead of elapsed time. |
+| `class`     | `string`  | -       | Additional CSS classes.                         |
 
 On live streams: the non-remaining display shows elapsed time, and the remaining display shows a pulsing **LIVE** badge with a Radio icon.
 
