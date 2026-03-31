@@ -1,7 +1,7 @@
 {
   "$schema": "https://shadcn-svelte.com/schema/registry-item.json",
   "name": "fader-horizontal-demo",
-  "type": "registry:block",
+  "type": "registry:ui",
   "title": "Fader Horizontal Demo",
   "description": "Example: Fader Horizontal Demo.",
   "author": "ddtamn <https://github.com/ddtamn>",
@@ -13,7 +13,7 @@
     {
       "target": "~/src/lib/components/ui/audio/examples/fader-horizontal-demo.svelte",
       "content": "<script lang=\"ts\">\n\timport { Fader } from \"$lib/components/ui/audio/elements/fader/index.js\";\n\n\tlet value = $state(50);\n</script>\n\n<div class=\"flex w-full max-w-sm flex-col items-center gap-4\">\n\t<Fader orientation=\"horizontal\" {value} onValueChange={(e) => (value = e)} />\n\t<span class=\"text-muted-foreground text-sm tabular-nums\">{value}</span>\n</div>\n",
-      "type": "registry:component"
+      "type": "registry:file"
     }
   ],
   "categories": [

@@ -248,7 +248,7 @@ function buildParticleItem(name: string, filePath: string): RegistryItem {
 	return {
 		$schema: "https://shadcn-svelte.com/schema/registry-item.json",
 		name,
-		type: "registry:block",
+		type: "registry:ui",
 		title: toTitle(name),
 		description: `${toTitle(name)} particle for svelte-audio-ui.`,
 		author: AUTHOR,
@@ -258,7 +258,7 @@ function buildParticleItem(name: string, filePath: string): RegistryItem {
 			{
 				target: computeTarget(filePath),
 				content: fs.readFileSync(filePath, "utf8"),
-				type: "registry:component",
+				type: "registry:file",
 			},
 		],
 		docs: `${BASE_URL}/docs/particles`,
@@ -272,7 +272,7 @@ function buildExampleItem(name: string, filePath: string): RegistryItem {
 	return {
 		$schema: "https://shadcn-svelte.com/schema/registry-item.json",
 		name,
-		type: "registry:block",
+		type: "registry:ui",
 		title: toTitle(name),
 		description: `Example: ${toTitle(name)}.`,
 		author: AUTHOR,
@@ -282,7 +282,7 @@ function buildExampleItem(name: string, filePath: string): RegistryItem {
 			{
 				target: computeTarget(filePath),
 				content: fs.readFileSync(filePath, "utf8"),
-				type: "registry:component",
+				type: "registry:file",
 			},
 		],
 		categories: ["audio", "example"],

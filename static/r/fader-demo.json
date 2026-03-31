@@ -1,7 +1,7 @@
 {
   "$schema": "https://shadcn-svelte.com/schema/registry-item.json",
   "name": "fader-demo",
-  "type": "registry:block",
+  "type": "registry:ui",
   "title": "Fader Demo",
   "description": "Example: Fader Demo.",
   "author": "ddtamn <https://github.com/ddtamn>",
@@ -13,7 +13,7 @@
     {
       "target": "~/src/lib/components/ui/audio/examples/fader-demo.svelte",
       "content": "<script lang=\"ts\">\n\timport { Fader } from \"$lib/components/ui/audio/elements/fader/index.js\";\n\tlet value = $state(50);\n</script>\n\n<div class=\"h-48\">\n\t<Fader {value} onValueChange={(e) => (value = e)} />\n</div>\n",
-      "type": "registry:component"
+      "type": "registry:file"
     }
   ],
   "categories": [

@@ -1,7 +1,7 @@
 {
   "$schema": "https://shadcn-svelte.com/schema/registry-item.json",
   "name": "slider-demo",
-  "type": "registry:block",
+  "type": "registry:ui",
   "title": "Slider Demo",
   "description": "Example: Slider Demo.",
   "author": "ddtamn <https://github.com/ddtamn>",
@@ -13,7 +13,7 @@
     {
       "target": "~/src/lib/components/ui/audio/examples/slider-demo.svelte",
       "content": "<script lang=\"ts\">\n\timport { Slider } from \"$lib/components/ui/audio/elements/slider/index.js\";\n\n\tlet value = $state([25]);\n</script>\n\n<div class=\"w-full max-w-sm\">\n\t<Slider {value} onValueChange={(v) => (value = v)} max={100} step={1} bufferValue={55} />\n</div>\n",
-      "type": "registry:component"
+      "type": "registry:file"
     }
   ],
   "categories": [

@@ -1,7 +1,7 @@
 {
   "$schema": "https://shadcn-svelte.com/schema/registry-item.json",
   "name": "xypad-filter-control-demo",
-  "type": "registry:block",
+  "type": "registry:ui",
   "title": "Xypad Filter Control Demo",
   "description": "Example: Xypad Filter Control Demo.",
   "author": "ddtamn <https://github.com/ddtamn>",
@@ -13,7 +13,7 @@
     {
       "target": "~/src/lib/components/ui/audio/examples/xypad-filter-control-demo.svelte",
       "content": "<script lang=\"ts\">\n\timport { XYPad } from \"$lib/components/ui/audio/elements/xypad/index.js\";\n</script>\n\n<XYPad\n\tclass=\"aspect-square\"\n\tdefaultValue={{ x: 50, y: 50 }}\n\tformatValue={(val) => `Freq: ${val.x}%, Res: ${val.y}%`}\n/>\n",
-      "type": "registry:component"
+      "type": "registry:file"
     }
   ],
   "categories": [
