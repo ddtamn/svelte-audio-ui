@@ -1,236 +1,287 @@
 {
+  "$schema": "https://shadcn-svelte.com/schema/registry.json",
   "name": "svelte-audio-ui",
   "homepage": "https://svelte-audio-ui.vercel.app",
   "items": [
     {
       "name": "playback-speed",
       "type": "registry:ui",
+      "title": "Playback Speed",
+      "description": "Playback Speed audio component for svelte-audio-ui.",
       "dependencies": [
         "@lucide/svelte"
       ],
       "registryDependencies": [
-        "https://svelte-audio-ui.vercel.app/r/provider.json",
+        "button",
         "dropdown-menu",
-        "tooltip",
-        "button"
+        "https://svelte-audio-ui.vercel.app/r/provider.json",
+        "tooltip"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/playback-speed/index.ts"
+          "target": "~/src/lib/components/ui/audio/playback-speed/index.ts",
+          "type": "registry:file"
         },
         {
-          "type": "registry:file",
-          "target": "audio/playback-speed/playback-speed.svelte"
+          "target": "~/src/lib/components/ui/audio/playback-speed/playback-speed.svelte",
+          "type": "registry:file"
         }
-      ]
+      ],
+      "categories": [
+        "audio"
+      ],
+      "docs": "https://svelte-audio-ui.vercel.app/docs/components/playback-speed"
     },
     {
       "name": "player",
       "type": "registry:ui",
+      "title": "Player",
+      "description": "Player audio component for svelte-audio-ui.",
       "dependencies": [
         "@lucide/svelte"
       ],
       "registryDependencies": [
-        "https://svelte-audio-ui.vercel.app/r/provider.json",
-        "tooltip",
         "button",
         "dropdown-menu",
-        "slider"
+        "https://svelte-audio-ui.vercel.app/r/provider.json",
+        "slider",
+        "tooltip"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/player/audio-player-control-bar.svelte"
+          "target": "~/src/lib/components/ui/audio/player/audio-player-control-bar.svelte",
+          "type": "registry:file"
         },
         {
-          "type": "registry:file",
-          "target": "audio/player/audio-player-control-group.svelte"
+          "target": "~/src/lib/components/ui/audio/player/audio-player-control-group.svelte",
+          "type": "registry:file"
         },
         {
-          "type": "registry:file",
-          "target": "audio/player/audio-player-fast-forward.svelte"
+          "target": "~/src/lib/components/ui/audio/player/audio-player-fast-forward.svelte",
+          "type": "registry:file"
         },
         {
-          "type": "registry:file",
-          "target": "audio/player/audio-player-play.svelte"
+          "target": "~/src/lib/components/ui/audio/player/audio-player-play.svelte",
+          "type": "registry:file"
         },
         {
-          "type": "registry:file",
-          "target": "audio/player/audio-player-rewind.svelte"
+          "target": "~/src/lib/components/ui/audio/player/audio-player-rewind.svelte",
+          "type": "registry:file"
         },
         {
-          "type": "registry:file",
-          "target": "audio/player/audio-player-seek-bar.svelte"
+          "target": "~/src/lib/components/ui/audio/player/audio-player-seek-bar.svelte",
+          "type": "registry:file"
         },
         {
-          "type": "registry:file",
-          "target": "audio/player/audio-player-skip-back.svelte"
+          "target": "~/src/lib/components/ui/audio/player/audio-player-skip-back.svelte",
+          "type": "registry:file"
         },
         {
-          "type": "registry:file",
-          "target": "audio/player/audio-player-skip-forward.svelte"
+          "target": "~/src/lib/components/ui/audio/player/audio-player-skip-forward.svelte",
+          "type": "registry:file"
         },
         {
-          "type": "registry:file",
-          "target": "audio/player/audio-player-time-display.svelte"
+          "target": "~/src/lib/components/ui/audio/player/audio-player-time-display.svelte",
+          "type": "registry:file"
         },
         {
-          "type": "registry:file",
-          "target": "audio/player/audio-player-volume.svelte"
+          "target": "~/src/lib/components/ui/audio/player/audio-player-volume.svelte",
+          "type": "registry:file"
         },
         {
-          "type": "registry:file",
-          "target": "audio/player/audio-player.svelte"
+          "target": "~/src/lib/components/ui/audio/player/audio-player.svelte",
+          "type": "registry:file"
         },
         {
-          "type": "registry:file",
-          "target": "audio/player/audio-seek-slider.svelte"
+          "target": "~/src/lib/components/ui/audio/player/audio-seek-slider.svelte",
+          "type": "registry:file"
         },
         {
-          "type": "registry:file",
-          "target": "audio/player/index.ts"
+          "target": "~/src/lib/components/ui/audio/player/index.ts",
+          "type": "registry:file"
         }
-      ]
+      ],
+      "categories": [
+        "audio"
+      ],
+      "docs": "https://svelte-audio-ui.vercel.app/docs/components/player"
     },
     {
       "name": "provider",
       "type": "registry:ui",
+      "title": "Provider",
+      "description": "Provider audio component for svelte-audio-ui.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/provider/audio-provider.svelte"
+          "target": "~/src/lib/components/ui/audio/provider/audio-provider.svelte",
+          "type": "registry:file"
         },
         {
-          "type": "registry:file",
-          "target": "audio/provider/index.ts"
+          "target": "~/src/lib/components/ui/audio/provider/index.ts",
+          "type": "registry:file"
         },
         {
-          "type": "registry:lib",
-          "target": "audio-store.svelte.ts"
+          "target": "audio-store.svelte.ts",
+          "type": "registry:lib"
         },
         {
-          "type": "registry:lib",
-          "target": "html-audio.ts"
+          "target": "html-audio.ts",
+          "type": "registry:lib"
         }
-      ]
+      ],
+      "categories": [
+        "audio"
+      ],
+      "docs": "https://svelte-audio-ui.vercel.app/docs/components/provider"
     },
     {
       "name": "queue",
       "type": "registry:ui",
+      "title": "Queue",
+      "description": "Queue audio component for svelte-audio-ui.",
       "dependencies": [
         "@lucide/svelte"
       ],
       "registryDependencies": [
-        "dropdown-menu",
-        "tooltip",
         "button",
+        "dialog",
+        "dropdown-menu",
         "https://svelte-audio-ui.vercel.app/r/provider.json",
-        "dialog"
+        "tooltip"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/queue/audio-queue-preferences.svelte"
+          "target": "~/src/lib/components/ui/audio/queue/audio-queue-preferences.svelte",
+          "type": "registry:file"
         },
         {
-          "type": "registry:file",
-          "target": "audio/queue/audio-queue-repeat-mode.svelte"
+          "target": "~/src/lib/components/ui/audio/queue/audio-queue-repeat-mode.svelte",
+          "type": "registry:file"
         },
         {
-          "type": "registry:file",
-          "target": "audio/queue/audio-queue-shuffle.svelte"
+          "target": "~/src/lib/components/ui/audio/queue/audio-queue-shuffle.svelte",
+          "type": "registry:file"
         },
         {
-          "type": "registry:file",
-          "target": "audio/queue/audio-queue.svelte"
+          "target": "~/src/lib/components/ui/audio/queue/audio-queue.svelte",
+          "type": "registry:file"
         },
         {
-          "type": "registry:file",
-          "target": "audio/queue/index.ts"
+          "target": "~/src/lib/components/ui/audio/queue/index.ts",
+          "type": "registry:file"
         }
-      ]
+      ],
+      "categories": [
+        "audio"
+      ],
+      "docs": "https://svelte-audio-ui.vercel.app/docs/components/queue"
     },
     {
       "name": "track",
       "type": "registry:ui",
+      "title": "Track",
+      "description": "Track audio component for svelte-audio-ui.",
       "dependencies": [
         "@lucide/svelte"
       ],
       "registryDependencies": [
-        "https://svelte-audio-ui.vercel.app/r/sortable-list.json",
-        "https://svelte-audio-ui.vercel.app/r/provider.json"
+        "https://svelte-audio-ui.vercel.app/r/provider.json",
+        "https://svelte-audio-ui.vercel.app/r/sortable-list.json"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/track/audio-track-list.svelte"
+          "target": "~/src/lib/components/ui/audio/track/audio-track-list.svelte",
+          "type": "registry:file"
         },
         {
-          "type": "registry:file",
-          "target": "audio/track/audio-track.svelte"
+          "target": "~/src/lib/components/ui/audio/track/audio-track.svelte",
+          "type": "registry:file"
         },
         {
-          "type": "registry:file",
-          "target": "audio/track/index.ts"
+          "target": "~/src/lib/components/ui/audio/track/index.ts",
+          "type": "registry:file"
         }
-      ]
+      ],
+      "categories": [
+        "audio"
+      ],
+      "docs": "https://svelte-audio-ui.vercel.app/docs/components/track"
     },
     {
       "name": "fader",
       "type": "registry:ui",
+      "title": "Fader",
+      "description": "Fader audio component for svelte-audio-ui.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/fader/fader.svelte"
+          "target": "~/src/lib/components/ui/audio/elements/fader/fader.svelte",
+          "type": "registry:file"
         },
         {
-          "type": "registry:file",
-          "target": "audio/fader/index.ts"
+          "target": "~/src/lib/components/ui/audio/elements/fader/index.ts",
+          "type": "registry:file"
         }
-      ]
+      ],
+      "categories": [
+        "audio"
+      ],
+      "docs": "https://svelte-audio-ui.vercel.app/docs/components/fader"
     },
     {
       "name": "knob",
       "type": "registry:ui",
+      "title": "Knob",
+      "description": "Knob audio component for svelte-audio-ui.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/knob/index.ts"
+          "target": "~/src/lib/components/ui/audio/elements/knob/index.ts",
+          "type": "registry:file"
         },
         {
-          "type": "registry:file",
-          "target": "audio/knob/knob.svelte"
+          "target": "~/src/lib/components/ui/audio/elements/knob/knob.svelte",
+          "type": "registry:file"
         }
-      ]
+      ],
+      "categories": [
+        "audio"
+      ],
+      "docs": "https://svelte-audio-ui.vercel.app/docs/components/knob"
     },
     {
       "name": "slider",
       "type": "registry:ui",
+      "title": "Slider",
+      "description": "Slider audio component for svelte-audio-ui.",
       "dependencies": [
         "bits-ui"
       ],
       "registryDependencies": [],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/slider/index.ts"
+          "target": "~/src/lib/components/ui/audio/elements/slider/index.ts",
+          "type": "registry:file"
         },
         {
-          "type": "registry:file",
-          "target": "audio/slider/slider.svelte"
+          "target": "~/src/lib/components/ui/audio/elements/slider/slider.svelte",
+          "type": "registry:file"
         }
-      ]
+      ],
+      "categories": [
+        "audio"
+      ],
+      "docs": "https://svelte-audio-ui.vercel.app/docs/components/slider"
     },
     {
       "name": "sortable-list",
       "type": "registry:ui",
+      "title": "Sortable List",
+      "description": "Sortable List audio component for svelte-audio-ui.",
       "dependencies": [
         "@lucide/svelte",
         "svelte-dnd-action"
@@ -240,60 +291,127 @@
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/sortable-list/index.ts"
+          "target": "~/src/lib/components/ui/audio/elements/sortable-list/index.ts",
+          "type": "registry:file"
         },
         {
-          "type": "registry:file",
-          "target": "audio/sortable-list/sortable-drag-handle.svelte"
+          "target": "~/src/lib/components/ui/audio/elements/sortable-list/sortable-drag-handle.svelte",
+          "type": "registry:file"
         },
         {
-          "type": "registry:file",
-          "target": "audio/sortable-list/sortable-item.svelte"
+          "target": "~/src/lib/components/ui/audio/elements/sortable-list/sortable-item.svelte",
+          "type": "registry:file"
         },
         {
-          "type": "registry:file",
-          "target": "audio/sortable-list/sortable-list.svelte"
+          "target": "~/src/lib/components/ui/audio/elements/sortable-list/sortable-list.svelte",
+          "type": "registry:file"
         }
-      ]
+      ],
+      "categories": [
+        "audio"
+      ],
+      "docs": "https://svelte-audio-ui.vercel.app/docs/components/sortable-list"
+    },
+    {
+      "name": "wave",
+      "type": "registry:ui",
+      "title": "Wave",
+      "description": "Wave audio component for svelte-audio-ui.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "target": "~/src/lib/components/ui/audio/elements/wave/index.ts",
+          "type": "registry:file"
+        },
+        {
+          "target": "~/src/lib/components/ui/audio/elements/wave/wave.svelte",
+          "type": "registry:file"
+        }
+      ],
+      "categories": [
+        "audio"
+      ],
+      "docs": "https://svelte-audio-ui.vercel.app/docs/components/wave"
+    },
+    {
+      "name": "waveform",
+      "type": "registry:ui",
+      "title": "Waveform",
+      "description": "Waveform audio component for svelte-audio-ui.",
+      "dependencies": [
+        "wavesurfer.js"
+      ],
+      "registryDependencies": [
+        "https://svelte-audio-ui.vercel.app/r/provider.json"
+      ],
+      "files": [
+        {
+          "target": "~/src/lib/components/ui/audio/elements/waveform/index.ts",
+          "type": "registry:file"
+        },
+        {
+          "target": "~/src/lib/components/ui/audio/elements/waveform/waveform.svelte",
+          "type": "registry:file"
+        }
+      ],
+      "categories": [
+        "audio"
+      ],
+      "docs": "https://svelte-audio-ui.vercel.app/docs/components/waveform"
     },
     {
       "name": "xypad",
       "type": "registry:ui",
+      "title": "Xypad",
+      "description": "Xypad audio component for svelte-audio-ui.",
       "dependencies": [
         "cva@npm:class-variance-authority"
       ],
       "registryDependencies": [],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/xypad/index.ts"
+          "target": "~/src/lib/components/ui/audio/elements/xypad/index.ts",
+          "type": "registry:file"
         },
         {
-          "type": "registry:file",
-          "target": "audio/xypad/xypad.svelte"
+          "target": "~/src/lib/components/ui/audio/elements/xypad/xypad.svelte",
+          "type": "registry:file"
         }
-      ]
+      ],
+      "categories": [
+        "audio"
+      ],
+      "docs": "https://svelte-audio-ui.vercel.app/docs/components/xypad"
     },
     {
       "name": "particle-player-widget",
       "type": "registry:block",
+      "title": "Player Widget",
+      "description": "Player Widget particle for svelte-audio-ui.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/player.json",
-        "https://svelte-audio-ui.vercel.app/r/track.json",
-        "https://svelte-audio-ui.vercel.app/r/queue.json"
+        "https://svelte-audio-ui.vercel.app/r/queue.json",
+        "https://svelte-audio-ui.vercel.app/r/track.json"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/particle-player-widget.svelte"
+          "target": "~/src/lib/components/particles/player-widget.svelte",
+          "type": "registry:component"
         }
-      ]
+      ],
+      "categories": [
+        "audio",
+        "particle"
+      ],
+      "docs": "https://svelte-audio-ui.vercel.app/docs/particles"
     },
     {
       "name": "particle-player",
       "type": "registry:block",
+      "title": "Player",
+      "description": "Player particle for svelte-audio-ui.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/player.json",
@@ -301,230 +419,330 @@
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/particle-player.svelte"
+          "target": "~/src/lib/components/particles/player.svelte",
+          "type": "registry:component"
         }
-      ]
+      ],
+      "categories": [
+        "audio",
+        "particle"
+      ],
+      "docs": "https://svelte-audio-ui.vercel.app/docs/particles"
     },
     {
       "name": "particle-pocket-synth",
       "type": "registry:block",
+      "title": "Pocket Synth",
+      "description": "Pocket Synth particle for svelte-audio-ui.",
       "dependencies": [],
       "registryDependencies": [
-        "https://svelte-audio-ui.vercel.app/r/xypad.json",
         "https://svelte-audio-ui.vercel.app/r/fader.json",
+        "https://svelte-audio-ui.vercel.app/r/xypad.json",
         "toggle-group"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/particle-pocket-synth.svelte"
+          "target": "~/src/lib/components/particles/pocket-synth.svelte",
+          "type": "registry:component"
         }
-      ]
+      ],
+      "categories": [
+        "audio",
+        "particle"
+      ],
+      "docs": "https://svelte-audio-ui.vercel.app/docs/particles"
     },
     {
       "name": "particle-wave-shaper",
       "type": "registry:block",
+      "title": "Wave Shaper",
+      "description": "Wave Shaper particle for svelte-audio-ui.",
       "dependencies": [],
       "registryDependencies": [
-        "https://svelte-audio-ui.vercel.app/r/xypad.json",
         "https://svelte-audio-ui.vercel.app/r/fader.json",
         "https://svelte-audio-ui.vercel.app/r/knob.json",
+        "https://svelte-audio-ui.vercel.app/r/xypad.json",
         "toggle-group"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/particle-wave-shaper.svelte"
+          "target": "~/src/lib/components/particles/wave-shaper.svelte",
+          "type": "registry:component"
         }
-      ]
+      ],
+      "categories": [
+        "audio",
+        "particle"
+      ],
+      "docs": "https://svelte-audio-ui.vercel.app/docs/particles"
     },
     {
       "name": "fader-custom-thumb-marks-demo",
       "type": "registry:block",
+      "title": "Fader Custom Thumb Marks Demo",
+      "description": "Example: Fader Custom Thumb Marks Demo.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/fader.json"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/fader-custom-thumb-marks-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/fader-custom-thumb-marks-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "fader-demo",
       "type": "registry:block",
+      "title": "Fader Demo",
+      "description": "Example: Fader Demo.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/fader.json"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/fader-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/fader-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "fader-horizontal-demo",
       "type": "registry:block",
+      "title": "Fader Horizontal Demo",
+      "description": "Example: Fader Horizontal Demo.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/fader.json"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/fader-horizontal-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/fader-horizontal-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "fader-multiple-control-demo",
       "type": "registry:block",
+      "title": "Fader Multiple Control Demo",
+      "description": "Example: Fader Multiple Control Demo.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/fader.json"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/fader-multiple-control-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/fader-multiple-control-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "fader-no-thumb-marks-demo",
       "type": "registry:block",
+      "title": "Fader No Thumb Marks Demo",
+      "description": "Example: Fader No Thumb Marks Demo.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/fader.json"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/fader-no-thumb-marks-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/fader-no-thumb-marks-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "fader-volume-control-demo",
       "type": "registry:block",
+      "title": "Fader Volume Control Demo",
+      "description": "Example: Fader Volume Control Demo.",
       "dependencies": [],
       "registryDependencies": [
-        "https://svelte-audio-ui.vercel.app/r/fader.json"
+        "https://svelte-audio-ui.vercel.app/r/fader.json",
+        "https://svelte-audio-ui.vercel.app/r/provider.json"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/fader-volume-control-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/fader-volume-control-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "knob-demo",
       "type": "registry:block",
+      "title": "Knob Demo",
+      "description": "Example: Knob Demo.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/knob.json"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/knob-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/knob-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "knob-filter-control-demo",
       "type": "registry:block",
+      "title": "Knob Filter Control Demo",
+      "description": "Example: Knob Filter Control Demo.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/knob.json"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/knob-filter-control-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/knob-filter-control-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "knob-multiple-control-demo",
       "type": "registry:block",
+      "title": "Knob Multiple Control Demo",
+      "description": "Example: Knob Multiple Control Demo.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/knob.json"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/knob-multiple-control-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/knob-multiple-control-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "knob-size-variants-demo",
       "type": "registry:block",
+      "title": "Knob Size Variants Demo",
+      "description": "Example: Knob Size Variants Demo.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/knob.json"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/knob-size-variants-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/knob-size-variants-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "playback-speed-demo",
       "type": "registry:block",
+      "title": "Playback Speed Demo",
+      "description": "Example: Playback Speed Demo.",
       "dependencies": [],
       "registryDependencies": [
-        "https://svelte-audio-ui.vercel.app/r/player.json",
-        "https://svelte-audio-ui.vercel.app/r/playback-speed.json"
+        "https://svelte-audio-ui.vercel.app/r/playback-speed.json",
+        "https://svelte-audio-ui.vercel.app/r/player.json"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/playback-speed-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/playback-speed-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "player-demo",
       "type": "registry:block",
+      "title": "Player Demo",
+      "description": "Example: Player Demo.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/player.json"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/player-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/player-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "player-stacked-layout-demo",
       "type": "registry:block",
+      "title": "Player Stacked Layout Demo",
+      "description": "Example: Player Stacked Layout Demo.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/player.json"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/player-stacked-layout-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/player-stacked-layout-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "player-with-queue-demo",
       "type": "registry:block",
+      "title": "Player With Queue Demo",
+      "description": "Example: Player With Queue Demo.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/player.json",
@@ -532,14 +750,20 @@
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/player-with-queue-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/player-with-queue-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "queue-all-controls-demo",
       "type": "registry:block",
+      "title": "Queue All Controls Demo",
+      "description": "Example: Queue All Controls Demo.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/player.json",
@@ -547,14 +771,20 @@
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/queue-all-controls-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/queue-all-controls-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "queue-preferences-demo",
       "type": "registry:block",
+      "title": "Queue Preferences Demo",
+      "description": "Example: Queue Preferences Demo.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/player.json",
@@ -562,14 +792,20 @@
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/queue-preferences-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/queue-preferences-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "queue-shuffle-repeat-demo",
       "type": "registry:block",
+      "title": "Queue Shuffle Repeat Demo",
+      "description": "Example: Queue Shuffle Repeat Demo.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/player.json",
@@ -577,14 +813,20 @@
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/queue-shuffle-repeat-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/queue-shuffle-repeat-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "queue-simple-demo",
       "type": "registry:block",
+      "title": "Queue Simple Demo",
+      "description": "Example: Queue Simple Demo.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/player.json",
@@ -592,177 +834,254 @@
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/queue-simple-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/queue-simple-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "slider-demo",
       "type": "registry:block",
+      "title": "Slider Demo",
+      "description": "Example: Slider Demo.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/slider.json"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/slider-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/slider-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "sortable-list-demo",
       "type": "registry:block",
+      "title": "Sortable List Demo",
+      "description": "Example: Sortable List Demo.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/sortable-list.json"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/sortable-list-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/sortable-list-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "track-demo",
       "type": "registry:block",
+      "title": "Track Demo",
+      "description": "Example: Track Demo.",
       "dependencies": [],
       "registryDependencies": [
+        "https://svelte-audio-ui.vercel.app/r/provider.json",
         "https://svelte-audio-ui.vercel.app/r/track.json"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/track-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/track-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "track-list-demo",
       "type": "registry:block",
+      "title": "Track List Demo",
+      "description": "Example: Track List Demo.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/track.json"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/track-list-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/track-list-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "track-list-grid-demo",
       "type": "registry:block",
+      "title": "Track List Grid Demo",
+      "description": "Example: Track List Grid Demo.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/track.json"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/track-list-grid-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/track-list-grid-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "track-sortable-list-demo",
       "type": "registry:block",
+      "title": "Track Sortable List Demo",
+      "description": "Example: Track Sortable List Demo.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/track.json"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/track-sortable-list-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/track-sortable-list-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "track-sortable-list-grid-demo",
       "type": "registry:block",
+      "title": "Track Sortable List Grid Demo",
+      "description": "Example: Track Sortable List Grid Demo.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/track.json"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/track-sortable-list-grid-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/track-sortable-list-grid-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "xypad-demo",
       "type": "registry:block",
+      "title": "Xypad Demo",
+      "description": "Example: Xypad Demo.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/xypad.json"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/xypad-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/xypad-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "xypad-filter-control-demo",
       "type": "registry:block",
+      "title": "Xypad Filter Control Demo",
+      "description": "Example: Xypad Filter Control Demo.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/xypad.json"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/xypad-filter-control-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/xypad-filter-control-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "xypad-format-value-demo",
       "type": "registry:block",
+      "title": "Xypad Format Value Demo",
+      "description": "Example: Xypad Format Value Demo.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/xypad.json"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/xypad-format-value-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/xypad-format-value-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "xypad-hide-value-demo",
       "type": "registry:block",
+      "title": "Xypad Hide Value Demo",
+      "description": "Example: Xypad Hide Value Demo.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/xypad.json"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/xypad-hide-value-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/xypad-hide-value-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     },
     {
       "name": "xypad-synthesizer-control-demo",
       "type": "registry:block",
+      "title": "Xypad Synthesizer Control Demo",
+      "description": "Example: Xypad Synthesizer Control Demo.",
       "dependencies": [],
       "registryDependencies": [
         "https://svelte-audio-ui.vercel.app/r/xypad.json"
       ],
       "files": [
         {
-          "type": "registry:file",
-          "target": "audio/xypad-synthesizer-control-demo.svelte"
+          "target": "~/src/lib/components/ui/audio/examples/xypad-synthesizer-control-demo.svelte",
+          "type": "registry:component"
         }
+      ],
+      "categories": [
+        "audio",
+        "example"
       ]
     }
   ]

@@ -1,23 +1,23 @@
 {
+  "$schema": "https://shadcn-svelte.com/schema/registry-item.json",
   "name": "player-stacked-layout-demo",
   "type": "registry:block",
-  "author": "ddtamn",
-  "description": "",
+  "title": "Player Stacked Layout Demo",
+  "description": "Example: Player Stacked Layout Demo.",
+  "author": "ddtamn <https://github.com/ddtamn>",
   "dependencies": [],
   "registryDependencies": [
     "https://svelte-audio-ui.vercel.app/r/player.json"
   ],
-  "meta": {
-    "author": "ddtamn",
-    "version": "1.0.0",
-    "documentation": "https://svelte-audio-ui.vercel.app/docs/components/player-stacked-layout-demo",
-    "repository": "https://github.com/ddtamn/svelte-audio-ui"
-  },
   "files": [
     {
+      "target": "~/src/lib/components/ui/audio/examples/player-stacked-layout-demo.svelte",
       "content": "<script lang=\"ts\">\r\n\timport * as AudioPlayer from \"$lib/components/ui/audio/player/index.js\";\r\n</script>\r\n\r\n<AudioPlayer.Root>\r\n\t<AudioPlayer.ControlBar variant=\"stacked\">\r\n\t\t<AudioPlayer.ControlGroup>\r\n\t\t\t<AudioPlayer.TimeDisplay />\r\n\t\t\t<AudioPlayer.SeekBar />\r\n\t\t\t<AudioPlayer.TimeDisplay remaining />\r\n\t\t</AudioPlayer.ControlGroup>\r\n\t\t<AudioPlayer.ControlGroup>\r\n\t\t\t<AudioPlayer.ControlGroup className=\"justify-between md:justify-start\">\r\n\t\t\t\t<AudioPlayer.SkipBack />\r\n\t\t\t\t<AudioPlayer.Play />\r\n\t\t\t\t<AudioPlayer.SkipForward />\r\n\t\t\t</AudioPlayer.ControlGroup>\r\n\t\t\t<AudioPlayer.Volume />\r\n\t\t</AudioPlayer.ControlGroup>\r\n\t</AudioPlayer.ControlBar>\r\n</AudioPlayer.Root>\r\n",
-      "type": "registry:file",
-      "target": "audio/player-stacked-layout-demo.svelte"
+      "type": "registry:component"
     }
+  ],
+  "categories": [
+    "audio",
+    "example"
   ]
 }

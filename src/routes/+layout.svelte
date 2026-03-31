@@ -10,12 +10,9 @@
 	import { dev } from "$app/environment";
 	import { injectAnalytics } from "@vercel/analytics/sveltekit";
 	import { injectSpeedInsights } from "@vercel/speed-insights/sveltekit";
-	import { AudioProvider } from "$registry/ui/audio/provider/index.js";
+	import { AudioProvider } from "$lib/components/ui/audio/provider/index.js";
 	import { MetaTags } from "svelte-meta-tags";
 	import { siteConfig } from "$lib/config.js";
-	import posthog from "posthog-js";
-	import { browser } from "$app/environment";
-	import { onMount } from "svelte";
 
 	injectAnalytics({ mode: dev ? "development" : "production" });
 	injectSpeedInsights();
@@ -72,16 +69,6 @@
 			genre: "Hip Hop",
 		},
 	];
-	onMount(async () => {
-		if (browser) {
-			posthog.init("phc_XqpIvSj41JuKZBl9aB64FBEKOAjxbawBzTgkI6mnuKA", {
-				api_host: "https://us.i.posthog.com",
-				defaults: "2026-01-30",
-			});
-		}
-
-		return;
-	});
 </script>
 
 <MetaTags

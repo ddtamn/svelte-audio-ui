@@ -23,7 +23,7 @@
 	const componentPromise = $derived(
 		component
 			? Promise.resolve(component)
-			: import(`../../lib/registry/examples/${name}.svelte`)
+			: import(`../../lib/components/ui/audio/examples/${name}.svelte`)
 					.then((mod) => mod.default as Component)
 					.catch(() => undefined)
 	);

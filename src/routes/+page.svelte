@@ -6,13 +6,13 @@
 	import PlasmaGrid from "$lib/components/plasma-grid/plasma-grid.svelte";
 	import { mode } from "mode-watcher";
 
-	import PocketSynth from "$registry/particles/pocket-synth.svelte";
-	import PlayerWidget from "$registry/particles/player-widget.svelte";
-	import TrackListGridDemo from "$registry/examples/track-list-grid-demo.svelte";
-	import PlayerDemo from "$registry/examples/player-demo.svelte";
-	import PlayerWithQueueDemo from "$registry/examples/player-with-queue-demo.svelte";
-	import TrackSortableListGridDemo from "$registry/examples/track-sortable-list-grid-demo.svelte";
-	import WaveShaper from "$registry/particles/wave-shaper.svelte";
+	import PocketSynth from "$lib/components/particles/pocket-synth.svelte";
+	import PlayerWidget from "$lib/components/particles/player-widget.svelte";
+	import TrackListGridDemo from "$lib/components/ui/audio/examples/track-list-grid-demo.svelte";
+	import PlayerDemo from "$lib/components/ui/audio/examples/player-demo.svelte";
+	import PlayerWithQueueDemo from "$lib/components/ui/audio/examples/player-with-queue-demo.svelte";
+	import TrackSortableListGridDemo from "$lib/components/ui/audio/examples/track-sortable-list-grid-demo.svelte";
+	import WaveShaper from "$lib/components/particles/wave-shaper.svelte";
 
 	import { MetaTags } from "svelte-meta-tags";
 </script>

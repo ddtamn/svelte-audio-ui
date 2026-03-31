@@ -1,28 +1,28 @@
 {
+  "$schema": "https://shadcn-svelte.com/schema/registry-item.json",
   "name": "slider",
   "type": "registry:ui",
-  "author": "ddtamn",
-  "description": "",
+  "title": "Slider",
+  "description": "Slider audio component for svelte-audio-ui.",
+  "author": "ddtamn <https://github.com/ddtamn>",
   "dependencies": [
     "bits-ui"
   ],
   "registryDependencies": [],
-  "meta": {
-    "author": "ddtamn",
-    "version": "1.0.0",
-    "documentation": "https://svelte-audio-ui.vercel.app/docs/components/slider",
-    "repository": "https://github.com/ddtamn/svelte-audio-ui"
-  },
   "files": [
     {
+      "target": "~/src/lib/components/ui/audio/elements/slider/index.ts",
       "content": "import Root from \"./slider.svelte\";\n\nexport { Root, Root as Slider };\n",
-      "type": "registry:file",
-      "target": "audio/slider/index.ts"
+      "type": "registry:file"
     },
     {
+      "target": "~/src/lib/components/ui/audio/elements/slider/slider.svelte",
       "content": "<script lang=\"ts\">\r\n\timport { Slider } from \"bits-ui\";\r\n\timport { cn } from \"$lib/utils.js\";\r\n\r\n\t/**\r\n\t * Mirrors the React Radix Slider API:\r\n\t * - `value`        → always number[] (controlled)\r\n\t * - `defaultValue` → always number[] (uncontrolled)\r\n\t * - `bufferValue`  → 0–100 percentage for buffer/preload indicator\r\n\t *\r\n\t * Bits-ui handles all keyboard, pointer, a11y, and RTL internally.\r\n\t */\r\n\tinterface Props {\r\n\t\tvalue?: number[];\r\n\t\tdefaultValue?: number[];\r\n\t\tmin?: number;\r\n\t\tmax?: number;\r\n\t\tstep?: number;\r\n\t\tdisabled?: boolean;\r\n\t\torientation?: \"horizontal\" | \"vertical\";\r\n\t\tdir?: \"ltr\" | \"rtl\";\r\n\t\tautoSort?: boolean;\r\n\t\tbufferValue?: number;\r\n\t\tclass?: string;\r\n\t\tonValueChange?: (value: number[]) => void;\r\n\t\tonValueCommit?: (value: number[]) => void;\r\n\t}\r\n\r\n\tlet {\r\n\t\tvalue,\r\n\t\tdefaultValue,\r\n\t\tmin = 0,\r\n\t\tmax = 100,\r\n\t\tstep = 1,\r\n\t\tdisabled = false,\r\n\t\torientation = \"horizontal\",\r\n\t\tdir = \"ltr\",\r\n\t\tautoSort = true,\r\n\t\tbufferValue,\r\n\t\tclass: className = \"\",\r\n\t\tonValueChange,\r\n\t\tonValueCommit,\r\n\t}: Props = $props();\r\n\r\n\t// ── Resolve initial values (mirrors React useMemo logic) ────────────────────\r\n\t// Always work with number[] internally; bits-ui receives it as type=\"multiple\"\r\n\tlet internalValue: number[] = $state(\r\n\t\tArray.isArray(value) ? [...value] : Array.isArray(defaultValue) ? [...defaultValue] : [min]\r\n\t);\r\n\r\n\t// Sync controlled `value` prop changes in\r\n\t$effect(() => {\r\n\t\tif (Array.isArray(value)) internalValue = [...value];\r\n\t});\r\n\r\n\tconst isVertical = $derived(orientation === \"vertical\");\r\n\r\n\t// Buffer bar style — always left/bottom-anchored percentage\r\n\tconst bufferStyle = $derived(\r\n\t\tisVertical\r\n\t\t\t? `height: ${bufferValue ?? 0}%; bottom: 0;`\r\n\t\t\t: `width: ${bufferValue ?? 0}%; left: 0;`\r\n\t);\r\n</script>\r\n\r\n<Slider.Root\r\n\ttype=\"multiple\"\r\n\tbind:value={internalValue}\r\n\t{min}\r\n\t{max}\r\n\t{step}\r\n\t{disabled}\r\n\t{orientation}\r\n\t{dir}\r\n\t{autoSort}\r\n\tonValueChange={(v) => {\r\n\t\tinternalValue = v as number[];\r\n\t\tonValueChange?.(v as number[]);\r\n\t}}\r\n\tonValueCommit={(v) => onValueCommit?.(v as number[])}\r\n\tclass={cn(\r\n\t\t\"relative flex w-full touch-none items-center select-none\",\r\n\t\t\"data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44\",\r\n\t\t\"data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col\",\r\n\t\t\"data-[disabled]:opacity-50\",\r\n\t\tclassName\r\n\t)}\r\n\tdata-slot=\"slider\"\r\n>\r\n\t{#snippet children({ thumbs })}\r\n\t\t<!--\r\n      Track — plain <span> so we can layer the buffer div behind Slider.Range.\r\n      data-orientation forwarded for Tailwind variant compatibility.\r\n    -->\r\n\t\t<span\r\n\t\t\tclass={cn(\r\n\t\t\t\t\"bg-muted relative grow overflow-hidden rounded-full\",\r\n\t\t\t\t\"data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:w-full\",\r\n\t\t\t\t\"data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1.5\"\r\n\t\t\t)}\r\n\t\t\tdata-slot=\"slider-track\"\r\n\t\t\tdata-orientation={orientation}\r\n\t\t>\r\n\t\t\t<!-- Buffer indicator (behind active range) -->\r\n\t\t\t{#if bufferValue !== undefined}\r\n\t\t\t\t<div\r\n\t\t\t\t\tclass={cn(\"bg-primary/40 absolute z-0\", isVertical ? \"w-full\" : \"h-full\")}\r\n\t\t\t\t\tdata-slot=\"slider-buffer\"\r\n\t\t\t\t\tstyle={bufferStyle}\r\n\t\t\t\t></div>\r\n\t\t\t{/if}\r\n\r\n\t\t\t<!-- Active range fill -->\r\n\t\t\t<Slider.Range\r\n\t\t\t\tclass={cn(\r\n\t\t\t\t\t\"bg-primary absolute\",\r\n\t\t\t\t\t\"data-[orientation=horizontal]:h-full\",\r\n\t\t\t\t\t\"data-[orientation=vertical]:w-full\"\r\n\t\t\t\t)}\r\n\t\t\t\tdata-slot=\"slider-range\"\r\n\t\t\t/>\r\n\t\t</span>\r\n\r\n\t\t<!-- One thumb per value entry -->\r\n\t\t{#each thumbs as index (index)}\r\n\t\t\t<Slider.Thumb\r\n\t\t\t\t{index}\r\n\t\t\t\tclass={cn(\r\n\t\t\t\t\t\"border-primary bg-background block size-4 shrink-0 rounded-full border shadow-sm\",\r\n\t\t\t\t\t\"ring-ring/50 transition-[color,box-shadow]\",\r\n\t\t\t\t\t\"hover:ring-4\",\r\n\t\t\t\t\t\"focus-visible:ring-ring/50 focus-visible:ring-4 focus-visible:outline-none\",\r\n\t\t\t\t\t\"data-[active]:ring-ring/50 data-[active]:ring-4\",\r\n\t\t\t\t\t\"data-[disabled]:pointer-events-none data-[disabled]:opacity-50\",\r\n\t\t\t\t\t\"cursor-grab active:cursor-grabbing\"\r\n\t\t\t\t)}\r\n\t\t\t\tdata-slot=\"slider-thumb\"\r\n\t\t\t/>\r\n\t\t{/each}\r\n\t{/snippet}\r\n</Slider.Root>\r\n",
-      "type": "registry:file",
-      "target": "audio/slider/slider.svelte"
+      "type": "registry:file"
     }
+  ],
+  "docs": "https://svelte-audio-ui.vercel.app/docs/components/slider",
+  "categories": [
+    "audio"
   ]
 }
