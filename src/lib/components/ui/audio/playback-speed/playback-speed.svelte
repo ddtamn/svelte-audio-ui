@@ -5,7 +5,7 @@
 	import { cn } from "$lib/utils.js";
 	import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
 	import * as Tooltip from "$lib/components/ui/tooltip";
-	import { Button } from "$lib/components/ui/button";
+	import { Button, type ButtonSize, type ButtonVariant } from "$lib/components/ui/button";
 
 	const DEFAULT_SPEEDS = [
 		{ value: 0.5, label: "0.5x" },
@@ -24,8 +24,8 @@
 	interface Props {
 		speeds?: SpeedOption[];
 		class?: string;
-		size?: string;
-		variant?: string;
+		size?: ButtonSize;
+		variant?: ButtonVariant;
 		[key: string]: unknown;
 	}
 

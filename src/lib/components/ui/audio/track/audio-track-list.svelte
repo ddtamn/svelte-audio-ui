@@ -40,7 +40,7 @@
 	const isExternalTracks = $derived(!!externalTracks);
 
 	// ── Filtered tracks ─────────────────────────────────────────────────────────
-	const displayTracks = $derived<Track[]>(() => {
+	const displayTracks = $derived.by<Track[]>(() => {
 		let base: Track[] = externalTracks ?? audioStore.queue;
 
 		if (filterFn) {
@@ -86,7 +86,7 @@
 		if (isFiltered || isExternalTracks) return;
 
 		const reorderedTracks = reordered
-			.map((r) => displayTracks().find((t) => String(t.id) === String(r.id)))
+			.map((r) => displayTracks.find((t: Track) => String(t.id) === String(r.id)))
 			.filter((t): t is Track => t !== undefined);
 
 		const newCurrentIndex =
@@ -103,7 +103,7 @@
 	}
 </script>
 
-{#if displayTracks().length === 0}
+{#if displayTracks.length === 0}
 	<!-- Empty state ──────────────────────────────────────────────────────────── -->
 	<div
 		class={cn(
@@ -124,15 +124,15 @@
 	<!-- Sortable list ─────────────────────────────────────────────────────────── -->
 	<div class={cn("no-scrollbar w-full overflow-y-auto", className)}>
 		<SortableList
-			items={displayTracks()
-				.filter((t) => t.id !== undefined)
-				.map((t) => ({ id: String(t.id), _track: t }))}
+			items={displayTracks
+				.filter((t: Track) => t.id !== undefined)
+				.map((t: Track) => ({ id: String(t.id), _track: t }))}
 			onDrop={handleReorder}
 			class={variant === "grid" ? "grid grid-cols-1 gap-2 xl:grid-cols-2" : "gap-0.5"}
 		>
 			{#snippet item(row)}
-				{@const track = row._track as Track}
-				{@const idx = displayTracks().findIndex((t) => t.id === track.id)}
+				{@const track = (row as { _track: Track })._track}
+				{@const idx = displayTracks.findIndex((t: Track) => t.id === track.id)}
 				<AudioTrack
 					{track}
 					index={idx >= 0 ? idx : undefined}
@@ -149,7 +149,7 @@
 	<!-- Plain list ────────────────────────────────────────────────────────────── -->
 	<div class={cn("no-scrollbar w-full overflow-y-auto", className)}>
 		<div class={cn("w-full", listClass)}>
-			{#each displayTracks() as track, idx (track.id)}
+			{#each displayTracks as track, idx (track.id)}
 				<AudioTrack
 					{track}
 					index={idx}

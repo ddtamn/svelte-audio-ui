@@ -69,6 +69,15 @@ Use a component:
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
+## Acknowledgements
+
+Inspired by [audio-ui](https://audio-ui.xyz), a composable audio UI system for React.
+
+This project brings similar ideas into the Svelte ecosystem, adapting the original headless and provider-based architecture for Svelte.
+
+If you're working with React, check out the original project:
+[audio-ui](https://audio-ui.xyz)
+
 ## License
 
 [MIT](./LICENSE) © [ddtamn](https://github.com/ddtamn)

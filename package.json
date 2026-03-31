@@ -20,7 +20,6 @@
 	"devDependencies": {
 		"@eslint/compat": "^2.0.2",
 		"@eslint/js": "^9.39.2",
-		"@internationalized/date": "^3.12.0",
 		"@lucide/svelte": "^0.561.0",
 		"@prettier/sync": "^0.6.1",
 		"@shikijs/langs": "^4.0.2",
@@ -28,9 +27,6 @@
 		"@sveltejs/adapter-auto": "^7.0.0",
 		"@sveltejs/adapter-vercel": "6.3.2",
 		"@sveltejs/kit": "^2.50.2",
-		"@sveltejs/vite-plugin-svelte": "^6.2.4",
-		"@tailwindcss/forms": "^0.5.11",
-		"@tailwindcss/typography": "^0.5.19",
 		"@tailwindcss/vite": "^4.1.18",
 		"@types/node": "^24",
 		"bits-ui": "^2.16.3",
@@ -39,7 +35,6 @@
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-svelte": "^3.14.0",
 		"globals": "^17.3.0",
-		"mdsvex": "^0.12.6",
 		"mdsx": "^0.0.7",
 		"paneforge": "^1.0.2",
 		"prettier": "^3.8.1",
@@ -68,7 +63,6 @@
 	"dependencies": {
 		"@tabler/icons-svelte": "^3.40.0",
 		"@threlte/core": "^8.5.0",
-		"@types/three": "^0.183.1",
 		"@vercel/analytics": "^2.0.1",
 		"@vercel/speed-insights": "^2.0.0",
 		"cva": "npm:class-variance-authority",

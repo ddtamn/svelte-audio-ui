@@ -4,12 +4,12 @@
 	import { htmlAudio } from "$lib/html-audio.js";
 	import { cn } from "$lib/utils.js";
 	import * as Tooltip from "$lib/components/ui/tooltip";
-	import { Button } from "$lib/components/ui/button";
+	import { Button, type ButtonSize, type ButtonVariant } from "$lib/components/ui/button";
 
 	interface Props {
 		class?: string;
-		size?: string;
-		variant?: string;
+		size?: ButtonSize;
+		variant?: ButtonVariant;
 		onclick?: (e: MouseEvent) => void;
 		[key: string]: unknown;
 	}

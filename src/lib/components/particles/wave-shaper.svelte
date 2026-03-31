@@ -37,7 +37,7 @@
 		return 0.5 + y * 15;
 	}
 
-	function makeDistortionCurve(amount: number): Float32Array {
+	function makeDistortionCurve(amount: number): Float32Array<ArrayBuffer> {
 		const samples = 44_100;
 		const curve = new Float32Array(samples);
 		const deg = Math.PI / 180;
@@ -45,7 +45,7 @@
 			const x = (i * 2) / samples - 1;
 			curve[i] = ((3 + amount) * x * 20 * deg) / (Math.PI + amount * Math.abs(x));
 		}
-		return curve;
+		return curve as Float32Array<ArrayBuffer>;
 	}
 
 	function getAudioContext(): AudioContext | null {

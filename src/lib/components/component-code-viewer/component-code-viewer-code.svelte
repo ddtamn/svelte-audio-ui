@@ -4,7 +4,7 @@
 	import { ComponentCodeViewerContext } from "./component-code-viewer.svelte";
 
 	const ctx = ComponentCodeViewerContext.get();
-	const file = $derived(ctx.highlightedFiles.find((f) => f.target === ctx.activeFile));
+	const file = $derived(ctx.highlightedFiles.find((f: (typeof ctx.highlightedFiles)[number]) => f.target === ctx.activeFile));
 	const showFileTree = $derived(ctx.allowSidebar !== false);
 	let codeContainer = $state<HTMLElement | null>(null);
 
