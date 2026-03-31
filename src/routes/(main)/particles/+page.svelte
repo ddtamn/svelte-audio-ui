@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Button } from "$lib/components/ui/button/index.js";
 	import ParticleDisplay from "./particle-display.svelte";
-	import { particles } from "$registry/particles";
+	import { particles } from "$lib/components/particles";
 	import { page } from "$app/state";
 	import { goto } from "$app/navigation";
 	import { track } from "@vercel/analytics";

@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 function buildRegistry() {
-	const registryDir = path.resolve("src", "lib", "registry", "examples");
+	const registryDir = path.resolve("src", "lib", "components", "ui", "audio", "examples");
 	const outputDir = path.resolve("src", "__registry__");
 	const outputFile = path.join(outputDir, "index.js");
 
@@ -19,13 +19,12 @@ function buildRegistry() {
 			if (file.endsWith(".svelte") || file.endsWith(".ts")) {
 				const name = file.replace(/\.(svelte|ts)$/, "");
 
-				// IMPORTANT: Use ../lib/ prefix (shadcn convention).
-				// mdsx.config.js processes the path in two steps:
-				// 1. files[0].replace("/lib/", "/src/lib/") → "../src/lib/registry/..."
-				// 2. getComponentSourceFileContent: replace("../", "./") → "./src/lib/registry/..."
-				// 3. join(cwd, "./src/lib/...") → correct absolute path
-				const relativePath = path.posix.join("../lib", "registry", "examples", file);
-
+				const relativePath = path.posix.join(
+					"../lib/components/ui",
+					"audio",
+					"examples",
+					file
+				);
 				indexContent += `\t"${name}": {\n\t\tfiles: ["${relativePath}"],\n\t},\n`;
 			}
 		}

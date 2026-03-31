@@ -1,23 +1,23 @@
 {
+  "$schema": "https://shadcn-svelte.com/schema/registry-item.json",
   "name": "xypad-filter-control-demo",
   "type": "registry:block",
-  "author": "ddtamn",
-  "description": "",
+  "title": "Xypad Filter Control Demo",
+  "description": "Example: Xypad Filter Control Demo.",
+  "author": "ddtamn <https://github.com/ddtamn>",
   "dependencies": [],
   "registryDependencies": [
     "https://svelte-audio-ui.vercel.app/r/xypad.json"
   ],
-  "meta": {
-    "author": "ddtamn",
-    "version": "1.0.0",
-    "documentation": "https://svelte-audio-ui.vercel.app/docs/components/xypad-filter-control-demo",
-    "repository": "https://github.com/ddtamn/svelte-audio-ui"
-  },
   "files": [
     {
-      "content": "<script lang=\"ts\">\n\timport { XYPad } from \"$lib/components/ui/audio/xypad/index.js\";\n</script>\n\n<XYPad\n\tclass=\"aspect-square\"\n\tdefaultValue={{ x: 50, y: 50 }}\n\tformatValue={(val) => `Freq: ${val.x}%, Res: ${val.y}%`}\n/>\n",
-      "type": "registry:file",
-      "target": "audio/xypad-filter-control-demo.svelte"
+      "target": "~/src/lib/components/ui/audio/examples/xypad-filter-control-demo.svelte",
+      "content": "<script lang=\"ts\">\n\timport { XYPad } from \"$lib/components/ui/audio/elements/xypad/index.js\";\n</script>\n\n<XYPad\n\tclass=\"aspect-square\"\n\tdefaultValue={{ x: 50, y: 50 }}\n\tformatValue={(val) => `Freq: ${val.x}%, Res: ${val.y}%`}\n/>\n",
+      "type": "registry:component"
     }
+  ],
+  "categories": [
+    "audio",
+    "example"
   ]
 }

@@ -1,24 +1,24 @@
 {
+  "$schema": "https://shadcn-svelte.com/schema/registry-item.json",
   "name": "queue-all-controls-demo",
   "type": "registry:block",
-  "author": "ddtamn",
-  "description": "",
+  "title": "Queue All Controls Demo",
+  "description": "Example: Queue All Controls Demo.",
+  "author": "ddtamn <https://github.com/ddtamn>",
   "dependencies": [],
   "registryDependencies": [
     "https://svelte-audio-ui.vercel.app/r/player.json",
     "https://svelte-audio-ui.vercel.app/r/queue.json"
   ],
-  "meta": {
-    "author": "ddtamn",
-    "version": "1.0.0",
-    "documentation": "https://svelte-audio-ui.vercel.app/docs/components/queue-all-controls-demo",
-    "repository": "https://github.com/ddtamn/svelte-audio-ui"
-  },
   "files": [
     {
+      "target": "~/src/lib/components/ui/audio/examples/queue-all-controls-demo.svelte",
       "content": "<script lang=\"ts\">\r\n\timport * as AudioPlayer from \"$lib/components/ui/audio/player/index.js\";\r\n\timport * as AudioQueue from \"$lib/components/ui/audio/queue/index.js\";\r\n</script>\r\n\r\n<AudioPlayer.Root class=\"w-max\">\r\n\t<AudioPlayer.ControlBar>\r\n\t\t<AudioQueue.Shuffle />\r\n\t\t<AudioQueue.RepeatMode />\r\n\t\t<AudioQueue.Preferences />\r\n\t\t<AudioQueue.Root />\r\n\t</AudioPlayer.ControlBar>\r\n</AudioPlayer.Root>\r\n",
-      "type": "registry:file",
-      "target": "audio/queue-all-controls-demo.svelte"
+      "type": "registry:component"
     }
+  ],
+  "categories": [
+    "audio",
+    "example"
   ]
 }
