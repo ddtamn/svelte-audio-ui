@@ -75,6 +75,9 @@ Inspired by [audio-ui](https://audio-ui.xyz), a composable audio UI system for R
 
 This project brings similar ideas into the Svelte ecosystem, adapting the original headless and provider-based architecture for Svelte.
 
+If you're working with React, check out the original project:
+[audio-ui](https://audio-ui.xyz)
+
 ## License
 
 [MIT](./LICENSE) © [ddtamn](https://github.com/ddtamn)
