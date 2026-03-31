@@ -1,7 +1,7 @@
 {
   "$schema": "https://shadcn-svelte.com/schema/registry-item.json",
   "name": "knob-demo",
-  "type": "registry:block",
+  "type": "registry:ui",
   "title": "Knob Demo",
   "description": "Example: Knob Demo.",
   "author": "ddtamn <https://github.com/ddtamn>",
@@ -13,7 +13,7 @@
     {
       "target": "~/src/lib/components/ui/audio/examples/knob-demo.svelte",
       "content": "<script lang=\"ts\">\n\timport { Knob } from \"$lib/components/ui/audio/elements/knob/index.js\";\n\n\tlet value = $state(50);\n</script>\n\n<div class=\"flex flex-col items-center gap-4\">\n\t<Knob {value} onValueChange={(v) => (value = v)} />\n\t<span class=\"text-muted-foreground text-xs tabular-nums\">{value}</span>\n</div>\n",
-      "type": "registry:component"
+      "type": "registry:file"
     }
   ],
   "categories": [

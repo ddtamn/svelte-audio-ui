@@ -1,7 +1,7 @@
 {
   "$schema": "https://shadcn-svelte.com/schema/registry-item.json",
   "name": "sortable-list-demo",
-  "type": "registry:block",
+  "type": "registry:ui",
   "title": "Sortable List Demo",
   "description": "Example: Sortable List Demo.",
   "author": "ddtamn <https://github.com/ddtamn>",
@@ -13,7 +13,7 @@
     {
       "target": "~/src/lib/components/ui/audio/examples/sortable-list-demo.svelte",
       "content": "<script lang=\"ts\">\n\timport {\n\t\tSortableList,\n\t\tSortableItem,\n\t\tSortableDragHandle,\n\t} from \"$lib/components/ui/audio/elements/sortable-list/index.js\";\n\n\ttype Item = { id: string; title: string; description: string };\n\n\tlet items = $state<Item[]>([\n\t\t{ id: \"1\", title: \"Item 1\", description: \"Description for item 1\" },\n\t\t{ id: \"2\", title: \"Item 2\", description: \"Description for item 2\" },\n\t\t{ id: \"3\", title: \"Item 3\", description: \"Description for item 3\" },\n\t]);\n</script>\n\n<div class=\"w-full\">\n\t<SortableList bind:items onDrop={(v) => (items = v)}>\n\t\t{#snippet item(row)}\n\t\t\t<SortableItem class=\"border-border bg-muted/40 rounded-md border p-3 text-sm\">\n\t\t\t\t<SortableDragHandle />\n\t\t\t\t<div class=\"flex flex-col\">\n\t\t\t\t\t<span class=\"font-semibold\">{row.title}</span>\n\t\t\t\t\t<span class=\"text-muted-foreground text-xs\">\n\t\t\t\t\t\t{row.description}\n\t\t\t\t\t</span>\n\t\t\t\t</div>\n\t\t\t</SortableItem>\n\t\t{/snippet}\n\t</SortableList>\n</div>\n",
-      "type": "registry:component"
+      "type": "registry:file"
     }
   ],
   "categories": [

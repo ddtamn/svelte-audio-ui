@@ -1,7 +1,7 @@
 {
   "$schema": "https://shadcn-svelte.com/schema/registry-item.json",
   "name": "player-demo",
-  "type": "registry:block",
+  "type": "registry:ui",
   "title": "Player Demo",
   "description": "Example: Player Demo.",
   "author": "ddtamn <https://github.com/ddtamn>",
@@ -13,7 +13,7 @@
     {
       "target": "~/src/lib/components/ui/audio/examples/player-demo.svelte",
       "content": "<script lang=\"ts\">\n\timport * as AudioPlayer from \"$lib/components/ui/audio/player/index.js\";\n</script>\n\n<AudioPlayer.Root>\n\t<AudioPlayer.ControlBar>\n\t\t<AudioPlayer.Play />\n\t\t<AudioPlayer.SeekBar />\n\t\t<AudioPlayer.TimeDisplay />\n\t\t<AudioPlayer.Volume />\n\t</AudioPlayer.ControlBar>\n</AudioPlayer.Root>\n",
-      "type": "registry:component"
+      "type": "registry:file"
     }
   ],
   "categories": [

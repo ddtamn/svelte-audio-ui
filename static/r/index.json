@@ -386,7 +386,7 @@
     },
     {
       "name": "particle-player-widget",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Player Widget",
       "description": "Player Widget particle for svelte-audio-ui.",
       "dependencies": [],
@@ -398,7 +398,7 @@
       "files": [
         {
           "target": "~/src/lib/components/particles/player-widget.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -409,7 +409,7 @@
     },
     {
       "name": "particle-player",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Player",
       "description": "Player particle for svelte-audio-ui.",
       "dependencies": [],
@@ -420,7 +420,7 @@
       "files": [
         {
           "target": "~/src/lib/components/particles/player.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -431,7 +431,7 @@
     },
     {
       "name": "particle-pocket-synth",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Pocket Synth",
       "description": "Pocket Synth particle for svelte-audio-ui.",
       "dependencies": [],
@@ -443,7 +443,7 @@
       "files": [
         {
           "target": "~/src/lib/components/particles/pocket-synth.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -454,7 +454,7 @@
     },
     {
       "name": "particle-wave-shaper",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Wave Shaper",
       "description": "Wave Shaper particle for svelte-audio-ui.",
       "dependencies": [],
@@ -467,7 +467,7 @@
       "files": [
         {
           "target": "~/src/lib/components/particles/wave-shaper.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -478,7 +478,7 @@
     },
     {
       "name": "fader-custom-thumb-marks-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Fader Custom Thumb Marks Demo",
       "description": "Example: Fader Custom Thumb Marks Demo.",
       "dependencies": [],
@@ -488,7 +488,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/fader-custom-thumb-marks-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -498,7 +498,7 @@
     },
     {
       "name": "fader-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Fader Demo",
       "description": "Example: Fader Demo.",
       "dependencies": [],
@@ -508,7 +508,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/fader-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -518,7 +518,7 @@
     },
     {
       "name": "fader-horizontal-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Fader Horizontal Demo",
       "description": "Example: Fader Horizontal Demo.",
       "dependencies": [],
@@ -528,7 +528,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/fader-horizontal-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -538,7 +538,7 @@
     },
     {
       "name": "fader-multiple-control-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Fader Multiple Control Demo",
       "description": "Example: Fader Multiple Control Demo.",
       "dependencies": [],
@@ -548,7 +548,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/fader-multiple-control-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -558,7 +558,7 @@
     },
     {
       "name": "fader-no-thumb-marks-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Fader No Thumb Marks Demo",
       "description": "Example: Fader No Thumb Marks Demo.",
       "dependencies": [],
@@ -568,7 +568,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/fader-no-thumb-marks-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -578,7 +578,7 @@
     },
     {
       "name": "fader-volume-control-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Fader Volume Control Demo",
       "description": "Example: Fader Volume Control Demo.",
       "dependencies": [],
@@ -589,7 +589,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/fader-volume-control-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -599,7 +599,7 @@
     },
     {
       "name": "knob-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Knob Demo",
       "description": "Example: Knob Demo.",
       "dependencies": [],
@@ -609,7 +609,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/knob-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -619,7 +619,7 @@
     },
     {
       "name": "knob-filter-control-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Knob Filter Control Demo",
       "description": "Example: Knob Filter Control Demo.",
       "dependencies": [],
@@ -629,7 +629,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/knob-filter-control-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -639,7 +639,7 @@
     },
     {
       "name": "knob-multiple-control-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Knob Multiple Control Demo",
       "description": "Example: Knob Multiple Control Demo.",
       "dependencies": [],
@@ -649,7 +649,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/knob-multiple-control-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -659,7 +659,7 @@
     },
     {
       "name": "knob-size-variants-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Knob Size Variants Demo",
       "description": "Example: Knob Size Variants Demo.",
       "dependencies": [],
@@ -669,7 +669,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/knob-size-variants-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -679,7 +679,7 @@
     },
     {
       "name": "playback-speed-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Playback Speed Demo",
       "description": "Example: Playback Speed Demo.",
       "dependencies": [],
@@ -690,7 +690,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/playback-speed-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -700,7 +700,7 @@
     },
     {
       "name": "player-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Player Demo",
       "description": "Example: Player Demo.",
       "dependencies": [],
@@ -710,7 +710,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/player-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -720,7 +720,7 @@
     },
     {
       "name": "player-stacked-layout-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Player Stacked Layout Demo",
       "description": "Example: Player Stacked Layout Demo.",
       "dependencies": [],
@@ -730,7 +730,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/player-stacked-layout-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -740,7 +740,7 @@
     },
     {
       "name": "player-with-queue-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Player With Queue Demo",
       "description": "Example: Player With Queue Demo.",
       "dependencies": [],
@@ -751,7 +751,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/player-with-queue-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -761,7 +761,7 @@
     },
     {
       "name": "queue-all-controls-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Queue All Controls Demo",
       "description": "Example: Queue All Controls Demo.",
       "dependencies": [],
@@ -772,7 +772,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/queue-all-controls-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -782,7 +782,7 @@
     },
     {
       "name": "queue-preferences-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Queue Preferences Demo",
       "description": "Example: Queue Preferences Demo.",
       "dependencies": [],
@@ -793,7 +793,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/queue-preferences-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -803,7 +803,7 @@
     },
     {
       "name": "queue-shuffle-repeat-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Queue Shuffle Repeat Demo",
       "description": "Example: Queue Shuffle Repeat Demo.",
       "dependencies": [],
@@ -814,7 +814,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/queue-shuffle-repeat-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -824,7 +824,7 @@
     },
     {
       "name": "queue-simple-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Queue Simple Demo",
       "description": "Example: Queue Simple Demo.",
       "dependencies": [],
@@ -835,7 +835,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/queue-simple-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -845,7 +845,7 @@
     },
     {
       "name": "slider-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Slider Demo",
       "description": "Example: Slider Demo.",
       "dependencies": [],
@@ -855,7 +855,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/slider-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -865,7 +865,7 @@
     },
     {
       "name": "sortable-list-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Sortable List Demo",
       "description": "Example: Sortable List Demo.",
       "dependencies": [],
@@ -875,7 +875,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/sortable-list-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -885,7 +885,7 @@
     },
     {
       "name": "track-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Track Demo",
       "description": "Example: Track Demo.",
       "dependencies": [],
@@ -896,7 +896,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/track-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -906,7 +906,7 @@
     },
     {
       "name": "track-list-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Track List Demo",
       "description": "Example: Track List Demo.",
       "dependencies": [],
@@ -916,7 +916,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/track-list-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -926,7 +926,7 @@
     },
     {
       "name": "track-list-grid-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Track List Grid Demo",
       "description": "Example: Track List Grid Demo.",
       "dependencies": [],
@@ -936,7 +936,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/track-list-grid-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -946,7 +946,7 @@
     },
     {
       "name": "track-sortable-list-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Track Sortable List Demo",
       "description": "Example: Track Sortable List Demo.",
       "dependencies": [],
@@ -956,7 +956,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/track-sortable-list-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -966,7 +966,7 @@
     },
     {
       "name": "track-sortable-list-grid-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Track Sortable List Grid Demo",
       "description": "Example: Track Sortable List Grid Demo.",
       "dependencies": [],
@@ -976,7 +976,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/track-sortable-list-grid-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -986,7 +986,7 @@
     },
     {
       "name": "xypad-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Xypad Demo",
       "description": "Example: Xypad Demo.",
       "dependencies": [],
@@ -996,7 +996,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/xypad-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -1006,7 +1006,7 @@
     },
     {
       "name": "xypad-filter-control-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Xypad Filter Control Demo",
       "description": "Example: Xypad Filter Control Demo.",
       "dependencies": [],
@@ -1016,7 +1016,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/xypad-filter-control-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -1026,7 +1026,7 @@
     },
     {
       "name": "xypad-format-value-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Xypad Format Value Demo",
       "description": "Example: Xypad Format Value Demo.",
       "dependencies": [],
@@ -1036,7 +1036,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/xypad-format-value-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -1046,7 +1046,7 @@
     },
     {
       "name": "xypad-hide-value-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Xypad Hide Value Demo",
       "description": "Example: Xypad Hide Value Demo.",
       "dependencies": [],
@@ -1056,7 +1056,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/xypad-hide-value-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [
@@ -1066,7 +1066,7 @@
     },
     {
       "name": "xypad-synthesizer-control-demo",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Xypad Synthesizer Control Demo",
       "description": "Example: Xypad Synthesizer Control Demo.",
       "dependencies": [],
@@ -1076,7 +1076,7 @@
       "files": [
         {
           "target": "~/src/lib/components/ui/audio/examples/xypad-synthesizer-control-demo.svelte",
-          "type": "registry:component"
+          "type": "registry:file"
         }
       ],
       "categories": [

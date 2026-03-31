@@ -1,7 +1,7 @@
 {
   "$schema": "https://shadcn-svelte.com/schema/registry-item.json",
   "name": "knob-size-variants-demo",
-  "type": "registry:block",
+  "type": "registry:ui",
   "title": "Knob Size Variants Demo",
   "description": "Example: Knob Size Variants Demo.",
   "author": "ddtamn <https://github.com/ddtamn>",
@@ -13,7 +13,7 @@
     {
       "target": "~/src/lib/components/ui/audio/examples/knob-size-variants-demo.svelte",
       "content": "<script lang=\"ts\">\n\timport { Knob, type KnobSize } from \"$lib/components/ui/audio/elements/knob/index.js\";\n\n\tlet sizes: { size: KnobSize; value: number }[] = $state([\n\t\t{ size: \"sm\", value: 80 },\n\t\t{ size: \"default\", value: 50 },\n\t\t{ size: \"lg\", value: 60 },\n\t\t{ size: \"xl\", value: 40 },\n\t]);\n</script>\n\n<div class=\"flex flex-wrap items-end justify-center gap-8\">\n\t{#each sizes as item (item.size)}\n\t\t<div class=\"flex flex-col items-center gap-2\">\n\t\t\t<Knob\n\t\t\t\tsize={item.size}\n\t\t\t\tvalue={item.value}\n\t\t\t\tonValueChange={(v) => {\n\t\t\t\t\titem.value = v;\n\t\t\t\t}}\n\t\t\t/>\n\t\t\t<span class=\"text-muted-foreground text-xs\">{item.size}</span>\n\t\t</div>\n\t{/each}\n</div>\n",
-      "type": "registry:component"
+      "type": "registry:file"
     }
   ],
   "categories": [

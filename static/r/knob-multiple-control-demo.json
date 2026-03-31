@@ -1,7 +1,7 @@
 {
   "$schema": "https://shadcn-svelte.com/schema/registry-item.json",
   "name": "knob-multiple-control-demo",
-  "type": "registry:block",
+  "type": "registry:ui",
   "title": "Knob Multiple Control Demo",
   "description": "Example: Knob Multiple Control Demo.",
   "author": "ddtamn <https://github.com/ddtamn>",
@@ -13,7 +13,7 @@
     {
       "target": "~/src/lib/components/ui/audio/examples/knob-multiple-control-demo.svelte",
       "content": "<script lang=\"ts\">\n\timport { Knob } from \"$lib/components/ui/audio/elements/knob/index.js\";\n\n\tlet channels = $state([\n\t\t{ label: \"Vol\", value: 80 },\n\t\t{ label: \"Pan\", value: 50 },\n\t\t{ label: \"EQ Lo\", value: 60 },\n\t\t{ label: \"EQ Hi\", value: 40 },\n\t\t{ label: \"Reverb\", value: 25 },\n\t\t{ label: \"Delay\", value: 35 },\n\t]);\n</script>\n\n<div class=\"flex flex-wrap items-center justify-center gap-6\">\n\t{#each channels as channel (channel.label)}\n\t\t<div class=\"flex flex-col items-center gap-1\">\n\t\t\t<Knob\n\t\t\t\tlabel={channel.label}\n\t\t\t\tvalue={channel.value}\n\t\t\t\tonValueChange={(v) => (channel.value = v)}\n\t\t\t/>\n\t\t\t<span class=\"text-muted-foreground text-xs tabular-nums\">{channel.value}</span>\n\t\t</div>\n\t{/each}\n</div>\n",
-      "type": "registry:component"
+      "type": "registry:file"
     }
   ],
   "categories": [

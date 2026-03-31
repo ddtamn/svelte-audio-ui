@@ -1,7 +1,7 @@
 {
   "$schema": "https://shadcn-svelte.com/schema/registry-item.json",
   "name": "particle-player-widget",
-  "type": "registry:block",
+  "type": "registry:ui",
   "title": "Player Widget",
   "description": "Player Widget particle for svelte-audio-ui.",
   "author": "ddtamn <https://github.com/ddtamn>",
@@ -15,7 +15,7 @@
     {
       "target": "~/src/lib/components/particles/player-widget.svelte",
       "content": "<script lang=\"ts\">\r\n\timport * as AudioPlayer from \"$lib/components/ui/audio/player/index\";\r\n\timport * as AudioTrack from \"$lib/components/ui/audio/track/index.js\";\r\n\timport * as AudioQueue from \"$lib/components/ui/audio/queue/index.js\";\r\n</script>\r\n\r\n<AudioPlayer.Root class=\"flex flex-col gap-1.5\">\r\n\t<AudioTrack.List class=\"bg-muted/50 h-36 w-full rounded-sm border p-1\" />\r\n\t<AudioPlayer.ControlBar variant=\"stacked\">\r\n\t\t<AudioPlayer.ControlGroup>\r\n\t\t\t<AudioPlayer.TimeDisplay />\r\n\t\t\t<AudioPlayer.SeekBar />\r\n\t\t\t<AudioPlayer.TimeDisplay remaining />\r\n\t\t</AudioPlayer.ControlGroup>\r\n\t\t<AudioPlayer.ControlGroup>\r\n\t\t\t<AudioPlayer.ControlGroup>\r\n\t\t\t\t<AudioPlayer.SkipBack />\r\n\t\t\t\t<AudioPlayer.Play />\r\n\t\t\t\t<AudioPlayer.SkipForward />\r\n\t\t\t</AudioPlayer.ControlGroup>\r\n\t\t\t<AudioQueue.Shuffle />\r\n\t\t\t<AudioQueue.RepeatMode />\r\n\t\t\t<AudioPlayer.Volume />\r\n\t\t</AudioPlayer.ControlGroup>\r\n\t</AudioPlayer.ControlBar>\r\n</AudioPlayer.Root>\r\n",
-      "type": "registry:component"
+      "type": "registry:file"
     }
   ],
   "docs": "https://svelte-audio-ui.vercel.app/docs/particles",

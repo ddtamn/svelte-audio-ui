@@ -1,7 +1,7 @@
 {
   "$schema": "https://shadcn-svelte.com/schema/registry-item.json",
   "name": "xypad-hide-value-demo",
-  "type": "registry:block",
+  "type": "registry:ui",
   "title": "Xypad Hide Value Demo",
   "description": "Example: Xypad Hide Value Demo.",
   "author": "ddtamn <https://github.com/ddtamn>",
@@ -13,7 +13,7 @@
     {
       "target": "~/src/lib/components/ui/audio/examples/xypad-hide-value-demo.svelte",
       "content": "<script lang=\"ts\">\n\timport { XYPad } from \"$lib/components/ui/audio/elements/xypad/index.js\";\n</script>\n\n<XYPad\n\tdefaultValue={{ x: 50, y: 50 }}\n\tshowValueDisplay={false}\n\tmaxX={100}\n\tmaxY={100}\n\tminX={0}\n\tminY={0}\n\tclass=\"aspect-square\"\n/>\n",
-      "type": "registry:component"
+      "type": "registry:file"
     }
   ],
   "categories": [

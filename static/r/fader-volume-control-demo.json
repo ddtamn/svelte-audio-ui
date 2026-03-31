@@ -1,7 +1,7 @@
 {
   "$schema": "https://shadcn-svelte.com/schema/registry-item.json",
   "name": "fader-volume-control-demo",
-  "type": "registry:block",
+  "type": "registry:ui",
   "title": "Fader Volume Control Demo",
   "description": "Example: Fader Volume Control Demo.",
   "author": "ddtamn <https://github.com/ddtamn>",
@@ -14,7 +14,7 @@
     {
       "target": "~/src/lib/components/ui/audio/examples/fader-volume-control-demo.svelte",
       "content": "<script lang=\"ts\">\n\timport { Fader } from \"$lib/components/ui/audio/elements/fader/index.js\";\n\timport { audioStore } from \"$lib/audio-store.svelte.js\";\n\n\tfunction handleVolumeChange(value: number) {\n\t\taudioStore.setVolume({ volume: value / 100 });\n\t}\n</script>\n\n<div class=\"flex h-48 items-center justify-center gap-4\">\n\t<Fader label=\"Vol\" value={audioStore.volume * 100} onValueChange={handleVolumeChange} />\n</div>\n",
-      "type": "registry:component"
+      "type": "registry:file"
     }
   ],
   "categories": [
