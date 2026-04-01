@@ -15,7 +15,7 @@
 </script>
 
 <div class="w-full">
-	<SortableList bind:items onDrop={(v) => (items = v)}>
+	<SortableList {items} onDrop={(v) => (items = v)}>
 		{#snippet item(row)}
 			<SortableItem class="border-border bg-muted/40 rounded-md border p-3 text-sm">
 				<SortableDragHandle />

@@ -39,7 +39,6 @@
 
 	const isExternalTracks = $derived(!!externalTracks);
 
-	// ── Filtered tracks ─────────────────────────────────────────────────────────
 	const displayTracks = $derived.by<Track[]>(() => {
 		let base: Track[] = externalTracks ?? audioStore.queue;
 
@@ -60,6 +59,39 @@
 	const listClass = $derived(
 		variant === "grid" ? "grid grid-cols-1 gap-2 xl:grid-cols-2" : "space-y-0.5"
 	);
+
+	// ── Stable Sortable Wrappers ────────────────────────────────────────────────
+	let wrappersMap: Record<string, { id: string | number; _track: Track }> = {};
+	let sortableItems = $state<{ id: string | number; _track: Track }[]>([]);
+
+	$effect.pre(() => {
+		const newItems = displayTracks
+			.filter((t: Track) => t.id !== undefined)
+			.map((t: Track) => {
+				const id = String(t.id);
+				if (!wrappersMap[id]) {
+					wrappersMap[id] = { id, _track: t };
+				} else {
+					wrappersMap[id]._track = t; // keep track ref up to date
+				}
+				return wrappersMap[id];
+			});
+
+		// Cleanup old wrappers to prevent memory leaks
+		const currentIds = new Set(newItems.map((w) => w.id));
+		for (const id in wrappersMap) {
+			if (!currentIds.has(id)) delete wrappersMap[id];
+		}
+
+		// Only update when order or membership actually changed
+		const isSame =
+			sortableItems.length === newItems.length &&
+			sortableItems.every((item, i) => String(item.id) === String(newItems[i]?.id));
+
+		if (!isSame) {
+			sortableItems = newItems;
+		}
+	});
 
 	// ── Track click handler ─────────────────────────────────────────────────────
 	function handleTrackClick(track: Track, index: number) {
@@ -82,16 +114,19 @@
 	}
 
 	// ── Reorder handler (sortable, store mode only) ────────────────────────────
-	function handleReorder(reordered: { id: string | number }[]) {
+	function handleReorder(reordered: { id: string | number; _track?: Track }[]) {
 		if (isFiltered || isExternalTracks) return;
 
+		// Match by exact ID to prevent lost tracks if svelte-dnd-action stripped properties
 		const reorderedTracks = reordered
-			.map((r) => displayTracks.find((t: Track) => String(t.id) === String(r.id)))
+			.map((r) => displayTracks.find((t) => String(t.id) === String(r.id)))
 			.filter((t): t is Track => t !== undefined);
 
 		const newCurrentIndex =
 			audioStore.currentTrack?.id !== undefined
-				? reorderedTracks.findIndex((t) => t.id === audioStore.currentTrack!.id)
+				? reorderedTracks.findIndex(
+						(t) => String(t.id) === String(audioStore.currentTrack!.id)
+					)
 				: -1;
 
 		const finalIndex =
@@ -104,7 +139,6 @@
 </script>
 
 {#if displayTracks.length === 0}
-	<!-- Empty state ──────────────────────────────────────────────────────────── -->
 	<div
 		class={cn(
 			"mx-auto flex size-full flex-col items-center justify-center gap-3",
@@ -121,12 +155,16 @@
 		</div>
 	</div>
 {:else if sortable && !isFiltered}
-	<!-- Sortable list ─────────────────────────────────────────────────────────── -->
 	<div class={cn("no-scrollbar w-full overflow-y-auto", className)}>
+		<!--
+			No bind:items here — SortableList owns its internal DnD state.
+			Writing back through a binding would trigger $effect.pre mid-drag,
+			which strips svelte-dnd-action's shadow items and causes the
+			"Cannot read properties of undefined (reading 'parentElement')" crash.
+			Results flow out exclusively through onDrop → handleReorder.
+		-->
 		<SortableList
-			items={displayTracks
-				.filter((t: Track) => t.id !== undefined)
-				.map((t: Track) => ({ id: String(t.id), _track: t }))}
+			items={sortableItems}
 			onDrop={handleReorder}
 			class={variant === "grid" ? "grid grid-cols-1 gap-2 xl:grid-cols-2" : "gap-0.5"}
 		>
@@ -146,7 +184,6 @@
 		</SortableList>
 	</div>
 {:else}
-	<!-- Plain list ────────────────────────────────────────────────────────────── -->
 	<div class={cn("no-scrollbar w-full overflow-y-auto", className)}>
 		<div class={cn("w-full", listClass)}>
 			{#each displayTracks as track, idx (track.id)}
