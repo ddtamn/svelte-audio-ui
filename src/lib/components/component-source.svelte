@@ -25,6 +25,8 @@
 		description?: string;
 		meta?: Record<string, unknown>;
 		type: string;
+		dependencies?: string[];
+		registryDependencies?: string[];
 		files: HighlightedFile[];
 	}
 
@@ -40,6 +42,8 @@
 </script>
 
 <script lang="ts">
+	import PMInstall from "$lib/components/pm-install.svelte";
+
 	let {
 		item,
 		allowSidebar = false,
@@ -120,6 +124,17 @@
 
 	const height = $derived(`min(${longestFileHeight}, ${viewportHeight})`);
 </script>
+
+{#if item.dependencies?.length}
+	<h3 class="font-heading mt-8 scroll-m-20 text-xl font-semibold tracking-tight">
+		Install <span class="bg-muted text-muted-foreground rounded-md px-1.5 py-1 text-sm leading-none font-mono font-medium">{item.dependencies.join(' ')}</span> :
+	</h3>
+	<div class="mt-4">
+		<PMInstall command={item.dependencies.join(" ")} />
+	</div>
+{/if}
+
+<h3 class="font-heading mt-8 mb-4 scroll-m-20 text-xl font-semibold tracking-tight">Copy and paste the following code into your project.</h3>
 
 <figure data-rehype-pretty-code-figure data-llm-ignore id={item.name}>
 	<div

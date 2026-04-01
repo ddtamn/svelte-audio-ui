@@ -9,7 +9,7 @@
 	import { MediaQuery } from "svelte/reactivity";
 	import { badgeVariants } from "$lib/components/ui/badge/badge.svelte";
 	import type { HighlightedBlock } from "$lib/components/component-source.svelte";
-	import type { FileTree } from "$lib/registry/registry-utils.js";
+	import type { FileTree } from "$lib/registry-utils.js";
 
 	type RegistryItemFile = HighlightedBlock["files"][number];
 
@@ -133,7 +133,7 @@
 
 	const isMobile = new MediaQuery("(max-width: 768px)");
 	const height = $derived(
-		isMobile.current ? "75dvh" : "calc(100svh - (var(--header-height) * 2))"
+		isMobile.current ? "75dvh" : "calc(100svh - (var(--header-height, 4rem) * 2))"
 	);
 	let contentRef = $state<HTMLElement | null>(null);
 </script>

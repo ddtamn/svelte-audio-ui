@@ -9,6 +9,7 @@ component: true
 	import PMAddComp from "$lib/components/pm-add-comp.svelte";
 	import Steps from "$lib/components/steps.svelte";
 	import InstallTabs from "$lib/components/install-tabs.svelte";
+	import ComponentSource from "$lib/components/component-source.svelte";
 
 	let { viewerData } = $props();
 </script> <br>
@@ -29,7 +30,11 @@ component: true
 
 {#snippet manual()}
 
-On progress
+{#if viewerData}
+	<ComponentSource item={viewerData} data-llm-ignore />
+{:else}
+	<p class="text-muted-foreground mt-4 text-sm">Source code not available.</p>
+{/if}
 
 {/snippet}
 
