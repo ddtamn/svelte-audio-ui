@@ -13,6 +13,12 @@
 
   <img src="https://img.shields.io/github/license/ddtamn/svelte-audio-ui?color=orange&style=flat-square" alt="License" />
   <img src="https://img.shields.io/github/stars/ddtamn/svelte-audio-ui?color=orange&style=flat-square" alt="Stars" />
+  <img src="https://img.shields.io/badge/Svelte-5-ff3e00?style=flat-square&logo=svelte&logoColor=white" alt="Svelte 5" />
+  <img src="https://img.shields.io/badge/SvelteKit-app-ff3e00?style=flat-square&logo=svelte&logoColor=white" alt="SvelteKit" />
+  <img src="https://img.shields.io/badge/TypeScript-ready-3178c6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/shadcn--svelte-compatible-black?style=flat-square" alt="shadcn-svelte" />
+  <img src="https://img.shields.io/badge/copy--paste-friendly-success?style=flat-square" alt="Copy Paste Friendly" />
+  <img src="https://img.shields.io/badge/AI-ready-8A2BE2?style=flat-square" alt="AI Ready" />
 </div>
 
 ---
