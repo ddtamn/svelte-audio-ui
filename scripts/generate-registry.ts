@@ -146,7 +146,7 @@ function extractDeps(
 		const content = fs.readFileSync(filePath, "utf8");
 
 		// ── npm packages ─────────────────────────────────────────────────────
-		const npmRe = /from\s+["']([^$\.\/][^"']+)["']/g;
+		const npmRe = /from\s+["']([^$./][^"']+)["']/g;
 		let m: RegExpExecArray | null;
 		while ((m = npmRe.exec(content)) !== null) {
 			const raw = m[1];
@@ -266,6 +266,30 @@ function buildParticleItem(name: string, filePath: string): RegistryItem {
 	};
 }
 
+function buildLibItem(name: string, filePath: string): RegistryItem {
+	const { dependencies, registryDependencies } = extractDeps([filePath], name);
+
+	return {
+		$schema: "https://shadcn-svelte.com/schema/registry-item.json",
+		name,
+		type: "registry:lib",
+		title: toTitle(name),
+		description: `Core library file: ${name}.`,
+		author: AUTHOR,
+		dependencies,
+		registryDependencies,
+		files: [
+			{
+				target: computeTarget(filePath, true),
+				content: fs.readFileSync(filePath, "utf8"),
+				type: "registry:lib",
+			},
+		],
+		docs: `${BASE_URL}/docs/libs/${name}`,
+		categories: ["audio", "lib"],
+	};
+}
+
 function buildExampleItem(name: string, filePath: string): RegistryItem {
 	const { dependencies, registryDependencies } = extractDeps([filePath], name);
 
@@ -350,6 +374,20 @@ function generateRegistry() {
 			const item = buildExampleItem(name, filePath);
 			items.push(item);
 			console.log(`  [example]  ${item.name}`);
+		}
+	}
+
+	// 5. Core lib files (src/lib/audio-store.svelte.ts, src/lib/html-audio.ts)
+	const libFiles = [
+		{ name: "audio-store", file: "audio-store.svelte.ts" },
+		{ name: "html-audio", file: "html-audio.ts" }
+	];
+	for (const lib of libFiles) {
+		const filePath = path.join(LIB_DIR, lib.file);
+		if (fs.existsSync(filePath)) {
+			const item = buildLibItem(lib.name, filePath);
+			items.push(item);
+			console.log(`  [lib]      ${item.name}`);
 		}
 	}
 

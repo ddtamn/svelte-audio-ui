@@ -8,8 +8,10 @@ component: true
 	import ComponentPreview from "$lib/components/component-preview.svelte";
 	import PMAddComp from "$lib/components/pm-add-comp.svelte";
 	import InstallTabs from "$lib/components/install-tabs.svelte";
+	import ComponentSource from "$lib/components/component-source.svelte";
 
 	let { viewerData } = $props();
+  
 </script>
 
 <br>A set of composable components for managing the audio queue. Includes a browseable queue dialog, shuffle, repeat mode, and an advanced preferences panel.
@@ -26,7 +28,11 @@ component: true
 
 {#snippet manual()}
 
-On progress
+{#if viewerData}
+	<ComponentSource item={viewerData} data-llm-ignore />
+{:else}
+	<p class="text-muted-foreground mt-4 text-sm">Source code not available.</p>
+{/if}
 
 {/snippet}
 
@@ -47,11 +53,11 @@ Import the components:
 The `AudioQueue` component opens a dialog showing the current queue with search functionality and track selection.
 
 ```svelte
-<AudioPlayer>
-  <AudioPlayerControlBar>
-    <AudioQueue />
-  </AudioPlayerControlBar>
-</AudioPlayer>
+<AudioPlayer.Root>
+  <AudioPlayer.ControlBar>
+    <AudioQueue.Root />
+  </AudioPlayer.ControlBar>
+</AudioPlayer.Root>
 ```
 
 ### Queue with Shuffle and Repeat

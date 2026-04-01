@@ -10,7 +10,10 @@
 
 	// Load all particle and example sources as raw strings
 	const rawSources = import.meta.glob(
-		["/src/lib/registry/particles/*.svelte", "/src/lib/registry/examples/*.svelte"],
+		[
+			"/src/lib/components/particles/*.svelte",
+			"/src/lib/components/ui/audio/examples/*.svelte",
+		],
 		{
 			query: "?raw",
 			import: "default",

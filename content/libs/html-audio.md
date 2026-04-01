@@ -7,7 +7,10 @@ component: false
 <script>
 	import PMAddComp from "$lib/components/pm-add-comp.svelte";
 	import InstallTabs from "$lib/components/install-tabs.svelte";
-  import Callout from '$lib/components/callout.svelte';
+	import ComponentSource from "$lib/components/component-source.svelte";
+	import Callout from '$lib/components/callout.svelte';
+
+	let { viewerData } = $props();
 </script>
 
 <br/>
@@ -26,7 +29,11 @@ The `htmlAudio` singleton manages playback of HTML5 audio with automatic retry l
 
 {#snippet manual()}
 
-On progress
+{#if viewerData}
+	<ComponentSource item={viewerData} data-llm-ignore />
+{:else}
+	<p class="text-muted-foreground mt-4 text-sm">Source code not available.</p>
+{/if}
 
 {/snippet}
 

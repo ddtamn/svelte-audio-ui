@@ -36,7 +36,11 @@ component: true
 
 {#snippet manual()}
 
-On progress
+{#if viewerData}
+	<ComponentSource item={viewerData} data-llm-ignore />
+{:else}
+	<p class="text-muted-foreground mt-4 text-sm">Source code not available.</p>
+{/if}
 
 {/snippet}
 

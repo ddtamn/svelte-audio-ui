@@ -1083,6 +1083,46 @@
         "audio",
         "example"
       ]
+    },
+    {
+      "name": "audio-store",
+      "type": "registry:lib",
+      "title": "Audio Store",
+      "description": "Core library file: audio-store.",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://svelte-audio-ui.vercel.app/r/provider.json"
+      ],
+      "files": [
+        {
+          "target": "audio-store.svelte.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "categories": [
+        "audio",
+        "lib"
+      ],
+      "docs": "https://svelte-audio-ui.vercel.app/docs/libs/audio-store"
+    },
+    {
+      "name": "html-audio",
+      "type": "registry:lib",
+      "title": "Html Audio",
+      "description": "Core library file: html-audio.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "target": "html-audio.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "categories": [
+        "audio",
+        "lib"
+      ],
+      "docs": "https://svelte-audio-ui.vercel.app/docs/libs/html-audio"
     }
   ]
 }
