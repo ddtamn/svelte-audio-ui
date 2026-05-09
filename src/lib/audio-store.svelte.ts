@@ -208,11 +208,8 @@ class AudioStore {
 	// ── Queue actions ───────────────────────────────────────────────────────
 
 	setQueue(tracks: Track[], startIndex = 0): void {
-		console.log(tracks);
 		const current = tracks[startIndex] ?? null;
-		console.log(current);
 		this.queue = tracks;
-		console.log(this.queue);
 		this.currentQueueIndex = current ? startIndex : -1;
 		this.currentTrack = current;
 	}
