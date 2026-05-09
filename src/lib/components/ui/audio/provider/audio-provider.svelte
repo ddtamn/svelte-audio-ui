@@ -333,7 +333,7 @@
 		const audio = htmlAudio.getAudioElement();
 		if (!audio) return;
 		const diff = Math.abs(audio.currentTime - currentTime);
-		if (diff > 0.1 && currentTime !== lastSeekTime) {
+		if (diff > 0.1 && audio.currentTime !== lastSeekTime) {
 			lastSeekTime = currentTime;
 			htmlAudio.setCurrentTime(currentTime);
 		}

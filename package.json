@@ -6,7 +6,7 @@
 	"scripts": {
 		"build:registry": "node ./scripts/build-registry.ts",
 		"generate:registry": "bun run ./scripts/generate-registry.ts",
-		"dev": "npm run build:registry && vite dev",
+		"dev": "npm run build:registry && vite dev --port 5050",
 		"dev:content": "velite dev --watch",
 		"dev:svelte": "vite dev",
 		"build": "npm run build:registry && vite build",
@@ -69,6 +69,7 @@
 		"mode-watcher": "^1.1.0",
 		"package-manager-detector": "^1.6.0",
 		"posthog-js": "^1.364.1",
+		"runed": "^0.37.1",
 		"svelte-dnd-action": "^0.9.69",
 		"three": "^0.183.2",
 		"wavesurfer.js": "^7.12.5",
