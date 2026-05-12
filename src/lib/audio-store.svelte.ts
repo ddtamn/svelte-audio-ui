@@ -92,6 +92,9 @@ class AudioStore {
 			if (d.currentTime !== undefined) this.currentTime = d.currentTime;
 			if (d.insertMode !== undefined) this.insertMode = d.insertMode;
 			if (d.currentQueueIndex !== undefined) this.currentQueueIndex = d.currentQueueIndex;
+			if (this.duration > 0) {
+				this.progress = (this.currentTime / this.duration) * 100;
+			}
 		} catch {
 			/* ignore */
 		}
