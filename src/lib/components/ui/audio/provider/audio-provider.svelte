@@ -24,6 +24,7 @@
 	let lastSeekTime = 0;
 	let lastUpdateTime = 0;
 	let prevTrackId: string | number | undefined = undefined;
+	let isRestoring = false;
 
 	// ─── Sync tracks prop → store ───────────────────────────────────────────────
 	$effect(() => {
@@ -264,6 +265,7 @@
 		// ── Restore persisted state ───────────────────────────────────────────────
 		(async () => {
 			if (!audioStore.currentTrack || audioStore.currentTime <= 0) return;
+			isRestoring = true;
 			const track = audioStore.currentTrack;
 			const audioDur = audio.duration || audioStore.duration || 0;
 			const isLive = htmlAudio.isLive(audioDur);
@@ -283,6 +285,8 @@
 				audioStore.isPlaying = false;
 				audioStore.isLoading = false;
 				audioStore.isBuffering = false;
+			} finally {
+				isRestoring = false;
 			}
 		})();
 
@@ -305,6 +309,7 @@
 
 	/** Load new track and play when currentTrack changes */
 	$effect(() => {
+		if (isRestoring) return;
 		const track = audioStore.currentTrack;
 		const trackId = track?.id;
 		if (!track || trackId === prevTrackId) return;
