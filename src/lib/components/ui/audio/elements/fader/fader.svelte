@@ -36,48 +36,22 @@
 	const isVertical = $derived(orientation === "vertical");
 	const fillPercent = $derived(((value - min) / (max - min)) * 100);
 
-	// ── Track dimensions ────────────────────────────────────────────────────────
-	const trackSize = $derived.by<Record<Size, string>>(() => ({
-		sm: isVertical ? "w-2" : "h-2",
-		default: isVertical ? "w-3" : "h-3",
-		lg: isVertical ? "w-4" : "h-4",
-	}));
+	// ── Static lookup maps (created once, never re-allocated) ───────────────────
+	const TRACK = { v: { sm: "w-2", default: "w-3", lg: "w-4" }, h: { sm: "h-2", default: "h-3", lg: "h-4" } };
+	const TW = { v: { sm: "w-7", default: "w-9", lg: "w-11" }, h: { sm: "w-4", default: "w-5", lg: "w-6" } };
+	const TH = { v: { sm: "h-4", default: "h-5", lg: "h-6" }, h: { sm: "h-7", default: "h-9", lg: "h-11" } };
+	const TW_S = { v: { sm: "28px", default: "36px", lg: "44px" }, h: { sm: "16px", default: "20px", lg: "24px" } };
+	const TH_S = { v: { sm: "16px", default: "20px", lg: "24px" }, h: { sm: "28px", default: "36px", lg: "44px" } };
+	const MW = { v: { sm: "w-3", default: "w-4", lg: "w-5" }, h: { sm: "w-px", default: "w-px", lg: "w-px" } };
+	const MH = { v: { sm: "h-px", default: "h-px", lg: "h-px" }, h: { sm: "h-3", default: "h-4", lg: "h-5" } };
 
-	// ── Thumb dimensions ────────────────────────────────────────────────────────
-	const thumbW = $derived.by<Record<Size, string>>(() => ({
-		sm: isVertical ? "w-7" : "w-4",
-		default: isVertical ? "w-9" : "w-5",
-		lg: isVertical ? "w-11" : "w-6",
-	}));
-	const thumbH = $derived.by<Record<Size, string>>(() => ({
-		sm: isVertical ? "h-4" : "h-7",
-		default: isVertical ? "h-5" : "h-9",
-		lg: isVertical ? "h-6" : "h-11",
-	}));
-
-	const thumbWStyles = $derived.by<Record<Size, string>>(() => ({
-		sm: isVertical ? "28px" : "16px",
-		default: isVertical ? "36px" : "20px",
-		lg: isVertical ? "44px" : "24px",
-	}));
-	const thumbHStyles = $derived.by<Record<Size, string>>(() => ({
-		sm: isVertical ? "16px" : "28px",
-		default: isVertical ? "20px" : "36px",
-		lg: isVertical ? "24px" : "44px",
-	}));
-	const cssVars = $derived(`--thumb-w: ${thumbWStyles[size]}; --thumb-h: ${thumbHStyles[size]};`);
-
-	// ── Thumb mark dimensions ───────────────────────────────────────────────────
-	const markW = $derived.by<Record<Size, string>>(() => ({
-		sm: isVertical ? "w-3" : "w-px",
-		default: isVertical ? "w-4" : "w-px",
-		lg: isVertical ? "w-5" : "w-px",
-	}));
-	const markH = $derived.by<Record<Size, string>>(() => ({
-		sm: isVertical ? "h-px" : "h-3",
-		default: isVertical ? "h-px" : "h-4",
-		lg: isVertical ? "h-px" : "h-5",
-	}));
+	const axis = $derived(isVertical ? "v" : "h");
+	const trackSize = $derived(TRACK[axis][size]);
+	const thumbW = $derived(TW[axis][size]);
+	const thumbH = $derived(TH[axis][size]);
+	const markW = $derived(MW[axis][size]);
+	const markH = $derived(MH[axis][size]);
+	const cssVars = $derived(`--thumb-w: ${TW_S[axis][size]}; --thumb-h: ${TH_S[axis][size]};`);
 
 	// ── Thumb position as CSS ───────────────────────────────────────────────────
 	// Vertical: thumb slides from bottom (0%) to top (100%)

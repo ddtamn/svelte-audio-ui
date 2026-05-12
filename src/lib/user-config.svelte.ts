@@ -64,7 +64,13 @@ export function parseUserConfig(cookie: string): UserConfigType {
 	const cookieMap = parseCookie(cookie);
 	const userConfig = cookieMap[USER_CONFIG_COOKIE_NAME];
 	if (!userConfig) return userConfigSchema.parse({});
-	return userConfigSchema.parse(JSON.parse(userConfig));
+	try {
+		const parsed = JSON.parse(userConfig);
+		const result = userConfigSchema.safeParse(parsed);
+		return result.success ? result.data : userConfigSchema.parse({});
+	} catch {
+		return userConfigSchema.parse({});
+	}
 }
 
 export class UserConfig {

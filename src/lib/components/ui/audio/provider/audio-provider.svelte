@@ -24,6 +24,8 @@
 	let lastSeekTime = 0;
 	let lastUpdateTime = 0;
 	let prevTrackId: string | number | undefined = undefined;
+	let isRestoring = false;
+	let saveTimeout: ReturnType<typeof setTimeout> | null = null;
 
 	// ─── Sync tracks prop → store ───────────────────────────────────────────────
 	$effect(() => {
@@ -264,6 +266,7 @@
 		// ── Restore persisted state ───────────────────────────────────────────────
 		(async () => {
 			if (!audioStore.currentTrack || audioStore.currentTime <= 0) return;
+			isRestoring = true;
 			const track = audioStore.currentTrack;
 			const audioDur = audio.duration || audioStore.duration || 0;
 			const isLive = htmlAudio.isLive(audioDur);
@@ -283,12 +286,18 @@
 				audioStore.isPlaying = false;
 				audioStore.isLoading = false;
 				audioStore.isBuffering = false;
+			} finally {
+				isRestoring = false;
 			}
 		})();
 
 		return () => {
 			ctrl.abort();
 			htmlAudio.removeEventListener("bufferUpdate", handleBufferUpdate);
+			if (saveTimeout) {
+				clearTimeout(saveTimeout);
+				saveTimeout = null;
+			}
 			if (preloadAudio) {
 				preloadAudio.src = "";
 				preloadAudio = null;
@@ -305,6 +314,7 @@
 
 	/** Load new track and play when currentTrack changes */
 	$effect(() => {
+		if (isRestoring) return;
 		const track = audioStore.currentTrack;
 		const trackId = track?.id;
 		if (!track || trackId === prevTrackId) return;
@@ -355,9 +365,8 @@
 		if (qLen === 0 && preloadAudio) preloadAudio.src = "";
 	});
 
-	/** Persist state to localStorage */
+	/** Persist state to localStorage (debounced; currentTime excluded from reactivity) */
 	$effect(() => {
-		// Accessing each field registers it as a dependency
 		void [
 			audioStore.currentTrack,
 			audioStore.queue.length,
@@ -366,11 +375,11 @@
 			audioStore.playbackRate,
 			audioStore.repeatMode,
 			audioStore.shuffleEnabled,
-			audioStore.currentTime,
 			audioStore.insertMode,
 			audioStore.currentQueueIndex,
 		];
-		audioStore.saveToStorage();
+		if (saveTimeout) clearTimeout(saveTimeout);
+		saveTimeout = setTimeout(() => audioStore.saveToStorage(), 1000);
 	});
 </script>
 
