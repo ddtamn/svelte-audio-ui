@@ -25,6 +25,7 @@
 	let lastUpdateTime = 0;
 	let prevTrackId: string | number | undefined = undefined;
 	let isRestoring = false;
+	let saveTimeout: ReturnType<typeof setTimeout> | null = null;
 
 	// ─── Sync tracks prop → store ───────────────────────────────────────────────
 	$effect(() => {
@@ -293,6 +294,10 @@
 		return () => {
 			ctrl.abort();
 			htmlAudio.removeEventListener("bufferUpdate", handleBufferUpdate);
+			if (saveTimeout) {
+				clearTimeout(saveTimeout);
+				saveTimeout = null;
+			}
 			if (preloadAudio) {
 				preloadAudio.src = "";
 				preloadAudio = null;
@@ -360,9 +365,8 @@
 		if (qLen === 0 && preloadAudio) preloadAudio.src = "";
 	});
 
-	/** Persist state to localStorage */
+	/** Persist state to localStorage (debounced; currentTime excluded from reactivity) */
 	$effect(() => {
-		// Accessing each field registers it as a dependency
 		void [
 			audioStore.currentTrack,
 			audioStore.queue.length,
@@ -371,11 +375,11 @@
 			audioStore.playbackRate,
 			audioStore.repeatMode,
 			audioStore.shuffleEnabled,
-			audioStore.currentTime,
 			audioStore.insertMode,
 			audioStore.currentQueueIndex,
 		];
-		audioStore.saveToStorage();
+		if (saveTimeout) clearTimeout(saveTimeout);
+		saveTimeout = setTimeout(() => audioStore.saveToStorage(), 1000);
 	});
 </script>
 
