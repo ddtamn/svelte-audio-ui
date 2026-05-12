@@ -303,7 +303,11 @@ class AudioStore {
 	shuffle(): void {
 		if (!this.queue.length || this.queue.length < 2 || !this.currentTrack) return;
 		const rest = this.queue.filter((_, i) => i !== this.currentQueueIndex);
-		const shuffled = rest.sort(() => Math.random() - 0.5);
+		const shuffled = [...rest];
+		for (let i = shuffled.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[shuffled[i], shuffled[j]] = [shuffled[j]!, shuffled[i]!];
+		}
 		this.queue = [this.currentTrack, ...shuffled];
 		this.currentQueueIndex = 0;
 		this.shuffleEnabled = true;
