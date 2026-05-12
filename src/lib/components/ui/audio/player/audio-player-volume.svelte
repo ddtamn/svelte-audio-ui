@@ -26,7 +26,8 @@
 
 	const tooltipLabel = $derived(audioStore.isMuted ? "Muted" : `Volume ${volumePercent}%`);
 
-	function handleSliderChange(v: number) {
+	function handleSliderChange(values: number[]) {
+		const v = values[0];
 		if (v === undefined) return;
 		audioStore.setVolume({ volume: v / 100 });
 		if (v === 0 && !audioStore.isMuted) audioStore.toggleMute();
@@ -83,9 +84,7 @@
 				max={100}
 				min={0}
 				bind:value={volumePercent}
-				onValueChange={(e) => {
-					handleSliderChange(e);
-				}}
+				onValueChange={handleSliderChange}
 			/>
 
 			<Volume2 aria-hidden="true" class="size-4 shrink-0 opacity-60" />
