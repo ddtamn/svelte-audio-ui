@@ -1,4 +1,5 @@
 <script lang="ts" generics="Item extends { id: string | number }">
+	import { tick } from "svelte";
 	import { flip } from "svelte/animate";
 	import { cn } from "$lib/utils.js";
 	import type { Snippet } from "svelte";
@@ -15,20 +16,11 @@
 
 	const flipDurationMs = 150;
 
-	// Internal DnD state — completely decoupled from the `items` prop.
-	// The prop only flows in; results flow out via onDrop.
 	let isDragging = $state(false);
 	let dndItems = $state<Item[]>([...items]);
-	let dragTimeout: ReturnType<typeof requestAnimationFrame> | undefined;
 
-	// Sync prop → dndItems only when the user is NOT mid-drag.
-	// During a drag svelte-dnd-action owns the list (shadow items, order),
-	// so external reactive updates must not overwrite its internal state.
 	$effect(() => {
 		if (isDragging) return;
-		// Only sync when the prop order actually differs from internal state.
-		// This prevents overwriting the just-dropped order before the parent's
-		// state update has propagated back down through the items prop.
 		const needsSync =
 			dndItems.length !== items.length ||
 			dndItems.some((item, i) => item.id !== items[i]?.id);
@@ -38,35 +30,19 @@
 	});
 
 	function handleConsider(e: CustomEvent<{ items: Item[] }>) {
-		if (dragTimeout !== undefined) {
-			cancelAnimationFrame(dragTimeout);
-			dragTimeout = undefined;
-		}
 		isDragging = true;
-		// Only update the internal DnD list — never write back to the prop.
-		// Writing to the prop would trigger the parent's $effect.pre which strips
-		// the shadow-item markers, causing svelte-dnd-action to lose its DOM
-		// reference and crash in keepOriginalElementInDom.
 		dndItems = e.detail.items;
 	}
 
-	function handleFinalize(e: CustomEvent<{ items: Item[] }>) {
-		// Strip any lingering shadow placeholder items before we publish the result.
+	async function handleFinalize(e: CustomEvent<{ items: Item[] }>) {
 		const finalItems = e.detail.items.filter(
 			(i: any) => !i[SHADOW_ITEM_MARKER_PROPERTY_NAME]
 		) as Item[];
 		dndItems = finalItems;
 		onDrop?.(finalItems);
 
-		// Defer clearing isDragging until the next animation frame so the
-		// parent has time to propagate its state update back down through
-		// the items prop. Without this delay the $effect above can run with
-		// the old items array and visually snap the list back to its
-		// previous order.
-		dragTimeout = requestAnimationFrame(() => {
-			isDragging = false;
-			dragTimeout = undefined;
-		});
+		await tick();
+		isDragging = false;
 	}
 </script>
 
