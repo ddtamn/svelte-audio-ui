@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from "svelte";
+	import { onMount, untrack } from "svelte";
 	import type { Snippet } from "svelte";
 	import { htmlAudio } from "$lib/html-audio.js";
 	import type { Track } from "$lib/html-audio.js";
@@ -29,16 +29,18 @@
 
 	// ─── Sync tracks prop → store ───────────────────────────────────────────────
 	$effect(() => {
-		if (!tracks || tracks.length === 0) return;
-		const q = audioStore.queue;
+		const t = tracks;
+		if (!t || t.length === 0) return;
+		const q = untrack(() => audioStore.queue);
+		const cqi = untrack(() => audioStore.currentQueueIndex);
 		const changed =
 			q.length === 0 ||
-			q.length !== tracks.length ||
-			q.some((t, i) => t.id !== tracks[i]?.id);
+			q.length !== t.length ||
+			q.some((track, i) => track.id !== t[i]?.id);
 		if (changed) {
-			audioStore.queue = tracks;
-			if (!audioStore.currentTrack) audioStore.currentTrack = tracks[0] ?? null;
-			if (audioStore.currentQueueIndex === -1) audioStore.currentQueueIndex = 0;
+			audioStore.queue = [...t];
+			if (!untrack(() => audioStore.currentTrack)) audioStore.currentTrack = t[0] ?? null;
+			if (cqi === -1) audioStore.currentQueueIndex = 0;
 		}
 	});
 

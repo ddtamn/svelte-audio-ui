@@ -121,7 +121,7 @@
 		</div>
 
 		<!-- Track list ────────────────────────────────────────────────────────── -->
-		<div class="max-h-[60vh] min-h-[200px] overflow-hidden px-2 py-2 pb-12">
+		<div class="max-h-[60vh] min-h-50 overflow-hidden px-2 py-2 pb-12">
 			<AudioTrackList
 				filterQuery={searchQuery}
 				sortable={!isFiltered}
