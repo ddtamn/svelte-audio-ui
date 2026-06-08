@@ -6,14 +6,15 @@
 
 	interface Props {
 		tracks?: Track[];
+		storageKey?: string | null;
 		children: Snippet;
 	}
 
-	let { tracks = [], children }: Props = $props();
+	let { tracks = [], storageKey, children }: Props = $props();
 
 	// ─── Create instances & set context ───────────────────────────────────────
 	const htmlAudio = new HtmlAudio();
-	const audioStore = new AudioStore(htmlAudio);
+	const audioStore = new AudioStore(htmlAudio, storageKey);
 	setAudioContext(audioStore);
 
 	// ─── Constants ─────────────────────────────────────────────────────────────

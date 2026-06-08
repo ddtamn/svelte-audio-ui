@@ -53,10 +53,11 @@ export function calculatePreviousIndex(params: QueueNavigationParams): number {
 
 // ─── Store ───────────────────────────────────────────────────────────────────
 
-const STORAGE_KEY = "audio:ui:store";
+const DEFAULT_STORAGE_KEY = "audio:ui:store";
 
 export class AudioStore {
 	readonly htmlAudio: HtmlAudio;
+	private readonly storageKey: string | null;
 
 	// ── Reactive state ──────────────────────────────────────────────────────
 	currentTrack: Track | null = $state(null);
@@ -83,16 +84,18 @@ export class AudioStore {
 		return this.htmlAudio.isLive(this.duration);
 	}
 
-	constructor(htmlAudio: HtmlAudio) {
+	constructor(htmlAudio: HtmlAudio, storageKey?: string | null) {
 		this.htmlAudio = htmlAudio;
-		if (canUseDOM()) this.loadFromStorage();
+		this.storageKey = storageKey === undefined ? DEFAULT_STORAGE_KEY : storageKey;
+		if (canUseDOM() && this.storageKey) this.loadFromStorage();
 	}
 
 	// ── Persistence ─────────────────────────────────────────────────────────
 
 	loadFromStorage(): void {
+		if (!this.storageKey) return;
 		try {
-			const raw = localStorage.getItem(STORAGE_KEY);
+			const raw = localStorage.getItem(this.storageKey);
 			if (!raw) return;
 			const d = JSON.parse(raw);
 			if (d.currentTrack !== undefined) this.currentTrack = d.currentTrack;
@@ -114,10 +117,10 @@ export class AudioStore {
 	}
 
 	saveToStorage(): void {
-		if (!canUseDOM()) return;
+		if (!canUseDOM() || !this.storageKey) return;
 		try {
 			localStorage.setItem(
-				STORAGE_KEY,
+				this.storageKey,
 				JSON.stringify({
 					currentTrack: this.currentTrack,
 					queue: this.queue,
