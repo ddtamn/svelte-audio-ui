@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { Music, Pause, Play, Radio, X } from "@lucide/svelte";
-	import { audioStore } from "$lib/audio-store.svelte.js";
-	import { htmlAudio, formatDuration, type Track } from "$lib/html-audio.js";
+	import { getAudioContext } from "$lib/audio-store.svelte.js";
+	import { formatDuration, type Track } from "$lib/html-audio.js";
 	import { cn } from "$lib/utils.js";
 	import { SortableDragHandle } from "$lib/components/ui/audio/elements/sortable-list/index.js";
+
+	const audioStore = getAudioContext();
 
 	interface Props {
 		track?: Track;
@@ -46,7 +48,7 @@
 		resolvedTrack?.live === true ||
 			(trackDuration !== undefined &&
 				trackDuration !== null &&
-				htmlAudio.isLive(trackDuration))
+				audioStore.htmlAudio.isLive(trackDuration))
 	);
 
 	const coverImage = $derived(resolvedTrack?.artwork ?? resolvedTrack?.images?.[0]);

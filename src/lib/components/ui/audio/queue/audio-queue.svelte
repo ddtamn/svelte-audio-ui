@@ -1,12 +1,14 @@
 <script lang="ts">
 	import { ListMusic, Search, Trash2 } from "@lucide/svelte";
-	import { audioStore } from "$lib/audio-store.svelte.js";
+	import { getAudioContext } from "$lib/audio-store.svelte.js";
 	import type { Track } from "$lib/html-audio.js";
 	import { cn } from "$lib/utils.js";
 	import { AudioTrackList } from "$lib/components/ui/audio/track/index";
 	import * as Dialog from "$lib/components/ui/dialog";
 	import * as Tooltip from "$lib/components/ui/tooltip";
 	import { Button } from "$lib/components/ui/button";
+
+	const audioStore = getAudioContext();
 
 	interface Props {
 		onTrackSelect?: (index: number) => void;

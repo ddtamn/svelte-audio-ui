@@ -29,7 +29,7 @@ type FadeVolumeParams = {
 	duration: number;
 };
 
-class HtmlAudio {
+export class HtmlAudio {
 	private audio: HTMLAudioElement | null = null;
 	private isInitialized = false;
 	private playPromise: Promise<void> | null = null;
@@ -420,8 +420,6 @@ class HtmlAudio {
 		);
 	}
 }
-
-export const htmlAudio = new HtmlAudio();
 
 const MINUTE_IN_SECONDS = 60;
 

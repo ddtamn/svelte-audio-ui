@@ -1,10 +1,12 @@
 <script lang="ts">
 	import { SlidersHorizontal } from "@lucide/svelte";
-	import { audioStore, type InsertMode, type RepeatMode } from "$lib/audio-store.svelte.js";
+	import { getAudioContext, type InsertMode, type RepeatMode } from "$lib/audio-store.svelte.js";
 	import { cn } from "$lib/utils.js";
 	import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
 	import * as Tooltip from "$lib/components/ui/tooltip";
 	import { Button } from "$lib/components/ui/button";
+
+	const audioStore = getAudioContext();
 
 	interface Props {
 		class?: string;

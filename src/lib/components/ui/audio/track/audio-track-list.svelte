@@ -1,10 +1,12 @@
 <script lang="ts">
 	import { ListMusic } from "@lucide/svelte";
-	import { audioStore } from "$lib/audio-store.svelte.js";
+	import { getAudioContext } from "$lib/audio-store.svelte.js";
 	import type { Track } from "$lib/html-audio.js";
 	import { cn } from "$lib/utils.js";
 	import AudioTrack from "./audio-track.svelte";
 	import { SortableList } from "$lib/components/ui/audio/elements/sortable-list/index.js";
+
+	const audioStore = getAudioContext();
 
 	type Variant = "default" | "grid";
 

@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { Fader } from "$lib/components/ui/audio/elements/fader/index.js";
-	import { audioStore } from "$lib/audio-store.svelte.js";
+	import { getAudioContext } from "$lib/audio-store.svelte.js";
+
+	const audioStore = getAudioContext();
 
 	function handleVolumeChange(value: number) {
 		audioStore.setVolume({ volume: value / 100 });

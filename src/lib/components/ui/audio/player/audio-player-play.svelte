@@ -1,10 +1,12 @@
 <script lang="ts">
 	import { Loader2, Pause, Play } from "@lucide/svelte";
 	import { onMount } from "svelte";
-	import { audioStore } from "$lib/audio-store.svelte.js";
+	import { getAudioContext } from "$lib/audio-store.svelte.js";
 	import { cn } from "$lib/utils.js";
 	import * as Tooltip from "$lib/components/ui/tooltip";
 	import { Button, type ButtonSize, type ButtonVariant } from "$lib/components/ui/button";
+
+	const audioStore = getAudioContext();
 
 	interface Props {
 		class?: string;

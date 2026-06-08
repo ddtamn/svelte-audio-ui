@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { Volume, Volume1, Volume2, VolumeX } from "@lucide/svelte";
-	import { audioStore } from "$lib/audio-store.svelte.js";
+	import { getAudioContext } from "$lib/audio-store.svelte.js";
 	import { cn } from "$lib/utils.js";
 	import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
 	import * as Tooltip from "$lib/components/ui/tooltip";
 	import { Button, type ButtonSize, type ButtonVariant } from "$lib/components/ui/button";
 	import { Slider } from "$lib/components/ui/slider";
+
+	const audioStore = getAudioContext();
 
 	interface Props {
 		class?: string;

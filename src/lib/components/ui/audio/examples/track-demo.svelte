@@ -1,6 +1,8 @@
 <script lang="ts">
 	import * as AudioTrack from "$lib/components/ui/audio/track/index.js";
-	import { audioStore } from "$lib/audio-store.svelte.js";
+	import { getAudioContext } from "$lib/audio-store.svelte.js";
+
+	const audioStore = getAudioContext();
 </script>
 
 {#if audioStore.queue[0]}

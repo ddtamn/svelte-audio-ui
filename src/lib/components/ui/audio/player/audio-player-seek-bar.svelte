@@ -1,7 +1,9 @@
 <script lang="ts">
-	import { audioStore } from "$lib/audio-store.svelte.js";
+	import { getAudioContext } from "$lib/audio-store.svelte.js";
 	import { cn } from "$lib/utils.js";
 	import AudioSeekSlider from "./audio-seek-slider.svelte";
+
+	const audioStore = getAudioContext();
 
 	interface Props {
 		class?: string;
