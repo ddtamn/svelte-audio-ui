@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { FastForward } from "@lucide/svelte";
 	import { audioStore } from "$lib/audio-store.svelte.js";
-	import { htmlAudio } from "$lib/html-audio.js";
 	import { cn } from "$lib/utils.js";
 	import * as Tooltip from "$lib/components/ui/tooltip";
 	import { Button, type ButtonSize, type ButtonVariant } from "$lib/components/ui/button";
@@ -22,7 +21,7 @@
 		...rest
 	}: Props = $props();
 
-	const isLiveStream = $derived(htmlAudio.isLive(audioStore.duration));
+	const isLiveStream = $derived(audioStore.isLive);
 	const isDisabled = $derived(() => {
 		if (!audioStore.currentTrack || isLiveStream) return true;
 		return audioStore.duration > 0 && audioStore.currentTime >= audioStore.duration;

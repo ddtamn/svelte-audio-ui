@@ -71,6 +71,11 @@ class AudioStore {
 	errorMessage: string | null = $state(null);
 	currentQueueIndex = $state(-1);
 
+	// ── Derived ─────────────────────────────────────────────────────────────
+	get isLive(): boolean {
+		return htmlAudio.isLive(this.duration);
+	}
+
 	constructor() {
 		if (canUseDOM()) this.loadFromStorage();
 	}
