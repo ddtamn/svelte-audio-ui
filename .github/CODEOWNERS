@@ -1,0 +1,15 @@
+# Each line is a file pattern followed by one or more owners.
+# For more details see: https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Global owners
+* @ddtamn
+
+# Documentation
+/content/ @ddtamn
+
+# Registry & components
+/src/lib/registry/ @ddtamn
+/scripts/ @ddtamn
+
+# GitHub configuration
+.github/ @ddtamn

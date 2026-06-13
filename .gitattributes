@@ -1,0 +1,20 @@
+# Auto-detect text files and normalize line endings
+* text=auto
+
+# Source files
+*.ts text diff=typescript
+*.svelte text
+*.js text
+*.json text
+*.css text
+*.md text diff=markdown
+*.yml text
+*.yaml text
+*.sh text eol=lf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.ico binary
+*.woff2 binary
+*.woff binary
