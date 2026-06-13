@@ -13,7 +13,7 @@
   "files": [
     {
       "target": "~/src/lib/components/ui/audio/examples/fader-volume-control-demo.svelte",
-      "content": "<script lang=\"ts\">\n\timport { Fader } from \"$lib/components/ui/audio/elements/fader/index.js\";\n\timport { audioStore } from \"$lib/audio-store.svelte.js\";\n\n\tfunction handleVolumeChange(value: number) {\n\t\taudioStore.setVolume({ volume: value / 100 });\n\t}\n</script>\n\n<div class=\"flex h-48 items-center justify-center gap-4\">\n\t<Fader label=\"Vol\" value={audioStore.volume * 100} onValueChange={handleVolumeChange} />\n</div>\n",
+      "content": "<script lang=\"ts\">\r\n\timport { Fader } from \"$lib/components/ui/audio/elements/fader/index.js\";\r\n\timport { getAudioContext } from \"$lib/audio-store.svelte.js\";\r\n\r\n\tconst audioStore = getAudioContext();\r\n\r\n\tfunction handleVolumeChange(value: number) {\r\n\t\taudioStore.setVolume({ volume: value / 100 });\r\n\t}\r\n</script>\r\n\r\n<div class=\"flex h-48 items-center justify-center gap-4\">\r\n\t<Fader label=\"Vol\" value={audioStore.volume * 100} onValueChange={handleVolumeChange} />\r\n</div>\r\n",
       "type": "registry:file"
     }
   ],

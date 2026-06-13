@@ -1,6 +1,6 @@
 ---
 title: Audio Store
-description: A global, reactive Svelte 5 store for managing audio playback state and queue.
+description: A context-backed, reactive Svelte 5 store for managing audio playback state and queue.
 component: false
 ---
 
@@ -28,9 +28,9 @@ component: false
 {#snippet manual()}
 
 {#if viewerData}
-	<ComponentSource item={viewerData} data-llm-ignore />
+<ComponentSource item={viewerData} data-llm-ignore />
 {:else}
-	<p class="text-muted-foreground mt-4 text-sm">Source code not available.</p>
+<p class="text-muted-foreground mt-4 text-sm">Source code not available.</p>
 {/if}
 
 {/snippet}
@@ -39,12 +39,12 @@ component: false
 
 ### Import
 
-Import the global store and helper types directly into your Svelte components:
+Import the context getter and helper types directly into your Svelte components:
 
 ```svelte
 <script lang="ts">
   import {
-    audioStore,
+    getAudioContext,
     calculateNextIndex,
     calculatePreviousIndex,
     canUseDOM,
@@ -56,9 +56,9 @@ Import the global store and helper types directly into your Svelte components:
 
 ## Core Concepts
 
-### The `audioStore` Singleton
+### The `AudioStore` Instance
 
-We leverage Svelte 5's powerful `$state` runes to create a highly reactive, class-based global store. Instead of messy subscriptions or cumbersome contexts, you just import `audioStore` and read its properties anywhere. Svelte handles the magic.
+We leverage Svelte 5's powerful `$state` runes to create a highly reactive, class-based store. `AudioProvider` creates an `AudioStore` instance and exposes it through Svelte context, so child audio components can call `getAudioContext()` and read state directly.
 
 <Callout variant="info">
   <strong>Performance Best Practices:</strong> Because `audioStore` uses runes, accessing its properties in your markup or inside `$derived` / `$effect` blocks automatically establishes granular reactivity. Only the parts of your UI that depend on changed state will re-render!
@@ -66,7 +66,9 @@ We leverage Svelte 5's powerful `$state` runes to create a highly reactive, clas
 
 ```svelte
 <script lang="ts">
-  import { audioStore } from "$lib/audio-store.svelte";
+  import { getAudioContext } from "$lib/audio-store.svelte";
+
+  const audioStore = getAudioContext();
 </script>
 
 <p>
@@ -78,7 +80,7 @@ We leverage Svelte 5's powerful `$state` runes to create a highly reactive, clas
 
 ### Architecture
 
-The `AudioStore` focuses purely on **state management**. It doesn't touch the `<audio>` element directly. Instead, the `AudioProvider` component listens to the store and orchestrates the browser's Audio API.
+The `AudioStore` focuses on **reactive playback state and user intent**. It owns a reference to the provider's `HtmlAudio` instance for direct play/pause intent and live-stream checks, while `AudioProvider` still orchestrates DOM event listeners, loading, retries, preloading, and sync effects.
 
 ## Store State
 
@@ -185,11 +187,13 @@ Access actions directly on the `audioStore` instance.
 
 ### Basic Usage
 
-Building a custom minimal player is insanely easy. Just wire up the store.
+Building a custom minimal player is straightforward. Read the provider's store from context.
 
 ```svelte
 <script lang="ts">
-  import { audioStore } from "$lib/audio-store.svelte";
+  import { getAudioContext } from "$lib/audio-store.svelte";
+
+  const audioStore = getAudioContext();
 
   function formatDuration(seconds: number) {
     const mins = Math.floor(seconds / 60);
@@ -223,7 +227,9 @@ Easily manipulate the queue with just a few method calls.
 
 ```svelte
 <script lang="ts">
-  import { audioStore } from "$lib/audio-store.svelte";
+  import { getAudioContext } from "$lib/audio-store.svelte";
+
+  const audioStore = getAudioContext();
 
   const newTrack = { id: "123", title: "Indie Banger", src: "/music.mp3" };
 </script>
@@ -248,26 +254,23 @@ Easily manipulate the queue with just a few method calls.
 </div>
 ```
 
-### Outside of Components
+### Advanced: Creating a Store Manually
 
-Need to kick off music from a vanilla `.ts` file or a SvelteKit load function? Since `audioStore` is a class singleton, it works anywhere.
+Most apps should use `AudioProvider`. If you are wiring your own provider layer, create an `HtmlAudio` instance and pass it into `AudioStore`.
 
 ```typescript
-import { audioStore } from "$lib/audio-store.svelte";
+import { AudioStore } from "$lib/audio-store.svelte";
+import { HtmlAudio } from "$lib/html-audio";
 
-// Read state
-console.log(audioStore.isPlaying);
+const htmlAudio = new HtmlAudio();
+const audioStore = new AudioStore(htmlAudio, "my-audio-key");
 
-// Call actions
-audioStore.play();
-
-// Update volume
 audioStore.setVolume({ volume: 0.5 });
 ```
 
 ## Persistence
 
-We hate it when a refresh kills the vibe. The store automatically hydrates and syncs a subset of its state to `localStorage` on the fly.
+When persistence is enabled, the store automatically hydrates and syncs a subset of its state to `localStorage` on the fly.
 
 | Category     | Properties                                                         |
 | ------------ | ------------------------------------------------------------------ |
@@ -275,7 +278,9 @@ We hate it when a refresh kills the vibe. The store automatically hydrates and s
 | **Queue**    | `queue`                                                            |
 | **Settings** | `volume`, `isMuted`, `repeatMode`, `shuffleEnabled`, `insertMode`  |
 
-**Storage Key:** `audio:ui:store`
+**Default storage key:** `audio:ui:store`
+
+Pass a custom `storageKey` to `AudioProvider` to separate state between players. Pass `storageKey={null}` to disable persistence.
 
 The user can resume their queue seamlessly after a page refresh, as if they never left.
 

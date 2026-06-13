@@ -12,7 +12,7 @@
   "files": [
     {
       "target": "~/src/lib/components/ui/audio/examples/xypad-filter-control-demo.svelte",
-      "content": "<script lang=\"ts\">\n\timport { XYPad } from \"$lib/components/ui/audio/elements/xypad/index.js\";\n</script>\n\n<XYPad\n\tclass=\"aspect-square\"\n\tdefaultValue={{ x: 50, y: 50 }}\n\tformatValue={(val) => `Freq: ${val.x}%, Res: ${val.y}%`}\n/>\n",
+      "content": "<script lang=\"ts\">\r\n\timport { XYPad } from \"$lib/components/ui/audio/elements/xypad/index.js\";\r\n</script>\r\n\r\n<XYPad\r\n\tclass=\"aspect-square\"\r\n\tdefaultValue={{ x: 50, y: 50 }}\r\n\tformatValue={(val) => `Freq: ${val.x}%, Res: ${val.y}%`}\r\n/>\r\n",
       "type": "registry:file"
     }
   ],

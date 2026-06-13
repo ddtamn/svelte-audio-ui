@@ -10,7 +10,8 @@
 		children: Snippet;
 	}
 
-	let { tracks = [], storageKey, children }: Props = $props();
+	// storageKey defaults to DEFAULT_STORAGE_KEY; pass `null` to disable persistence
+	let { tracks = [], storageKey = 'audio:ui:store', children }: Props = $props();
 
 	// ─── Create instances & set context ───────────────────────────────────────
 	const htmlAudio = new HtmlAudio();

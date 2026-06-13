@@ -1,6 +1,6 @@
 ---
 title: HTML Audio
-description: The core HTMLAudio singleton for robust audio playback.
+description: The core HtmlAudio class for robust audio playback.
 component: false
 ---
 
@@ -15,7 +15,7 @@ component: false
 
 <br/>
 
-The `htmlAudio` singleton manages playback of HTML5 audio with automatic retry logic, event handling, and volume fading. Use it alongside the [Audio Store](/docs/libs/audio-store) for full player functionality.
+The `HtmlAudio` class manages playback of HTML5 audio with automatic retry logic, event handling, and volume fading. In normal audio UI usage, [AudioProvider](/docs/components/provider) creates and owns the instance for you.
 
 ## Installation
 
@@ -30,9 +30,9 @@ The `htmlAudio` singleton manages playback of HTML5 audio with automatic retry l
 {#snippet manual()}
 
 {#if viewerData}
-	<ComponentSource item={viewerData} data-llm-ignore />
+<ComponentSource item={viewerData} data-llm-ignore />
 {:else}
-	<p class="text-muted-foreground mt-4 text-sm">Source code not available.</p>
+<p class="text-muted-foreground mt-4 text-sm">Source code not available.</p>
 {/if}
 
 {/snippet}
@@ -41,26 +41,24 @@ The `htmlAudio` singleton manages playback of HTML5 audio with automatic retry l
 
 ### Import
 
-Import the singleton and helpers from the audio library:
+Import the class and helpers from the audio library:
 
 ```svelte
 <script lang="ts">
-  import {
-    htmlAudio,
-    formatDuration,
-    type Track,
-  } from "$lib/html-audio";
+  import { HtmlAudio, formatDuration, type Track } from "$lib/html-audio";
 </script>
 ```
 
 ## Core API
 
-### The `htmlAudio` Singleton
+### The `HtmlAudio` Class
 
 Manages the underlying `HTMLAudioElement`, playback state, retries, and custom events. Initialize on client start — the instance is built to be server-safe.
 
 ```typescript
-import { htmlAudio } from "$lib/html-audio";
+import { HtmlAudio } from "$lib/html-audio";
+
+const htmlAudio = new HtmlAudio();
 
 // Initialize on the client
 htmlAudio.init();
@@ -74,7 +72,7 @@ await htmlAudio.play();
 
 <strong>Client initialization:</strong>
 
-The `htmlAudio` singleton must be initialized on the client.
+An `HtmlAudio` instance must be initialized on the client.
 
 Call `htmlAudio.init()` inside `onMount` or an `$effect` so the underlying
 `HTMLAudioElement` is created only in the browser environment.
@@ -169,8 +167,9 @@ console.log(formatDuration(3661)); // "61:01"
 Check if a duration value indicates a live stream.
 
 ```typescript
-import { htmlAudio } from "$lib/html-audio";
+import { HtmlAudio } from "$lib/html-audio";
 
+const htmlAudio = new HtmlAudio();
 const duration = htmlAudio.getDuration();
 
 if (htmlAudio.isLive(duration)) {
@@ -213,8 +212,10 @@ Just wire it up on mount.
 
 ```svelte
 <script lang="ts">
-  import { htmlAudio } from "$lib/html-audio";
+  import { HtmlAudio } from "$lib/html-audio";
   import { onMount } from "svelte";
+
+  const htmlAudio = new HtmlAudio();
 
   onMount(() => {
     htmlAudio.init();
@@ -238,7 +239,9 @@ Just wire it up on mount.
 Awesome polish feature: you can smoothly fade the volume instead of jarring the user.
 
 ```typescript
-import { htmlAudio } from "$lib/html-audio";
+import { HtmlAudio } from "$lib/html-audio";
+
+const htmlAudio = new HtmlAudio();
 
 // Immediate jump
 htmlAudio.setVolume({ volume: 0.5 });
@@ -255,9 +258,10 @@ htmlAudio.setMuted(false);
 
 ```svelte
 <script lang="ts">
-  import { htmlAudio, formatDuration } from "$lib/html-audio";
+  import { HtmlAudio, formatDuration } from "$lib/html-audio";
   import { onMount, onDestroy } from "svelte";
 
+  const htmlAudio = new HtmlAudio();
   let time = $state(0);
 
   onMount(() => {
@@ -277,13 +281,13 @@ htmlAudio.setMuted(false);
 
 ## Related
 
-- [Audio Store](/docs/libs/audio-store) — A Svelte 5 global store wrapping this class to provide reactive state.
-- [Audio Provider](/docs/components/provider) — Composable provider that orchestrates `htmlAudio` inside your layout.
+- [Audio Store](/docs/libs/audio-store) — A Svelte 5 reactive store class wrapping this class to provide playback state.
+- [Audio Provider](/docs/components/provider) — Composable provider that creates and orchestrates an `HtmlAudio` instance inside your layout.
 - [Audio Player](/docs/components/player) — Composable player UI components.
 
 ## Notes
 
-- **Singleton pattern**: All methods access the exact same `htmlAudio` instance behind the scenes.
+- **Instance-based**: Each `HtmlAudio` instance owns its own underlying audio element. `AudioProvider` creates one instance per provider.
 - **Server-safe**: Most methods (`getVolume()`, etc) have built-in `isClient()` guards, so they won't blow up during SSR.
 - **Resilience**: It handles native HTML5 `<audio>` random error events entirely manually, throwing up to 3 retries under the hood before giving up.
 - **Polished Fades**: Built-in volume cross-fades use `getAnimationFrame` / timers for smooth transitions. Just supply `fadeTime`.

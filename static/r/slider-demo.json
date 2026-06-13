@@ -12,7 +12,7 @@
   "files": [
     {
       "target": "~/src/lib/components/ui/audio/examples/slider-demo.svelte",
-      "content": "<script lang=\"ts\">\n\timport { Slider } from \"$lib/components/ui/audio/elements/slider/index.js\";\n\n\tlet value = $state([25]);\n</script>\n\n<div class=\"w-full max-w-sm\">\n\t<Slider {value} onValueChange={(v) => (value = v)} max={100} step={1} bufferValue={55} />\n</div>\n",
+      "content": "<script lang=\"ts\">\r\n\timport { Slider } from \"$lib/components/ui/audio/elements/slider/index.js\";\r\n\r\n\tlet value = $state([25]);\r\n</script>\r\n\r\n<div class=\"w-full max-w-sm\">\r\n\t<Slider {value} onValueChange={(v) => (value = v)} max={100} step={1} bufferValue={55} />\r\n</div>\r\n",
       "type": "registry:file"
     }
   ],

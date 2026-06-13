@@ -15,7 +15,7 @@ component: true
 
 <br>Track components for displaying and managing audio tracks. These components support two modes:
 
-- **Store mode**: reads from and controls the global audio queue provided by `audioStore`.
+- **Store mode**: reads from and controls the audio queue provided by the nearest `AudioProvider`.
 - **Controlled mode**: accepts an explicit list or single track for use in search results or external lists.
 
 ## Installation
@@ -31,9 +31,9 @@ component: true
 {#snippet manual()}
 
 {#if viewerData}
-	<ComponentSource item={viewerData} data-llm-ignore />
+<ComponentSource item={viewerData} data-llm-ignore />
 {:else}
-	<p class="text-muted-foreground mt-4 text-sm">Source code not available.</p>
+<p class="text-muted-foreground mt-4 text-sm">Source code not available.</p>
 {/if}
 
 {/snippet}
@@ -54,7 +54,7 @@ Import the components:
 
 Displays a single track with optional cover, metadata, and playback controls. Use either:
 
-- `trackId` to render an item from the global audio queue (store mode), or
+- `trackId` to render an item from the nearest provider queue (store mode), or
 - `track` to render a provided track object (controlled mode).
 
 <ComponentPreview name="track-demo" class="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[200px]" description="Single track item" align="center">
@@ -138,7 +138,7 @@ Key features:
 | `showCover`      | `boolean`                   | `true`  | Show album artwork. Falls back to a music icon when no artwork is available.          |
 | `class`          | `string`                    | -       | Additional CSS classes on the track row element.                                      |
 
-> **Note:** Use either `trackId` (store mode) or `track` (controlled mode). Both should not be used together. Store mode requires `AudioProvider` to be set up. Cover images are taken from `track.artwork` or `track.images[0]`. Live tracks show a **Live** badge and the duration is hidden — live detection uses `htmlAudio.isLive()`.
+> **Note:** Use either `trackId` (store mode) or `track` (controlled mode). Both should not be used together. Store mode requires `AudioProvider` to be set up. Cover images are taken from `track.artwork` or `track.images[0]`. Live tracks show a **Live** badge and the duration is hidden.
 
 ---
 

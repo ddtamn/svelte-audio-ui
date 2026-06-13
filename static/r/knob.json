@@ -10,7 +10,7 @@
   "files": [
     {
       "target": "~/src/lib/components/ui/audio/elements/knob/index.ts",
-      "content": "import Root, { type Size } from \"./knob.svelte\";\n\nexport { Root, type Size as KnobSize, Root as Knob };\n",
+      "content": "import Root, { type Size } from \"./knob.svelte\";\r\n\r\nexport { Root, type Size as KnobSize, Root as Knob };\r\n",
       "type": "registry:file"
     },
     {

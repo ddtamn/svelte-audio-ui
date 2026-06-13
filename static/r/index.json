@@ -149,6 +149,7 @@
         "dialog",
         "dropdown-menu",
         "https://svelte-audio-ui.vercel.app/r/provider.json",
+        "https://svelte-audio-ui.vercel.app/r/track.json",
         "tooltip"
       ],
       "files": [

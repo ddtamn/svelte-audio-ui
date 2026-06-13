@@ -14,7 +14,7 @@ component: true
 	let { viewerData } = $props();
 </script> <br>
 
-`AudioProvider` is the engine behind every audio component. It initializes the HTML audio element, registers all event listeners, syncs playback state with the `audioStore`, handles errors and retries, preloads the next track, and persists state to `localStorage`.
+`AudioProvider` is the engine behind every audio component. It creates an `HtmlAudio` instance and a matching `AudioStore`, registers all event listeners, syncs playback state, handles errors and retries, preloads the next track, and optionally persists state to `localStorage`.
 
 **It is required.** All audio components depend on it.
 
@@ -31,9 +31,9 @@ component: true
 {#snippet manual()}
 
 {#if viewerData}
-	<ComponentSource item={viewerData} data-llm-ignore />
+<ComponentSource item={viewerData} data-llm-ignore />
 {:else}
-	<p class="text-muted-foreground mt-4 text-sm">Source code not available.</p>
+<p class="text-muted-foreground mt-4 text-sm">Source code not available.</p>
 {/if}
 
 {/snippet}
@@ -69,10 +69,11 @@ The recommended place to mount `AudioProvider` is in your layout file so all pag
 
 ### Props
 
-| Prop       | Type      | Default | Description                                          |
-| ---------- | --------- | ------- | ---------------------------------------------------- |
-| `tracks`   | `Track[]` | `[]`    | Initial list of tracks to load into the queue.       |
-| `children` | `Snippet` | —       | Required. The content to render inside the provider. |
+| Prop         | Type             | Default            | Description                                                                  |
+| ------------ | ---------------- | ------------------ | ---------------------------------------------------------------------------- |
+| `tracks`     | `Track[]`        | `[]`               | Initial list of tracks to load into the queue.                               |
+| `storageKey` | `string \| null` | `"audio:ui:store"` | Key used for `localStorage` persistence. Pass `null` to disable persistence. |
+| `children`   | `Snippet`        | —                  | Required. The content to render inside the provider.                         |
 
 ### Track Shape
 
@@ -91,27 +92,30 @@ interface Track {
 
 ## How It Works
 
-`AudioProvider` coordinates three layers:
+`AudioProvider` coordinates four layers:
 
-1. **`htmlAudio`** — a singleton that holds the actual `HTMLAudioElement`
-2. **`audioStore`** — a Svelte 5 reactive class instance that holds all playback state
-3. **`AudioProvider`** — the glue layer that wires DOM events → store updates and store changes → DOM mutations
+1. **`HtmlAudio`** - an instance that owns the actual `HTMLAudioElement`
+2. **`AudioStore`** - a Svelte 5 reactive class instance that holds playback state
+3. **Svelte context** - exposes the store to child audio components
+4. **`AudioProvider`** - the glue layer that wires DOM events to store updates and store changes back to DOM mutations
 
 ```
-tracks prop → audioStore.queue
-audioStore state changes → htmlAudio (DOM)
-htmlAudio DOM events → audioStore state
-audioStore → localStorage
+tracks prop -> provider AudioStore.queue
+AudioStore state changes -> HtmlAudio instance
+HtmlAudio DOM events -> AudioStore state
+AudioStore -> localStorage, when storageKey is enabled
 ```
 
 ### Lifecycle
 
 On mount, `AudioProvider`:
 
-1. Calls `htmlAudio.init()` to create the underlying `HTMLAudioElement`
-2. Creates a secondary muted `<audio>` element for pre-loading the next track
-3. Attaches all event listeners via `AbortController` (automatically cleaned up on destroy)
-4. Restores the last playback position, volume, and track from `localStorage`
+1. Creates dedicated `HtmlAudio` and `AudioStore` instances
+2. Sets the store in Svelte context for child audio components
+3. Calls `htmlAudio.init()` to create the underlying `HTMLAudioElement`
+4. Creates a secondary muted `<audio>` element for pre-loading the next track
+5. Attaches all event listeners via `AbortController` (automatically cleaned up on destroy)
+6. Restores the last playback position, volume, and track from `localStorage` when persistence is enabled
 
 ### Reactive `$effect` Sync
 
@@ -147,7 +151,7 @@ When playback starts, `AudioProvider` preloads the next track in a secondary mut
 
 ### State Persistence
 
-`audioStore` automatically saves to `localStorage` under the key `audio:ui:store` whenever any of these fields change:
+The provider's `AudioStore` automatically saves to `localStorage` under the key `audio:ui:store` whenever any of these fields change:
 
 - Current track and queue
 - Volume and mute
@@ -158,9 +162,23 @@ When playback starts, `AudioProvider` preloads the next track in a secondary mut
 
 On the next page load, `AudioProvider` restores these values and seeks to the last known position.
 
+Use `storageKey` when multiple players should keep separate saved state:
+
+```svelte
+<AudioProvider tracks={podcastTracks} storageKey="audio:podcast">
+  <PodcastPlayer />
+</AudioProvider>
+
+<AudioProvider tracks={musicTracks} storageKey="audio:music">
+  <MusicPlayer />
+</AudioProvider>
+```
+
+Pass `storageKey={null}` to disable persistence for that provider.
+
 ## Notes
 
-- **Only one instance** — mount `AudioProvider` once at the top of your app. Multiple instances will conflict because they share the same `htmlAudio` singleton.
+- **Provider scope** - every audio component must render inside an `AudioProvider`. Multiple providers are allowed; each provider owns an independent `HtmlAudio` and `AudioStore` instance.
 
 - **`tracks` prop is additive** — if `audioStore.queue` already has tracks (e.g. restored from `localStorage`), the `tracks` prop won't overwrite them unless they differ by length or `id`. This prevents overwriting the restored queue on page reload.
 

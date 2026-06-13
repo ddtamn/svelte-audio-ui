@@ -37,9 +37,9 @@ component: true
 {#snippet manual()}
 
 {#if viewerData}
-	<ComponentSource item={viewerData} data-llm-ignore />
+<ComponentSource item={viewerData} data-llm-ignore />
 {:else}
-	<p class="text-muted-foreground mt-4 text-sm">Source code not available.</p>
+<p class="text-muted-foreground mt-4 text-sm">Source code not available.</p>
 {/if}
 
 {/snippet}
@@ -114,7 +114,7 @@ For more queue management options, see the [Audio Queue documentation](/docs/com
 
 ### AudioPlayer.Root
 
-A styled container component for audio controls. This is a presentational wrapper that provides consistent styling. All audio components are self-contained and read state from the global store.
+A styled container component for audio controls. This is a presentational wrapper that provides consistent styling. All audio components read state from the nearest `AudioProvider`.
 
 #### Props
 
@@ -267,13 +267,13 @@ A dropdown button that opens a volume slider. Includes a mute toggle button insi
 
 #### Important Information :
 
-- **Component Architecture:** All audio components are self-contained and read state directly from the global `audioStore` — a Svelte 5 reactive class instance (using `$state` fields) defined in `audio-store.svelte.ts`. The audio player uses the HTML5 audio element under the hood via the `htmlAudio` singleton from `html-audio.ts`.
+- **Component Architecture:** Audio components read state from the nearest provider context. `AudioProvider` creates a Svelte 5 reactive `AudioStore` instance (using `$state` fields) and a matching `HtmlAudio` instance.
 
-- **AudioProvider Role:** The `AudioProvider` component manages the audio element lifecycle by importing the `htmlAudio` singleton directly (no hook needed). It initialises the `HTMLAudioElement` inside `onMount`, registers all playback event listeners via an `AbortController` (automatically cleaned up on destroy), handles error retries (up to 3 retries with exponential backoff), preloads the next track into a secondary muted `<audio>` element, and uses seven `$effect` runes to reactively sync `audioStore` state changes (track changes, play/pause, seek, volume, mute, playback rate, and localStorage persistence) back to the audio element. It also restores the last playback position from `localStorage` on mount. `AudioProvider` is required for all audio components to function correctly.
+- **AudioProvider Role:** The `AudioProvider` component manages the audio element lifecycle for its own `HtmlAudio` instance. It initializes the `HTMLAudioElement` inside `onMount`, registers all playback event listeners via an `AbortController` (automatically cleaned up on destroy), handles error retries, preloads the next track into a secondary muted `<audio>` element, and uses `$effect` runes to sync provider store state changes back to the audio element. It also restores the last playback position from `localStorage` when persistence is enabled. `AudioProvider` is required for all audio components to function correctly.
 
 - **Previous Button Behavior:** `AudioPlayer.SkipBack` restarts the current track if it has been playing for more than 3 seconds, otherwise it navigates to the previous track in the queue.
 
-- **State Persistence:** `audioStore` automatically persists queue, current track, volume, playback rate, repeat mode, shuffle, insert mode, and playback position to `localStorage` under the key `audio:ui:store`, restored on page reload.
+- **State Persistence:** The provider store persists queue, current track, volume, playback rate, repeat mode, shuffle, insert mode, and playback position to `localStorage` under `storageKey`. The default key is `audio:ui:store`; pass `storageKey={null}` to disable persistence.
 
 **Live Stream Limitations:**
 Live streams disable seeking, rewind, fast-forward, and playback speed controls. The seek bar is locked at 100% progress, and the time display switches to a pulsing **LIVE** badge. Live streams are detected automatically via the HTML5 `audio.duration` value (`Infinity` or `NaN`).

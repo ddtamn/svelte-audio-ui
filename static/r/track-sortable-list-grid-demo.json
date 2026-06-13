@@ -12,7 +12,7 @@
   "files": [
     {
       "target": "~/src/lib/components/ui/audio/examples/track-sortable-list-grid-demo.svelte",
-      "content": "<script lang=\"ts\">\n\timport * as AudioTrack from \"$lib/components/ui/audio/track/index.js\";\n</script>\n\n<AudioTrack.List sortable variant=\"grid\" />\n",
+      "content": "<script lang=\"ts\">\r\n\timport * as AudioTrack from \"$lib/components/ui/audio/track/index.js\";\r\n</script>\r\n\r\n<AudioTrack.List sortable variant=\"grid\" />\r\n",
       "type": "registry:file"
     }
   ],
