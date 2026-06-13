@@ -12,7 +12,7 @@
   "files": [
     {
       "target": "~/src/lib/components/ui/audio/examples/fader-custom-thumb-marks-demo.svelte",
-      "content": "<script lang=\"ts\">\n\timport { Fader } from \"$lib/components/ui/audio/elements/fader/index.js\";\n\n\tlet value = $state(50);\n</script>\n\n<div class=\"flex h-48 items-center justify-center gap-8\">\n\t<Fader thumbMarks={1} {value} onValueChange={(e) => (value = e)} label=\"1\" />\n\t<Fader thumbMarks={3} onValueChange={(e) => (value = e)} {value} label=\"3\" />\n\t<Fader thumbMarks={5} onValueChange={(e) => (value = e)} {value} label=\"5\" />\n</div>\n",
+      "content": "<script lang=\"ts\">\r\n\timport { Fader } from \"$lib/components/ui/audio/elements/fader/index.js\";\r\n\r\n\tlet value = $state(50);\r\n</script>\r\n\r\n<div class=\"flex h-48 items-center justify-center gap-8\">\r\n\t<Fader thumbMarks={1} {value} onValueChange={(e) => (value = e)} label=\"1\" />\r\n\t<Fader thumbMarks={3} onValueChange={(e) => (value = e)} {value} label=\"3\" />\r\n\t<Fader thumbMarks={5} onValueChange={(e) => (value = e)} {value} label=\"5\" />\r\n</div>\r\n",
       "type": "registry:file"
     }
   ],

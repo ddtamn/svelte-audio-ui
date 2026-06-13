@@ -12,7 +12,7 @@
   "files": [
     {
       "target": "~/src/lib/components/ui/audio/examples/knob-demo.svelte",
-      "content": "<script lang=\"ts\">\n\timport { Knob } from \"$lib/components/ui/audio/elements/knob/index.js\";\n\n\tlet value = $state(50);\n</script>\n\n<div class=\"flex flex-col items-center gap-4\">\n\t<Knob {value} onValueChange={(v) => (value = v)} />\n\t<span class=\"text-muted-foreground text-xs tabular-nums\">{value}</span>\n</div>\n",
+      "content": "<script lang=\"ts\">\r\n\timport { Knob } from \"$lib/components/ui/audio/elements/knob/index.js\";\r\n\r\n\tlet value = $state(50);\r\n</script>\r\n\r\n<div class=\"flex flex-col items-center gap-4\">\r\n\t<Knob {value} onValueChange={(v) => (value = v)} />\r\n\t<span class=\"text-muted-foreground text-xs tabular-nums\">{value}</span>\r\n</div>\r\n",
       "type": "registry:file"
     }
   ],

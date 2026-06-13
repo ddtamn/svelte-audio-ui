@@ -12,7 +12,7 @@
   "files": [
     {
       "target": "~/src/lib/components/ui/audio/examples/player-demo.svelte",
-      "content": "<script lang=\"ts\">\n\timport * as AudioPlayer from \"$lib/components/ui/audio/player/index.js\";\n</script>\n\n<AudioPlayer.Root>\n\t<AudioPlayer.ControlBar>\n\t\t<AudioPlayer.Play />\n\t\t<AudioPlayer.SeekBar />\n\t\t<AudioPlayer.TimeDisplay />\n\t\t<AudioPlayer.Volume />\n\t</AudioPlayer.ControlBar>\n</AudioPlayer.Root>\n",
+      "content": "<script lang=\"ts\">\r\n\timport * as AudioPlayer from \"$lib/components/ui/audio/player/index.js\";\r\n</script>\r\n\r\n<AudioPlayer.Root>\r\n\t<AudioPlayer.ControlBar>\r\n\t\t<AudioPlayer.Play />\r\n\t\t<AudioPlayer.SeekBar />\r\n\t\t<AudioPlayer.TimeDisplay />\r\n\t\t<AudioPlayer.Volume />\r\n\t</AudioPlayer.ControlBar>\r\n</AudioPlayer.Root>\r\n",
       "type": "registry:file"
     }
   ],

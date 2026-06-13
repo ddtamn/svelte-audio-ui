@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { Radio } from "@lucide/svelte";
-	import { audioStore } from "$lib/audio-store.svelte.js";
-	import { htmlAudio, formatDuration } from "$lib/html-audio.js";
+	import { getAudioContext } from "$lib/audio-store.svelte.js";
+	import { formatDuration } from "$lib/html-audio.js";
 	import { cn } from "$lib/utils.js";
+
+	const audioStore = getAudioContext();
 
 	interface Props {
 		remaining?: boolean;
@@ -12,7 +14,7 @@
 
 	let { remaining = false, class: className = "", ...rest }: Props = $props();
 
-	const isLiveStream = $derived(htmlAudio.isLive(audioStore.duration));
+	const isLiveStream = $derived(audioStore.isLive);
 
 	const formattedCurrentTime = $derived(formatDuration(audioStore.currentTime));
 	const formattedRemaining = $derived(

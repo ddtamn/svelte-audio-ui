@@ -1,7 +1,12 @@
-import { htmlAudio, type Track } from "$lib/html-audio.js";
+import { createContext } from "svelte";
+import { type HtmlAudio, type Track } from "$lib/html-audio.js";
 
 export type RepeatMode = "none" | "one" | "all";
 export type InsertMode = "first" | "last" | "after";
+
+// ─── Context ─────────────────────────────────────────────────────────────────
+
+export const [getAudioContext, setAudioContext] = createContext<AudioStore>();
 
 // ─── Helper functions ────────────────────────────────────────────────────────
 
@@ -48,9 +53,12 @@ export function calculatePreviousIndex(params: QueueNavigationParams): number {
 
 // ─── Store ───────────────────────────────────────────────────────────────────
 
-const STORAGE_KEY = "audio:ui:store";
+const DEFAULT_STORAGE_KEY = "audio:ui:store";
 
-class AudioStore {
+export class AudioStore {
+	readonly htmlAudio: HtmlAudio;
+	private readonly storageKey: string | null;
+
 	// ── Reactive state ──────────────────────────────────────────────────────
 	currentTrack: Track | null = $state(null);
 	queue: Track[] = $state([]);
@@ -71,15 +79,23 @@ class AudioStore {
 	errorMessage: string | null = $state(null);
 	currentQueueIndex = $state(-1);
 
-	constructor() {
-		if (canUseDOM()) this.loadFromStorage();
+	// ── Derived ─────────────────────────────────────────────────────────────
+	get isLive(): boolean {
+		return this.htmlAudio.isLive(this.duration);
+	}
+
+	constructor(htmlAudio: HtmlAudio, storageKey?: string | null) {
+		this.htmlAudio = htmlAudio;
+		this.storageKey = storageKey === undefined ? DEFAULT_STORAGE_KEY : storageKey;
+		if (canUseDOM() && this.storageKey) this.loadFromStorage();
 	}
 
 	// ── Persistence ─────────────────────────────────────────────────────────
 
 	loadFromStorage(): void {
+		if (!this.storageKey) return;
 		try {
-			const raw = localStorage.getItem(STORAGE_KEY);
+			const raw = localStorage.getItem(this.storageKey);
 			if (!raw) return;
 			const d = JSON.parse(raw);
 			if (d.currentTrack !== undefined) this.currentTrack = d.currentTrack;
@@ -101,10 +117,10 @@ class AudioStore {
 	}
 
 	saveToStorage(): void {
-		if (!canUseDOM()) return;
+		if (!canUseDOM() || !this.storageKey) return;
 		try {
 			localStorage.setItem(
-				STORAGE_KEY,
+				this.storageKey,
 				JSON.stringify({
 					currentTrack: this.currentTrack,
 					queue: this.queue,
@@ -128,12 +144,12 @@ class AudioStore {
 	play(): void {
 		if (this.isLoading) return;
 		this.isPlaying = true;
-		htmlAudio.play().catch(() => {});
+		this.htmlAudio.play().catch(() => {});
 	}
 
 	pause(): void {
 		this.isPlaying = false;
-		htmlAudio.pause();
+		this.htmlAudio.pause();
 	}
 
 	togglePlay(): void {
@@ -283,7 +299,7 @@ class AudioStore {
 	}
 
 	setPlaybackRate(rate: number): void {
-		if (this.duration && htmlAudio.isLive(this.duration)) return;
+		if (this.duration && this.htmlAudio.isLive(this.duration)) return;
 		this.playbackRate = Math.max(0.25, Math.min(2, rate));
 	}
 
@@ -366,7 +382,7 @@ class AudioStore {
 	loadAndPlayTrack(track: Track, queueIndex: number): void {
 		const isLiveStream =
 			track.live === true ||
-			(track.duration !== undefined && htmlAudio.isLive(track.duration));
+			(track.duration !== undefined && this.htmlAudio.isLive(track.duration));
 
 		this.currentTrack = track;
 		this.currentQueueIndex = queueIndex;
@@ -381,5 +397,3 @@ class AudioStore {
 		this.isPlaying = true;
 	}
 }
-
-export const audioStore = new AudioStore();

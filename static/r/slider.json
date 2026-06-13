@@ -12,7 +12,7 @@
   "files": [
     {
       "target": "~/src/lib/components/ui/audio/elements/slider/index.ts",
-      "content": "import Root from \"./slider.svelte\";\n\nexport { Root, Root as Slider };\n",
+      "content": "import Root from \"./slider.svelte\";\r\n\r\nexport { Root, Root as Slider };\r\n",
       "type": "registry:file"
     },
     {

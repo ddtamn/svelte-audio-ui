@@ -13,7 +13,7 @@
   "files": [
     {
       "target": "~/src/lib/components/ui/audio/examples/track-demo.svelte",
-      "content": "<script lang=\"ts\">\n\timport * as AudioTrack from \"$lib/components/ui/audio/track/index.js\";\n\timport { audioStore } from \"$lib/audio-store.svelte.js\";\n</script>\n\n{#if audioStore.queue[0]}\n\t<AudioTrack.Root trackId={audioStore.queue[0].id} />\n{:else}\n\t<p class=\"text-muted-foreground text-sm\">No tracks in queue.</p>\n{/if}\n",
+      "content": "<script lang=\"ts\">\r\n\timport * as AudioTrack from \"$lib/components/ui/audio/track/index.js\";\r\n\timport { getAudioContext } from \"$lib/audio-store.svelte.js\";\r\n\r\n\tconst audioStore = getAudioContext();\r\n</script>\r\n\r\n{#if audioStore.queue[0]}\r\n\t<AudioTrack.Root trackId={audioStore.queue[0].id} />\r\n{:else}\r\n\t<p class=\"text-muted-foreground text-sm\">No tracks in queue.</p>\r\n{/if}\r\n",
       "type": "registry:file"
     }
   ],

@@ -34,9 +34,9 @@ component: true
 {#snippet manual()}
 
 {#if viewerData}
-	<ComponentSource item={viewerData} data-llm-ignore />
+<ComponentSource item={viewerData} data-llm-ignore />
 {:else}
-	<p class="text-muted-foreground mt-4 text-sm">Source code not available.</p>
+<p class="text-muted-foreground mt-4 text-sm">Source code not available.</p>
 {/if}
 
 {/snippet}
@@ -53,7 +53,7 @@ component: true
 
 ### Basic
 
-Drop it anywhere — no extra wiring needed, it reads from and writes to `audioStore` directly:
+Drop it anywhere inside `AudioProvider`; it reads from and writes to the provider store directly:
 
 ```svelte
 <AudioPlaybackSpeed />
@@ -88,23 +88,23 @@ Swap out the default speed options with your own list:
 
 #### Props
 
-| Prop      | Type                                 | Default           | Description                                                                    |
-| --------- | ------------------------------------ | ----------------- | ------------------------------------------------------------------------------ |
-| `speeds`  | `{ value: number; label: string }[]` | `DEFAULT_SPEEDS`  | Speed options. Defaults: `0.5x`, `0.75x`, `1x`, `1.25x`, `1.5x`, `2x`.       |
-| `size`    | `string`                             | `"sm"`            | Button size. Use `"icon"` to hide the gauge icon and show only the speed label.|
-| `variant` | `string`                             | `"outline"`       | Button visual variant.                                                         |
-| `class`   | `string`                             | -                 | Additional CSS classes.                                                        |
+| Prop      | Type                                 | Default          | Description                                                                     |
+| --------- | ------------------------------------ | ---------------- | ------------------------------------------------------------------------------- |
+| `speeds`  | `{ value: number; label: string }[]` | `DEFAULT_SPEEDS` | Speed options. Defaults: `0.5x`, `0.75x`, `1x`, `1.25x`, `1.5x`, `2x`.          |
+| `size`    | `string`                             | `"sm"`           | Button size. Use `"icon"` to hide the gauge icon and show only the speed label. |
+| `variant` | `string`                             | `"outline"`      | Button visual variant.                                                          |
+| `class`   | `string`                             | -                | Additional CSS classes.                                                         |
 
 Accepts any additional HTML button attributes via `...rest`.
 
 #### Behavior
 
-- **Live streams** — automatically disabled when `htmlAudio.isLive()` returns `true`. Tooltip changes to `"Not available for live streams"` so the user always knows why.
+- **Live streams** — automatically disabled when the current provider store reports a live stream. Tooltip changes to `"Not available for live streams"` so the user always knows why.
 - **Current speed indicator** — the active rate is shown on the button and marked with a radio checkmark in the dropdown.
-- **Persistence** — speed is saved to `localStorage` via `audioStore` and restored on the next page load.
+- **Persistence** — speed is saved to `localStorage` via the provider store and restored on the next page load when persistence is enabled.
 - **Icon mode** — when `size="icon"`, the `Gauge` icon is hidden; only the speed label (e.g. `1x`) is shown.
 
-> **Note:** `AudioPlaybackSpeed` requires `AudioProvider` (or the audio store) to be mounted higher in the tree. It reads `audioStore.playbackRate` and `audioStore.duration` reactively via Svelte 5 `$derived` runes — no hook wrappers needed.
+> **Note:** `AudioPlaybackSpeed` requires `AudioProvider` to be mounted higher in the tree. It reads playback rate and live-stream state reactively from the provider store via Svelte 5 `$derived` runes.
 
 ## Examples
 

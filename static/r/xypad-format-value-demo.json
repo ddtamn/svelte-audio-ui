@@ -12,7 +12,7 @@
   "files": [
     {
       "target": "~/src/lib/components/ui/audio/examples/xypad-format-value-demo.svelte",
-      "content": "<script lang=\"ts\">\n\timport { XYPad } from \"$lib/components/ui/audio/elements/xypad/index.js\";\n</script>\n\n<XYPad\n\tdefaultValue={{ x: 50, y: 50 }}\n\tclass=\"aspect-square\"\n\tformatValue={(val) => `X: ${val.x}, Y: ${val.y}`}\n\tmaxX={100}\n\tmaxY={100}\n\tminX={0}\n\tminY={0}\n/>\n",
+      "content": "<script lang=\"ts\">\r\n\timport { XYPad } from \"$lib/components/ui/audio/elements/xypad/index.js\";\r\n</script>\r\n\r\n<XYPad\r\n\tdefaultValue={{ x: 50, y: 50 }}\r\n\tclass=\"aspect-square\"\r\n\tformatValue={(val) => `X: ${val.x}, Y: ${val.y}`}\r\n\tmaxX={100}\r\n\tmaxY={100}\r\n\tminX={0}\r\n\tminY={0}\r\n/>\r\n",
       "type": "registry:file"
     }
   ],

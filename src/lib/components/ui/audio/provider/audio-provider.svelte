@@ -1,16 +1,22 @@
 <script lang="ts">
 	import { onMount, untrack } from "svelte";
 	import type { Snippet } from "svelte";
-	import { htmlAudio } from "$lib/html-audio.js";
-	import type { Track } from "$lib/html-audio.js";
-	import { audioStore, calculateNextIndex } from "$lib/audio-store.svelte.js";
+	import { HtmlAudio, type Track } from "$lib/html-audio.js";
+	import { AudioStore, calculateNextIndex, setAudioContext } from "$lib/audio-store.svelte.js";
 
 	interface Props {
 		tracks?: Track[];
+		storageKey?: string | null;
 		children: Snippet;
 	}
 
-	let { tracks = [], children }: Props = $props();
+	// storageKey defaults to DEFAULT_STORAGE_KEY; pass `null` to disable persistence
+	let { tracks = [], storageKey = 'audio:ui:store', children }: Props = $props();
+
+	// ─── Create instances & set context ───────────────────────────────────────
+	const htmlAudio = new HtmlAudio();
+	const audioStore = new AudioStore(htmlAudio, storageKey);
+	setAudioContext(audioStore);
 
 	// ─── Constants ─────────────────────────────────────────────────────────────
 	const MAX_ERROR_RETRIES = 3;
@@ -296,6 +302,7 @@
 		return () => {
 			ctrl.abort();
 			htmlAudio.removeEventListener("bufferUpdate", handleBufferUpdate);
+			htmlAudio.cleanup();
 			if (saveTimeout) {
 				clearTimeout(saveTimeout);
 				saveTimeout = null;

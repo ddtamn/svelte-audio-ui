@@ -12,7 +12,7 @@
   "files": [
     {
       "target": "~/src/lib/components/ui/audio/examples/fader-horizontal-demo.svelte",
-      "content": "<script lang=\"ts\">\n\timport { Fader } from \"$lib/components/ui/audio/elements/fader/index.js\";\n\n\tlet value = $state(50);\n</script>\n\n<div class=\"flex w-full max-w-sm flex-col items-center gap-4\">\n\t<Fader orientation=\"horizontal\" {value} onValueChange={(e) => (value = e)} />\n\t<span class=\"text-muted-foreground text-sm tabular-nums\">{value}</span>\n</div>\n",
+      "content": "<script lang=\"ts\">\r\n\timport { Fader } from \"$lib/components/ui/audio/elements/fader/index.js\";\r\n\r\n\tlet value = $state(50);\r\n</script>\r\n\r\n<div class=\"flex w-full max-w-sm flex-col items-center gap-4\">\r\n\t<Fader orientation=\"horizontal\" {value} onValueChange={(e) => (value = e)} />\r\n\t<span class=\"text-muted-foreground text-sm tabular-nums\">{value}</span>\r\n</div>\r\n",
       "type": "registry:file"
     }
   ],

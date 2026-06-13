@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { Gauge } from "@lucide/svelte";
-	import { audioStore } from "$lib/audio-store.svelte.js";
-	import { htmlAudio } from "$lib/html-audio.js";
+	import { getAudioContext } from "$lib/audio-store.svelte.js";
 	import { cn } from "$lib/utils.js";
 	import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
 	import * as Tooltip from "$lib/components/ui/tooltip";
 	import { Button, type ButtonSize, type ButtonVariant } from "$lib/components/ui/button";
+
+	const audioStore = getAudioContext();
 
 	const DEFAULT_SPEEDS = [
 		{ value: 0.5, label: "0.5x" },
@@ -37,7 +38,7 @@
 		...rest
 	}: Props = $props();
 
-	const isLiveStream = $derived(htmlAudio.isLive(audioStore.duration));
+	const isLiveStream = $derived(audioStore.isLive);
 	const currentSpeed = $derived(
 		speeds.find((s) => s.value === audioStore.playbackRate) ?? speeds[2]
 	);

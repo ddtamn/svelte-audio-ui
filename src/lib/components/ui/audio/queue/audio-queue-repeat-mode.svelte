@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { Repeat, Repeat1 } from "@lucide/svelte";
-	import { audioStore } from "$lib/audio-store.svelte.js";
+	import { getAudioContext } from "$lib/audio-store.svelte.js";
 	import { cn } from "$lib/utils.js";
 	import * as Tooltip from "$lib/components/ui/tooltip";
 	import { Button } from "$lib/components/ui/button";
+
+	const audioStore = getAudioContext();
 
 	interface Props {
 		class?: string;

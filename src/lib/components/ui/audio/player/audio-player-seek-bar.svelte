@@ -1,8 +1,9 @@
 <script lang="ts">
-	import { audioStore } from "$lib/audio-store.svelte.js";
-	import { htmlAudio } from "$lib/html-audio.js";
+	import { getAudioContext } from "$lib/audio-store.svelte.js";
 	import { cn } from "$lib/utils.js";
 	import AudioSeekSlider from "./audio-seek-slider.svelte";
+
+	const audioStore = getAudioContext();
 
 	interface Props {
 		class?: string;
@@ -10,7 +11,7 @@
 
 	let { class: className = "" }: Props = $props();
 
-	const isLiveStream = $derived(htmlAudio.isLive(audioStore.duration));
+	const isLiveStream = $derived(audioStore.isLive);
 
 	const progress = $derived(() => {
 		if (isLiveStream) return 100;

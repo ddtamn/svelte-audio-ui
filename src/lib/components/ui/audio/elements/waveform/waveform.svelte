@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { onMount, tick } from "svelte";
 	import WaveSurfer from "wavesurfer.js";
-	import { audioStore } from "$lib/audio-store.svelte.js";
-	import { htmlAudio } from "$lib/html-audio.js";
+	import { getAudioContext } from "$lib/audio-store.svelte.js";
 	import { cn } from "$lib/utils.js";
+
+	const audioStore = getAudioContext();
 
 	interface Props {
 		/** Pre-decoded peaks array (0–1). If omitted, wavesurfer decodes from URL. */
@@ -63,8 +64,8 @@
 	onMount(() => {
 		if (!containerEl) return;
 
-		htmlAudio.init();
-		const audioEl = htmlAudio.getAudioElement();
+		audioStore.htmlAudio.init();
+		const audioEl = audioStore.htmlAudio.getAudioElement();
 		if (!audioEl) return;
 
 		wavesurfer = WaveSurfer.create({
@@ -120,7 +121,7 @@
 		// Skip waveform generation for live streams to prevent AbortErrors,
 		// UNLESS the user explicitly bypassed this by providing manual peaks data.
 		const trackDuration = audioStore.currentTrack.duration ?? audioStore.duration;
-		const isLive = audioStore.currentTrack.live || htmlAudio.isLive(trackDuration);
+		const isLive = audioStore.currentTrack.live || audioStore.htmlAudio.isLive(trackDuration);
 		const hasPeaks = peaks && peaks.length > 0;
 		if (isLive && !hasPeaks) {
 			isReady = true;
@@ -179,7 +180,7 @@
 
 	// Live stream: disable interaction, but allow showing if peaks are manually provided
 	const isLiveStream = $derived(
-		htmlAudio.isLive(audioStore.duration) || audioStore.currentTrack?.live
+		audioStore.htmlAudio.isLive(audioStore.duration) || audioStore.currentTrack?.live
 	);
 	const showLivestreamFallback = $derived(isLiveStream && !(peaks && peaks.length > 0));
 

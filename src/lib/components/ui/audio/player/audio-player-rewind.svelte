@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { Rewind } from "@lucide/svelte";
-	import { audioStore } from "$lib/audio-store.svelte.js";
-	import { htmlAudio } from "$lib/html-audio.js";
+	import { getAudioContext } from "$lib/audio-store.svelte.js";
 	import { cn } from "$lib/utils.js";
 	import * as Tooltip from "$lib/components/ui/tooltip";
 	import { Button, type ButtonSize, type ButtonVariant } from "$lib/components/ui/button";
+
+	const audioStore = getAudioContext();
 
 	interface Props {
 		class?: string;
@@ -22,7 +23,7 @@
 		...rest
 	}: Props = $props();
 
-	const isLiveStream = $derived(htmlAudio.isLive(audioStore.duration));
+	const isLiveStream = $derived(audioStore.isLive);
 	const isDisabled = $derived(
 		!audioStore.currentTrack || audioStore.currentTime <= 0 || isLiveStream
 	);
