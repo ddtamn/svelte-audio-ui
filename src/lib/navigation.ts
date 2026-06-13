@@ -89,6 +89,10 @@ export const sidebarNavItems: SidebarNavItem[] = [
 		title: "Resources",
 		items: [
 			{
+				title: "Changelog",
+				href: "/docs/changelog",
+			},
+			{
 				title: "llms.txt",
 				href: "/llms.txt",
 			},
