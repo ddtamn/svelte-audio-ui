@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { onMount, tick } from "svelte";
-	import WaveSurfer from "wavesurfer.js";
 	import { getAudioContext } from "$lib/audio-store.svelte.js";
 	import { cn } from "$lib/utils.js";
+	import type WaveSurfer from "wavesurfer.js";
 
 	const audioStore = getAudioContext();
 
@@ -68,46 +68,51 @@
 		const audioEl = audioStore.htmlAudio.getAudioElement();
 		if (!audioEl) return;
 
-		wavesurfer = WaveSurfer.create({
-			container: containerEl,
-			media: audioEl,
-			height,
-			waveColor: resolvedWaveColor(),
-			progressColor: resolvedProgressColor(),
-			cursorColor: resolvedCursorColor(),
-			cursorWidth: 2,
-			barWidth,
-			barGap,
-			barRadius,
-			interact,
-			normalize: true,
-			backend: "MediaElement",
-			dragToSeek: true,
-		});
+		// Dynamic import to enable code-splitting of wavesurfer.js
+		(async () => {
+			const { default: WS } = await import("wavesurfer.js");
 
-		wavesurfer.on("ready", () => {
-			isReady = true;
-			isLoading = false;
-		});
+			wavesurfer = WS.create({
+				container: containerEl,
+				media: audioEl,
+				height,
+				waveColor: resolvedWaveColor(),
+				progressColor: resolvedProgressColor(),
+				cursorColor: resolvedCursorColor(),
+				cursorWidth: 2,
+				barWidth,
+				barGap,
+				barRadius,
+				interact,
+				normalize: true,
+				backend: "MediaElement",
+				dragToSeek: true,
+			});
 
-		wavesurfer.on("loading", () => {
-			isLoading = true;
-		});
+			wavesurfer.on("ready", () => {
+				isReady = true;
+				isLoading = false;
+			});
 
-		// User clicked / dragged on the waveform → seek via audioStore
-		wavesurfer.on("interaction", (newTime: number) => {
-			if (!audioStore.isLoading) {
-				audioStore.seek(newTime);
-			}
-		});
+			wavesurfer.on("loading", () => {
+				isLoading = true;
+			});
 
-		wavesurfer.on("error", () => {
-			isLoading = false;
-		});
+			// User clicked / dragged on the waveform → seek via audioStore
+			wavesurfer.on("interaction", (newTime: number) => {
+				if (!audioStore.isLoading) {
+					audioStore.seek(newTime);
+				}
+			});
 
-		tick().then(() => {
-			if (wavesurfer) loadCurrentTrack();
-		});
+			wavesurfer.on("error", () => {
+				isLoading = false;
+			});
+
+			tick().then(() => {
+				if (wavesurfer) loadCurrentTrack();
+			});
+		})();
 
 		return () => {
 			wavesurfer?.destroy();

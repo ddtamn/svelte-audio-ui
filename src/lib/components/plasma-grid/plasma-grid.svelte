@@ -2,7 +2,8 @@
 	import { Canvas } from "@threlte/core";
 	import Scene from "./plasma-grid-scene.svelte";
 	import { cn } from "$lib/utils";
-	import { NoToneMapping } from "three";
+	// NoToneMapping is value 0 in Three.js — avoid static import for code-splitting
+	const NoToneMapping = 0;
 	import type { ComponentProps } from "svelte";
 
 	type SceneProps = ComponentProps<typeof Scene>;

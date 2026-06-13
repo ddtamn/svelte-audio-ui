@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { T, useTask, useThrelte } from "@threlte/core";
-	import * as THREE from "three";
 
 	interface Props {
 		/**
@@ -19,7 +18,15 @@
 
 	const { size } = useThrelte();
 
-	let mainMaterial = $state<THREE.ShaderMaterial>();
+	// Dynamic import of Three.js to enable code-splitting
+	let THREE: typeof import("three") | undefined = $state();
+	let mainMaterial: any = $state();
+
+	$effect(() => {
+		(async () => {
+			THREE = await import("three");
+		})();
+	});
 
 	const vertexShader = `
 		varying vec2 vUv;
@@ -77,11 +84,16 @@
 		}
 	`;
 
-	const resolutionUniform = new THREE.Vector3(1, 1, 1);
-	const baseColorUniform = new THREE.Vector3();
-	const gradientColorUniform = new THREE.Vector3();
+	let resolutionUniform: any = $state(null);
+	let baseColorUniform: any = $state(null);
+	let gradientColorUniform: any = $state(null);
 
 	$effect(() => {
+		if (!THREE) return;
+		resolutionUniform = new THREE.Vector3(1, 1, 1);
+		baseColorUniform = new THREE.Vector3();
+		gradientColorUniform = new THREE.Vector3();
+
 		const base = new THREE.Color(color);
 		const gradient = new THREE.Color(highlightColor);
 
@@ -90,6 +102,7 @@
 	});
 
 	$effect(() => {
+		if (!resolutionUniform || !THREE) return;
 		resolutionUniform.set($size.width, $size.height, 1.0);
 	});
 
@@ -100,20 +113,22 @@
 	});
 </script>
 
-<T.Mesh>
-	<T.PlaneGeometry args={[2, 2]} />
-	<T.ShaderMaterial
-		bind:ref={mainMaterial}
-		{vertexShader}
-		{fragmentShader}
-		transparent
-		depthTest={false}
-		depthWrite={false}
-		uniforms={{
-			u_time: { value: 0 },
-			u_resolution: { value: resolutionUniform },
-			u_baseColor: { value: baseColorUniform },
-			u_gradientColor: { value: gradientColorUniform },
-		}}
-	/>
-</T.Mesh>
+{#if THREE}
+	<T.Mesh>
+		<T.PlaneGeometry args={[2, 2]} />
+		<T.ShaderMaterial
+			bind:ref={mainMaterial}
+			{vertexShader}
+			{fragmentShader}
+			transparent
+			depthTest={false}
+			depthWrite={false}
+			uniforms={{
+				u_time: { value: 0 },
+				u_resolution: { value: resolutionUniform },
+				u_baseColor: { value: baseColorUniform },
+				u_gradientColor: { value: gradientColorUniform },
+			}}
+		/>
+	</T.Mesh>
+{/if}

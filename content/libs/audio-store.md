@@ -56,6 +56,8 @@ Import the context getter and helper types directly into your Svelte components:
 
 ## Core Concepts
 
+<span id="the-audiostore-singleton"></span>
+
 ### The `AudioStore` Instance
 
 We leverage Svelte 5's powerful `$state` runes to create a highly reactive, class-based store. `AudioProvider` creates an `AudioStore` instance and exposes it through Svelte context, so child audio components can call `getAudioContext()` and read state directly.
