@@ -73,7 +73,7 @@
 		"cva": "npm:class-variance-authority",
 		"mode-watcher": "^1.1.0",
 		"package-manager-detector": "^1.6.0",
-		"posthog-js": "^1.364.1",
+		"posthog-js": "^1.388.2",
 		"runed": "^0.37.1",
 		"svelte-dnd-action": "^0.9.69",
 		"three": "^0.183.2",
