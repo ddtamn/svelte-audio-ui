@@ -32,7 +32,7 @@
 		"@sveltejs/adapter-auto": "^7.0.0",
 		"@sveltejs/adapter-vercel": "6.3.2",
 		"@sveltejs/kit": "^2.50.2",
-		"@tailwindcss/vite": "^4.1.18",
+		"@tailwindcss/vite": "^4.3.1",
 		"@types/node": "^24",
 		"bits-ui": "^2.16.3",
 		"clsx": "^2.1.1",
@@ -63,7 +63,7 @@
 		"unist-builder": "^4.0.0",
 		"unist-util-visit": "^5.1.0",
 		"velite": "^0.3.1",
-		"vite": "^7.3.1"
+		"vite": "^8.0.16"
 	},
 	"dependencies": {
 		"@tabler/icons-svelte": "^3.40.0",
